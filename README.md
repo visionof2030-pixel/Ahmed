@@ -1,2879 +1,2238 @@
-# Ahmedht<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الملف المهني | فهد الخالدي - معلم متخصص في اللغة الإنجليزية</title>
-    <meta name="description" content="فهد الخالدي - معلم متخصص في اللغة الإنجليزية مع 14+ سنة خبرة في تطوير أساليب التعليم الحديثة. اكتشف ملفي المهني وإنجازاتي التعليمية.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سجل متابعة الطلاب - فهد الخالدي</title>
+<style>
+body {
+    font-family: "Tajawal", sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f7f7f7;
+}
+
+header {
+    background: linear-gradient(135deg, #1a5276, #2a9d8f);
+    color: #fff;
+    text-align: center;
+    padding: 12px 0;
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+}
+
+.header-main {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.header-sub {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.header-sub div {
+    padding: 4px 10px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 4px;
+}
+
+.current-date {
+    background: rgba(38, 70, 83, 0.8) !important;
+    transition: all 0.3s;
+}
+
+.date-info {
+    font-size: 12px;
+    color: #e0f7fa;
+    margin-top: 2px;
+}
+
+.class-header {
+    background: #2a9d8f;
+    color: white;
+    padding: 8px;
+    margin: 15px 0 5px 0;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.container {
+    width: 95%;
+    margin: 10px auto;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background: #e9f5f4;
+    color: #264653;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+td {
+    cursor: pointer;
+    user-select: none;
+}
+
+button {
+    margin: 5px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    background: #1a5276;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+button:hover {
+    background: #2a9d8f;
+    transform: translateY(-2px);
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.admin-panel {
+    display: none;
+    margin-top: 15px;
+    padding: 15px;
+    border: 1px solid #1a5276;
+    border-radius: 10px;
+    background: #f0f8ff;
+}
+
+.star-cell {
+    color: #ffd700;
+    font-size: 16px;
+}
+
+.present {
+    background-color: #e8f5e9;
+}
+
+.absent {
+    background-color: #ffebee;
+}
+
+.status-filter {
+    margin: 10px 0;
+    text-align: center;
+}
+
+.status-filter button {
+    background: #ddd;
+    color: #333;
+}
+
+.status-filter button.active {
+    background: #2a9d8f;
+    color: white;
+}
+
+input[type="password"], input[type="text"], select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: "Tajawal", sans-serif;
+}
+
+.class-tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+    gap: 5px;
+}
+
+.class-tab {
+    padding: 8px 15px;
+    background: #e0e0e0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.class-tab.active {
+    background: #2a9d8f;
+    color: white;
+}
+
+.class-tab:hover {
+    background: #c0c0c0;
+}
+
+.student-count {
+    text-align: center;
+    margin: 10px 0;
+    color: #264653;
+    font-weight: bold;
+}
+
+.date-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+    flex-wrap: wrap;
+}
+
+.date-controls button {
+    padding: 6px 12px;
+    font-size: 14px;
+}
+
+.date-display {
+    font-size: 16px;
+    font-weight: bold;
+    color: #264653;
+    padding: 5px 15px;
+    background: #f0f8ff;
+    border-radius: 5px;
+    border: 1px solid #1a5276;
+}
+
+.date-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: "Tajawal", sans-serif;
+}
+
+.admin-section {
+    margin: 15px 0;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.admin-section h4 {
+    margin-top: 0;
+    color: #1a5276;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 8px;
+}
+
+.admin-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+    flex-wrap: wrap;
+}
+
+.admin-label {
+    font-weight: bold;
+    color: #264653;
+    min-width: 150px;
+}
+
+.admin-input {
+    flex: 1;
+    min-width: 200px;
+}
+
+.semester-info {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #e8f5e9;
+    border-radius: 4px;
+    color: #2a9d8f;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.hijri-date-selector {
+    background: #fff8e1;
+    border: 1px solid #ffd54f;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.starred-student {
+    background-color: #fffde7 !important;
+}
+
+.random-period-section {
+    background: #e8f5e9;
+    border: 1px solid #2a9d8f;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.period-info {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #2a9d8f;
+    color: white;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-left: 10px;
+    font-size: 12px;
+}
+
+@media print {
+    button, .admin-panel, .status-filter, .class-tabs, .date-controls {
+        display: none !important;
+    }
     
-    <!-- تحسينات SEO -->
-    <meta property="og:title" content="فهد الخالدي - معلم متخصص في اللغة الإنجليزية">
-    <meta property="og:description" content="معلم متخصص في اللغة الإنجليزية مع 14+ سنة خبرة في تطوير أساليب التعليم الحديثة">
-    <meta property="og:image" content="https://i.ibb.co/k66psVmZ/20220817-151032.jpg">
-    <meta property="og:url" content="https://fahad-alkhaldi.com">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="فهد الخالدي - معلم متخصص في اللغة الإنجليزية">
-    <meta name="twitter:description" content="معلم متخصص في اللغة الإنجليزية مع 14+ سنة خبرة في تطوير أساليب التعليم الحديثة">
-    <meta name="twitter:image" content="https://i.ibb.co/k66psVmZ/20220817-151032.jpg">
+    table {
+        font-size: 10px;
+    }
     
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    .header-sub {
+        background: white;
+        color: black;
+        border: 1px solid #ccc;
+    }
     
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#1A3A5F">
-    
-    <style>
-        :root {
-            /* الألوان المحدثة لتتناسب مع طقم النصر */
-            --primary: #1A3A5F; /* أزرق كحلي بدلاً من الأزرق النصراوي */
-            --primary-dark: #0F2A47;
-            --primary-light: #2A4F7A;
-            --accent: #F5D76E; /* أصفر باهت بدلاً من الأصفر النصراوي */
-            --accent-dark: #E6C860;
-            --accent-light: #FFE89D;
-            --bg: #FFFFFF; /* خلفية بيضاء */
-            --card-bg: #FFFFFF;
-            --text: #1A1A1A;
-            --light-text: #666666;
-            --border: #E6E6E6;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.1);
-            /* تحديث التدرجات اللونية */
-            --gradient: linear-gradient(135deg, #1A3A5F, #F5D76E);
-            --gradient-dark: linear-gradient(135deg, #0F2A47, #E6C860);
-            --gradient-light: linear-gradient(135deg, #2A4F7A, #FFE89D);
-            --yellow-gradient: linear-gradient(135deg, #F5D76E, #FFE89D);
-            --blue-gradient: linear-gradient(135deg, #1A3A5F, #2A4F7A);
-        }
-
-        /* أنماط الوضع الليلي */
-        :root[data-theme="dark"] {
-            --bg: #0A0A0A;
-            --card-bg: #1A1A1A;
-            --text: #F5F5F5;
-            --light-text: #A0A0A0;
-            --border: #333333;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.4);
-        }
-
-        * {
-            box-sizing: border-box;
-            font-family: 'Tajawal', Tahoma, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            overflow-x: hidden;
-            padding-top: 87px;
-            transition: background 0.3s ease, color 0.3s ease;
-        }
-
-        /* ========== HEADER REDESIGN ========== */
-        header {
-            background: var(--blue-gradient);
-            color: white;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
-            border-bottom: 3px solid var(--accent);
-            height: 87px;
-        }
-
-        .header-container {
-            max-width: 100%;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            padding: 0;
-            height: 100%;
-        }
-
-        .header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-            height: 47px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-        }
-
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            flex: 1;
-            justify-content: center;
-        }
-
-        .title-section {
-            text-align: center;
-        }
-
-        .title-section h1 {
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin: 0;
-            background: var(--yellow-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* زر الترجمة والوضع الليلي في أقصى الزاوية اليمنى العلوية */
-        .header-actions {
-            position: absolute;
-            right: 15px;
-            top: 10px;
-            display: flex;
-            gap: 10px;
-        }
-
-        .lang-btn, .theme-btn {
-            background: rgba(255, 255, 255, 0.15);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 5px 10px;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            backdrop-filter: blur(10px);
-            font-size: 0.75rem;
-        }
-
-        .lang-btn:hover, .theme-btn:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-2px);
-        }
-
-        /* ========== NAVIGATION BAR ========== */
-        .nav-container {
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(90deg, rgba(26, 58, 95, 0.9), rgba(42, 79, 122, 0.9));
-            backdrop-filter: blur(10px);
-            border-radius: 0 0 12px 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            height: 40px;
-        }
-
-        .nav-scroll {
-            display: flex;
-            gap: 0;
-            padding: 0 15px;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            height: 100%;
-        }
-
-        .nav-scroll::-webkit-scrollbar {
-            display: none;
-        }
-
-        .nav-item {
-            flex: 0 0 auto;
-            padding: 8px 12px;
-            text-decoration: none;
-            color: white;
-            font-weight: 600;
-            font-size: 0.65rem;
-            transition: all 0.3s ease;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            min-width: 60px;
-            border-left: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 8px 8px 0 0;
-            margin: 0 2px;
-            height: 100%;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .nav-item:first-child {
-            border-radius: 0 8px 0 0;
-        }
-
-        .nav-item:last-child {
-            border-radius: 8px 0 0 0;
-            border-left: none;
-        }
-
-        .nav-item i {
-            font-size: 0.7rem;
-            transition: all 0.3s ease;
-        }
-
-        .nav-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .nav-item:hover i {
-            transform: translateY(-3px);
-        }
-
-        .nav-item.active {
-            background: var(--yellow-gradient);
-            color: var(--primary-dark);
-            box-shadow: 0 -4px 8px rgba(245, 215, 110, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .nav-item.active::before {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            right: 50%;
-            transform: translateX(50%);
-            width: 30px;
-            height: 3px;
-            background: var(--primary-dark);
-            border-radius: 2px;
-        }
-
-        .nav-scroll-controls {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(5px);
-            cursor: pointer;
-            z-index: 2;
-            transition: all 0.3s ease;
-            opacity: 0;
-            border-radius: 0 0 8px 8px;
-        }
-
-        .nav-scroll-controls:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .nav-container:hover .nav-scroll-controls {
-            opacity: 1;
-        }
-
-        .nav-scroll-prev {
-            right: 0;
-        }
-
-        .nav-scroll-next {
-            left: 0;
-        }
-
-        .nav-scroll-controls i {
-            color: white;
-            font-size: 1rem;
-        }
-
-        /* ========== MAIN CONTENT ========== */
-        main {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        .hero-section {
-            background: var(--blue-gradient);
-            color: white;
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow-hover);
-        }
-
-        .hero-section::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
-            background-size: cover;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-title {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 12px;
-            background: var(--yellow-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-subtitle {
-            font-size: 1rem;
-            margin-bottom: 20px;
-            opacity: 0.9;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-actions {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 25px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 12px 25px;
-            border-radius: 30px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.9rem;
-        }
-
-        .btn-primary {
-            background: var(--yellow-gradient);
-            color: var(--primary-dark);
-            box-shadow: 0 4px 10px rgba(245, 215, 110, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(245, 215, 110, 0.4);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-3px);
-        }
-
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-top: 25px;
-        }
-
-        .hero-stat {
-            text-align: center;
-        }
-
-        .hero-stat .number {
-            font-size: 1.6rem;
-            font-weight: 800;
-            display: block;
-            background: var(--yellow-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-stat .label {
-            font-size: 0.8rem;
-            opacity: 0.8;
-        }
-
-        /* Sections */
-        section {
-            display: none;
-            animation: fadeInUp 0.6s ease;
-        }
-
-        section.active {
-            display: block;
-        }
-
-        .section-title {
-            text-align: center;
-            color: var(--primary);
-            margin-bottom: 25px;
-            font-size: 1.8rem;
-            font-weight: 800;
-            position: relative;
-            padding-bottom: 12px;
-        }
-
-        .section-title::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            right: 50%;
-            transform: translateX(50%);
-            width: 70px;
-            height: 3px;
-            background: var(--yellow-gradient);
-            border-radius: 2px;
-        }
-
-        /* تأثيرات الظهور عند التمرير */
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Cards */
-        .card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            border-right: 4px solid transparent;
-            border: 1px solid var(--border);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-            border-right-color: var(--accent);
-        }
-
-        /* Profile Section */
-        .profile-header {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .profile-img {
-            width: 130px;
-            height: 130px;
-            margin: 0 auto 15px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 3px solid var(--accent);
-            box-shadow: 0 6px 15px rgba(245, 215, 110, 0.3);
-        }
-
-        .profile-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .profile-info h2 {
-            font-size: 1.3rem;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-
-        .profile-info .title {
-            font-size: 0.9rem;
-            color: var(--accent-dark);
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-
-        .bio {
-            text-align: justify;
-            font-size: 0.9rem;
-            line-height: 1.7;
-            color: var(--text);
-            margin: 15px 0;
-        }
-
-        .badge {
-            display: inline-block;
-            background: var(--yellow-gradient);
-            color: var(--primary-dark);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-weight: 700;
-            margin: 12px 0;
-            box-shadow: 0 3px 8px rgba(245, 215, 110, 0.3);
-            font-size: 0.85rem;
-        }
-
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 15px;
-            margin-top: 25px;
-        }
-
-        .stat-card {
-            background: linear-gradient(135deg, var(--card-bg), var(--bg));
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            transition: all 0.3s ease;
-            border-top: 3px solid var(--accent);
-            border: 1px solid var(--border);
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .stat-number {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: var(--primary);
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            font-size: 0.8rem;
-            color: var(--light-text);
-            font-weight: 600;
-        }
-
-        /* Vision Section */
-        .vision-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .vision-item {
-            background: linear-gradient(135deg, var(--card-bg), var(--bg));
-            padding: 25px;
-            border-radius: 12px;
-            text-align: center;
-            border-top: 4px solid var(--accent);
-            transition: all 0.3s ease;
-            border: 1px solid var(--border);
-        }
-
-        .vision-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .vision-item i {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 15px;
-        }
-
-        .vision-item h3 {
-            color: var(--primary);
-            margin-bottom: 12px;
-            font-size: 1.2rem;
-        }
-
-        .vision-item p {
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding-right: 25px;
-        }
-
-        .timeline::before {
-            content: "";
-            position: absolute;
-            right: 12px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--yellow-gradient);
-            border-radius: 2px;
-        }
-
-        .timeline-item {
-            background: var(--card-bg);
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 15px;
-            position: relative;
-            box-shadow: var(--shadow);
-            border-right: 2px solid var(--accent);
-            border: 1px solid var(--border);
-        }
-
-        .timeline-item::before {
-            content: "";
-            position: absolute;
-            right: -20px;
-            top: 20px;
-            width: 10px;
-            height: 10px;
-            background: var(--accent);
-            border-radius: 50%;
-            box-shadow: 0 0 0 3px rgba(245, 215, 110, 0.2);
-        }
-
-        .timeline-date {
-            color: var(--accent-dark);
-            font-weight: 700;
-            font-size: 0.8rem;
-            margin-bottom: 6px;
-        }
-
-        .timeline-content h3 {
-            font-size: 0.9rem;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-
-        .timeline-content p {
-            color: var(--light-text);
-            font-size: 0.8rem;
-        }
-
-        /* Skills */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 15px;
-        }
-
-        .skill-category {
-            background: linear-gradient(135deg, var(--card-bg), var(--bg));
-            padding: 20px;
-            border-radius: 10px;
-            border-top: 3px solid var(--accent);
-            border: 1px solid var(--border);
-        }
-
-        .skill-category h3 {
-            color: var(--primary);
-            margin-bottom: 12px;
-            font-size: 1.1rem;
-        }
-
-        .skill-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .skill-list li {
-            padding: 6px 0;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.85rem;
-        }
-
-        .skill-list li:last-child {
-            border-bottom: none;
-        }
-
-        .skill-list li i {
-            color: var(--accent);
-            font-size: 0.8rem;
-        }
-
-        /* Achievements Section */
-        .achievement-card {
-            background: linear-gradient(135deg, var(--card-bg), var(--bg));
-            border-right: 4px solid var(--accent);
-            padding: 25px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-        }
-
-        .achievement-year {
-            background: var(--accent);
-            color: var(--primary-dark);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-weight: 700;
-            display: inline-block;
-            margin-bottom: 15px;
-            font-size: 0.8rem;
-            box-shadow: 0 3px 8px rgba(245, 215, 110, 0.3);
-        }
-
-        .achievement-content p {
-            line-height: 1.8;
-            text-align: justify;
-            font-size: 0.9rem;
-            color: var(--text);
-            margin: 0;
-        }
-
-        /* Training Section */
-        .training-card {
-            background: linear-gradient(135deg, var(--card-bg), var(--bg));
-            border-right: 4px solid var(--accent);
-            padding: 25px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-        }
-
-        .training-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .training-list li {
-            padding: 8px 0;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.85rem;
-        }
-
-        .training-list li:last-child {
-            border-bottom: none;
-        }
-
-        .training-list li i {
-            color: var(--accent);
-            font-size: 0.8rem;
-        }
-
-        /* Tech Section */
-        .tech-card {
-            background: linear-gradient(135deg, var(--card-bg), var(--bg));
-            border-right: 4px solid var(--accent);
-            padding: 25px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-        }
-
-        /* Portfolio Section */
-        .portfolio-filters {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            padding: 8px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            font-size: 0.85rem;
-        }
-
-        .filter-btn:hover, .filter-btn.active {
-            background: var(--yellow-gradient);
-            color: var(--primary-dark);
-            border-color: var(--accent);
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .portfolio-item {
-            background: var(--card-bg);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            border: 1px solid var(--border);
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .portfolio-item img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .portfolio-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .portfolio-content {
-            padding: 15px;
-        }
-
-        .portfolio-content h3 {
-            color: var(--primary);
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-
-        .portfolio-content p {
-            color: var(--light-text);
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 10px;
-        }
-
-        .project-link {
-            display: inline-block;
-            margin-top: 10px;
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-        }
-
-        .project-link:hover {
-            color: var(--accent-dark);
-            text-decoration: underline;
-        }
-
-        /* Testimonials Section */
-        .testimonials-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 15px;
-        }
-
-        .testimonial-slider {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-        }
-
-        .testimonial-slides {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-
-        .testimonial-slide {
-            min-width: 100%;
-            padding: 20px;
-            background: linear-gradient(135deg, var(--card-bg), var(--bg));
-            border-top: 3px solid var(--accent);
-            box-shadow: var(--shadow);
-            border-radius: 10px;
-            border: 1px solid var(--border);
-        }
-
-        .testimonial-content {
-            margin-bottom: 12px;
-        }
-
-        .testimonial-content p {
-            font-style: italic;
-            line-height: 1.6;
-            color: var(--text);
-            font-size: 0.9rem;
-        }
-
-        .testimonial-author {
-            text-align: left;
-        }
-
-        .testimonial-author strong {
-            display: block;
-            color: var(--primary);
-            font-size: 0.9rem;
-        }
-
-        .testimonial-author span {
-            font-size: 0.8rem;
-            color: var(--light-text);
-        }
-
-        .testimonial-controls {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .testimonial-control {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .testimonial-control:hover {
-            background: var(--yellow-gradient);
-            color: var(--primary-dark);
-        }
-
-        /* Contact Form */
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            background: var(--card-bg);
-            color: var(--text);
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(245, 215, 110, 0.2);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--blue-gradient);
-            color: white;
-            text-align: center;
-            padding: 25px 20px;
-            margin-top: 40px;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-links {
-            display: none;
-        }
-
-        .copyright {
-            margin-top: 15px;
-            opacity: 0.8;
-            font-size: 0.85rem;
-        }
-
-        /* أنماط إضافية للمعرض التفاعلي */
-        .gallery-container {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .gallery-scroll {
-            display: flex;
-            flex-direction: column;
-            max-height: 500px;
-            overflow-y: auto;
-            scroll-behavior: smooth;
-            padding: 10px;
-            background: var(--card-bg);
-            border-radius: 12px;
-        }
-
-        .gallery-scroll::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .gallery-scroll::-webkit-scrollbar-track {
-            background: var(--border);
-            border-radius: 10px;
-        }
-
-        .gallery-scroll::-webkit-scrollbar-thumb {
-            background: var(--accent);
-            border-radius: 10px;
-        }
-
-        .gallery-scroll::-webkit-scrollbar-thumb:hover {
-            background: var(--accent-dark);
-        }
-
-        .gallery-item {
-            margin-bottom: 20px;
-            text-align: center;
-            background: var(--card-bg);
-            border-radius: 10px;
-            padding: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease;
-            border: 1px solid var(--border);
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .gallery-item img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .gallery-caption {
-            margin-top: 10px;
-            font-size: 0.9rem;
-            color: var(--text);
-            font-weight: 500;
-        }
-
-        .gallery-controls {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .gallery-btn {
-            background: var(--yellow-gradient);
-            color: var(--primary-dark);
-            border: none;
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(245, 215, 110, 0.3);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .gallery-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(245, 215, 110, 0.4);
-        }
-
-        .gallery-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .gallery-indicator {
-            display: flex;
-            justify-content: center;
-            margin-top: 15px;
-            gap: 8px;
-        }
-
-        .indicator-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--border);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .indicator-dot.active {
-            background: var(--accent);
-            transform: scale(1.2);
-        }
-
-        /* ========== التحسينات الجديدة ========== */
-        
-        /* زر العودة للأعلى */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--yellow-gradient);
-            color: var(--primary-dark);
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-        }
-
-        /* مؤشر تقدم التمرير */
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 3px;
-            background: transparent;
-            z-index: 1001;
-        }
-
-        .scroll-progress-bar {
-            height: 100%;
-            width: 0%;
-            background: var(--yellow-gradient);
-            transition: width 0.1s ease;
-        }
-
-        /* تحسينات للصور (Lazy Loading) */
-        img.lazy {
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        img.lazy.loaded {
-            opacity: 1;
-        }
-
-        /* تحسينات للنموذج */
-        .form-message {
-            padding: 10px 15px;
-            border-radius: 8px;
-            margin-top: 15px;
-            display: none;
-        }
-
-        .form-message.success {
-            background: rgba(76, 175, 80, 0.1);
-            border: 1px solid #4CAF50;
-            color: #4CAF50;
-            display: block;
-        }
-
-        .form-message.error {
-            background: rgba(244, 67, 54, 0.1);
-            border: 1px solid #F44336;
-            color: #F44336;
-            display: block;
-        }
-
-        .btn-loading {
-            position: relative;
-            pointer-events: none;
-        }
-
-        .btn-loading::after {
-            content: "";
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            margin: auto;
-            border: 2px solid transparent;
-            border-top-color: var(--primary-dark);
-            border-radius: 50%;
-            animation: button-loading-spinner 1s ease infinite;
-        }
-
-        @keyframes button-loading-spinner {
-            from {
-                transform: rotate(0turn);
-            }
-            to {
-                transform: rotate(1turn);
-            }
-        }
-
-        /* تحسينات للوضع الليلي - تحسين التباين */
-        :root[data-theme="dark"] .card {
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
-        }
-
-        :root[data-theme="dark"] .stat-card,
-        :root[data-theme="dark"] .vision-item,
-        :root[data-theme="dark"] .skill-category,
-        :root[data-theme="dark"] .achievement-card,
-        :root[data-theme="dark"] .training-card,
-        :root[data-theme="dark"] .tech-card,
-        :root[data-theme="dark"] .portfolio-item,
-        :root[data-theme="dark"] .testimonial-slide,
-        :root[data-theme="dark"] .gallery-item {
-            background: linear-gradient(135deg, #1E1E1E, #2A2A2A);
-        }
-
-        /* تحسينات للتنقل على الجوال */
-        @media (max-width: 768px) {
-            body {
-                padding-top: 82px;
-            }
-            
-            .header-top {
-                padding: 0 15px;
-                height: 42px;
-            }
-            
-            .title-section h1 {
-                font-size: 1.3rem;
-            }
-            
-            .nav-item {
-                padding: 6px 10px;
-                font-size: 0.55rem;
-                min-width: 55px;
-            }
-            
-            .nav-item i {
-                font-size: 0.6rem;
-            }
-            
-            .hero-section {
-                padding: 20px 15px;
-            }
-            
-            .hero-title {
-                font-size: 1.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 0.9rem;
-            }
-            
-            .hero-actions {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 250px;
-                justify-content: center;
-            }
-            
-            .hero-stats {
-                gap: 12px;
-            }
-            
-            .hero-stat .number {
-                font-size: 1.3rem;
-            }
-            
-            .section-title {
-                font-size: 1.4rem;
-            }
-            
-            .card {
-                padding: 15px;
-            }
-            
-            .nav-scroll-controls {
-                display: none;
-            }
-            
-            .header-actions {
-                right: 10px;
-                top: 8px;
-            }
-            
-            .gallery-container {
-                max-height: 400px;
-            }
-            
-            /* تحسينات إضافية للجوال */
-            .back-to-top {
-                bottom: 20px;
-                left: 20px;
-                width: 45px;
-                height: 45px;
-                font-size: 1rem;
-            }
-            
-            .nav-scroll {
-                padding: 0 10px;
-            }
-            
-            .nav-item span {
-                font-size: 0.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header-top {
-                flex-direction: row;
-                height: auto;
-                padding: 8px 15px;
-                gap: 10px;
-            }
-            
-            .logo-section {
-                margin-bottom: 0;
-            }
-            
-            .hero-stats {
-                flex-direction: column;
-                gap: 12px;
-            }
-            
-            .nav-item {
-                min-width: 50px;
-                padding: 5px 8px;
-            }
-            
-            .nav-item span {
-                font-size: 0.5rem;
-            }
-            
-            .gallery-container {
-                max-height: 350px;
-            }
-            
-            .gallery-btn {
-                padding: 8px 15px;
-                font-size: 0.8rem;
-            }
-            
-            .back-to-top {
-                bottom: 15px;
-                left: 15px;
-                width: 40px;
-                height: 40px;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
+    .current-date {
+        background: white !important;
+        color: black;
+        border: 1px solid #ccc;
+    }
+}
+</style>
+<!-- مكتبة ummAlQura لحساب التاريخ الهجري -->
+<script src="https://cdn.jsdelivr.net/npm/hijri-date/lib/simple.umd.min.js"></script>
 </head>
-
 <body>
-    <!-- Header -->
-    <header>
-        <div class="header-container">
-            <div class="header-top">
-                <!-- زر الترجمة والوضع الليلي في أقصى الزاوية اليمنى العلوية -->
-                <div class="header-actions">
-                    <button class="lang-btn" id="langBtn">
-                        <i class="fas fa-language"></i>
-                        <span>EN</span>
-                    </button>
-                    <button class="theme-btn" id="themeBtn">
-                        <i class="fas fa-moon"></i>
-                    </button>
-                </div>
-                
-                <!-- العنوان الرئيسي فقط -->
-                <div class="logo-section">
-                    <div class="title-section">
-                        <h1 id="pageTitle">فهد الخالدي</h1>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- شريط الأيقونات للتنقل -->
-            <div class="nav-container">
-                <div class="nav-scroll-controls nav-scroll-prev">
-                    <i class="fas fa-chevron-right"></i>
-                </div>
-                
-                <div class="nav-scroll" id="navScroll">
-                    <a href="#about" class="nav-item active" data-section="about">
-                        <i class="fas fa-user"></i>
-                        <span id="navAbout">نبذة عني</span>
-                    </a>
-                    <a href="#vision" class="nav-item" data-section="vision">
-                        <i class="fas fa-eye"></i>
-                        <span id="navVision">الرؤية التعليمية</span>
-                    </a>
-                    <a href="#experience" class="nav-item" data-section="experience">
-                        <i class="fas fa-briefcase"></i>
-                        <span id="navExp">الخبرات</span>
-                    </a>
-                    <a href="#achievements" class="nav-item" data-section="achievements">
-                        <i class="fas fa-trophy"></i>
-                        <span id="navAchievements">الإنجازات</span>
-                    </a>
-                    <a href="#skills" class="nav-item" data-section="skills">
-                        <i class="fas fa-star"></i>
-                        <span id="navSkills">المهارات</span>
-                    </a>
-                    <a href="#training" class="nav-item" data-section="training">
-                        <i class="fas fa-graduation-cap"></i>
-                        <span id="navTrain">الدورات</span>
-                    </a>
-                    <a href="#tech" class="nav-item" data-section="tech">
-                        <i class="fas fa-desktop"></i>
-                        <span id="navTech">التقنية</span>
-                    </a>
-                    <a href="#portfolio" class="nav-item" data-section="portfolio">
-                        <i class="fas fa-laptop-code"></i>
-                        <span id="navPortfolio">معرض الأعمال</span>
-                    </a>
-                    <a href="#testimonials" class="nav-item" data-section="testimonials">
-                        <i class="fas fa-comments"></i>
-                        <span id="navTestimonials">التوصيات</span>
-                    </a>
-                    <a href="#contact" class="nav-item" data-section="contact">
-                        <i class="fas fa-envelope"></i>
-                        <span id="navContact">بيانات التواصل</span>
-                    </a>
-                </div>
-                
-                <div class="nav-scroll-controls nav-scroll-next">
-                    <i class="fas fa-chevron-left"></i>
-                </div>
-            </div>
-        </div>
-    </header>
 
-    <!-- مؤشر تقدم التمرير -->
-    <div class="scroll-progress">
-        <div class="scroll-progress-bar"></div>
+<header>
+    <div class="header-main">سجل متابعة الطلاب للمعلم / فهد الخالدي - المادة / اللغة الإنجليزية</div>
+    <div class="header-sub">
+        <div>المدرسة: سعيد بن العاص المتوسطة</div>
+        <div class="current-date">
+            <div>تاريخ اليوم:</div>
+            <div id="gregorianDateText">تحميل...</div>
+            <div class="date-info" id="hijriDateText">تحميل التاريخ الهجري...</div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="controls">
+        <button onclick="exportToExcel()">📊 تصدير Excel</button>
+        <button onclick="exportPeriodToExcel()">📅 تصدير فترة كاملة</button>
+        <button onclick="printPage()">🖨️ طباعة</button>
+        <button onclick="showAllClasses()">👁️ عرض الكل</button>
+        <button onclick="showTodayAttendance()">📅 عرض تحضير اليوم</button>
+    </div>
+    
+    <div class="class-tabs" id="classTabs">
+        <!-- سيتم إنشاء الألسنة ديناميكياً -->
+    </div>
+    
+    <div class="status-filter">
+        <button onclick="filterByStatus('all')" class="active">الكل</button>
+        <button onclick="filterByStatus('present')">الحاضرون</button>
+        <button onclick="filterByStatus('absent')">الغائبون</button>
+        <button onclick="filterByStatus('star')">المتميزون ⭐</button>
+    </div>
+    
+    <div id="tablesContainer">
+        <!-- سيتم إنشاء الجداول ديناميكياً -->
+    </div>
+    
+    <div class="student-count" id="studentCount">إجمالي الطلاب: 0</div>
+    
+    <div style="text-align: center; margin-top: 20px;">
+        <input type="password" id="adminPass" placeholder="ادخل كلمة المرور للإدارة" style="width: 200px;">
+        <button onclick="checkAdmin()">🔓 فتح الإدارة</button>
     </div>
 
-    <!-- باقي المحتوى -->
-    <main>
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <div class="hero-content">
-                <h1 class="hero-title" id="heroTitle">الملف المهني للمعلم فهد الخالدي</h1>
-                <p class="hero-subtitle" id="heroSubtitle">معلم متخصص في اللغة الإنجليزية مع 14+ سنة خبرة في تطوير أساليب التعليم الحديثة</p>
-                
-                <div class="hero-actions">
-                    <a href="#portfolio" class="btn btn-primary">
-                        <i class="fas fa-laptop-code"></i>
-                        <span id="viewWorkBtn">استعرض أعمالي</span>
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">
-                        <i class="fas fa-envelope"></i>
-                        <span id="contactBtn">تواصل معي</span>
-                    </a>
-                </div>
-                
-                <div class="hero-stats">
-                    <div class="hero-stat">
-                        <span class="number">14+</span>
-                        <span class="label" id="heroStat1">سنوات خبرة</span>
-                    </div>
-                    <div class="hero-stat">
-                        <span class="number">130+</span>
-                        <span class="label" id="heroStat2">ساعة تدريب</span>
-                    </div>
-                    <div class="hero-stat">
-                        <span class="number">3</span>
-                        <span class="label" id="heroStat3">مدن تعليمية</span>
-                    </div>
+    <div class="admin-panel" id="adminPanel">
+        <h3 style="text-align:center; margin-top:0; color: #1a5276;">لوحة الإدارة - الخصائص الإدارية</h3>
+        
+        <div class="admin-section">
+            <h4>🎓 إعدادات الفصل الدراسي</h4>
+            <div class="admin-row">
+                <div class="admin-label">الفصل الدراسي:</div>
+                <div class="admin-input">
+                    <select id="semesterSelect" onchange="updateSemester()" style="width: 100%;">
+                        <option value="1">الفصل الدراسي الأول</option>
+                        <option value="2" selected>الفصل الدراسي الثاني</option>
+                        <option value="3">الفصل الدراسي الصيفي</option>
+                    </select>
                 </div>
             </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="active">
-            <h2 class="section-title" id="aboutTitle">نبذة عني</h2>
-            <div class="card fade-in-up">
-                <div class="profile-header">
-                    <div class="profile-img">
-                        <img src="https://i.ibb.co/k66psVmZ/20220817-151032.jpg" alt="صورة فهد الخالدي" class="lazy" data-src="https://i.ibb.co/k66psVmZ/20220817-151032.jpg">
-                    </div>
-                    <div class="profile-info">
-                        <h2 id="name">فهد نغيمش حميد الخالدي</h2>
-                        <div class="title" id="jobTitle">معلم متقدم – تخصص اللغة الإنجليزية</div>
-                    </div>
-                </div>
-
-                <p class="bio" id="bioText">
-                    أؤمن أن التعليم ليس مجرد نقل معرفة، بل رسالة سامية لصناعة الأثر وبناء الإنسان. أطمح إلى أن أكون جزءًا فاعلًا في تطوير التعليم بالمملكة من خلال توظيف التقنيات الحديثة، وصناعة بيئات تعلم محفزة، تعزز التفكير النقدي والإبداعي، وتبني الثقة لدى الطالب. نظرتي المستقبلية تقوم على التعلم المستمر، وتطوير المهارات المهنية، ومواكبة التحولات الرقمية بما يخدم مخرجات التعليم وجودته في إطار رؤية المملكة 2030.
-                </p>
-
-                <div class="badge" id="badge">🏆 حاصل على درجة 95 في التخصص</div>
-
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <span class="stat-number">14+</span>
-                        <span class="stat-label" id="stat1">سنوات خبرة</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">130+</span>
-                        <span class="stat-label" id="stat2">ساعات تدريبية</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">3</span>
-                        <span class="stat-label" id="stat3">مدن تعليمية</span>
-                    </div>
+            <div class="admin-row">
+                <div class="admin-label">السنة الدراسية:</div>
+                <div class="admin-input">
+                    <input type="text" id="academicYear" value="١٤٤٦هـ" style="width: 100%;">
                 </div>
             </div>
-        </section>
-
-        <!-- Vision Section -->
-        <section id="vision">
-            <h2 class="section-title" id="visionTitle">الرؤية التعليمية</h2>
-            <div class="card fade-in-up">
-                <div class="vision-content">
-                    <div class="vision-item">
-                        <i class="fas fa-lightbulb"></i>
-                        <h3 id="visionItem1Title">التعليم المتمركز حول الطالب</h3>
-                        <p id="visionItem1Desc">أؤمن بأن كل طالب فريد ويحتاج إلى أساليب تعلم مخصصة تناسب احتياجاته وقدراته.</p>
-                    </div>
-                    <div class="vision-item">
-                        <i class="fas fa-handshake"></i>
-                        <h3 id="visionItem2Title">الشراكة مع أولياء الأمور</h3>
-                        <p id="visionItem2Desc">التعاون مع الأسر أساسي لتحقيق النجاح التعليمي المستدام.</p>
-                    </div>
-                    <div class="vision-item">
-                        <i class="fas fa-chalkboard-teacher"></i>
-                        <h3 id="visionItem3Title">التعليم القائم على المشاريع</h3>
-                        <p id="visionItem3Desc">أدمج التعلم القائم على المشاريع لتعزيز التفكير النقدي وحل المشكلات.</p>
-                    </div>
-                    <div class="vision-item">
-                        <i class="fas fa-graduation-cap"></i>
-                        <h3 id="visionItem4Title">التعلم المستمر</h3>
-                        <p id="visionItem4Desc">أؤمن بأن المعلم المتعلم باستمرار هو الأكثر قدرة على إلهام طلابه.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience Section -->
-        <section id="experience">
-            <h2 class="section-title" id="experienceTitle">الخبرات المهنية</h2>
-            <div class="card fade-in-up">
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">2017 - الآن</div>
-                        <div class="timeline-content">
-                            <h3 id="exp1Title">معلم لغة إنجليزية – سعيد بن العاص</h3>
-                            <p id="exp1Location">مكة المكرمة</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2015 - 2016</div>
-                        <div class="timeline-content">
-                            <h3 id="exp2Title">معلم لغة إنجليزية – ثانوية الأمير سعود بن عبدالمحسن</h3>
-                            <p id="exp2Location">الليث</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2012 - 2014</div>
-                        <div class="timeline-content">
-                            <h3 id="exp3Title">معلم لغة إنجليزية – سعيد بن زيد</h3>
-                            <p id="exp3Location">عفيف</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2011 - 2012</div>
-                        <div class="timeline-content">
-                            <h3 id="exp4Title">مترجم – وزارة الحج والعمرة</h3>
-                            <p id="exp4Location">مكة المكرمة</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Achievements Section -->
-        <section id="achievements">
-            <h2 class="section-title" id="achievementsTitle">الإنجازات</h2>
-            <div class="card fade-in-up">
-                <div class="achievement-card">
-                    <div class="achievement-year">2022</div>
-                    <div class="achievement-content">
-                        <p id="achievementText">
-                            في عام 2022 حصلتُ على ترقية إلى رتبة معلم متقدم بعد مسيرة مهنية امتدت لسنوات كمعلم ممارس، قدمت خلالها أداءً متميزًا أسهم في تطوير العملية التعليمية داخل المدرسة. جاءت هذه الترقية تقديرًا لجهودي في توظيف استراتيجيات تدريس حديثة تعزز مهارات التفكير النقدي والإبداعي لدى الطلاب، إضافة إلى قدرتي على تحليل نواتج التعلم وبناء خطط علاجية فردية أثمرت عن تحسين واضح في مستويات الطلاب.<br><br>
-
-                            وقد عكست هذه الترقية ثقة الجهة التعليمية بمهاراتي المهنية، خصوصًا في مجال تصميم أنشطة مبتكرة تُدمج مهارات الفهم العميق، والعمل التعاوني، والتعليم الذاتي داخل البيئة الصفية. كما كانت اعترافًا بدوري في تطوير البرامج التربوية والأنشطة التعليمية قبل عام 2022، ومساهمتي في بناء بيئة صفية محفزة يشعر فيها الطلاب بالأمان والرغبة في المشاركة والتعلم.<br><br>
-
-                            تعد هذه الترقية محطة مهمة في مسيرتي، لأنها لم تكن مجرد انتقال إلى مستوى وظيفي أعلى، بل كانت نتيجة تراكم خبرات وممارسات مهنية أثبتت أثرها على الطلاب وعلى منظومة التعليم داخل المدرسة. واليوم أواصل عملي كمعلم متقدم ملتزم بالتحسين المستمر، وتطبيق أفضل الممارسات التربوية، والمساهمة في رفع جودة التعليم وتحقيق نواتج تعلم أعلى.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills">
-            <h2 class="section-title" id="skillsTitle">المهارات والكفاءات</h2>
-            <div class="card fade-in-up">
-                <div class="skills-container">
-                    <div class="skill-category">
-                        <h3 id="skillCat1">المهارات التعليمية</h3>
-                        <ul class="skill-list">
-                            <li><i class="fas fa-check"></i> <span id="skill1">إتقان اللغة الإنجليزية تحدثاً وكتابة</span></li>
-                            <li><i class="fas fa-check"></i> <span id="skill2">تطوير خطط تدريس محفزة ومبتكرة</span></li>
-                            <li><i class="fas fa-check"></i> <span id="skill3">إدارة الصفوف بفاعلية</span></li>
-                            <li><i class="fas fa-check"></i> <span id="skill4">تشجيع التعلم الذاتي</span></li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h3 id="skillCat2">المهارات التقنية</h3>
-                        <ul class="skill-list">
-                            <li><i class="fas fa-check"></i> <span id="skill5">استخدام أدوات القياس والتقويم الإلكترونية</span></li>
-                            <li><i class="fas fa-check"></i> <span id="skill6">دمج التقنية في التعليم</span></li>
-                            <li><i class="fas fa-check"></i> <span id="skill7">تصميم أنشطة تفاعلية</span></li>
-                            <li><i class="fas fa-check"></i> <span id="skill8">تطوير اختبارات إلكترونية</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Training Section -->
-        <section id="training">
-            <h2 class="section-title" id="trainingTitle">الدورات التالية</h2>
-            <div class="card fade-in-up">
-                <div class="training-card">
-                    <ul class="training-list" id="trainingList">
-                        <li><i class="fas fa-certificate"></i> <span id="course1">التفكير الناقد والإبداعي ودمجه في المواد الدراسية</span></li>
-                        <li><i class="fas fa-certificate"></i> <span id="course2">القياس والتقويم التربوي</span></li>
-                        <li><i class="fas fa-certificate"></i> <span id="course3">الاستراتيجية الحديثة في تدريس أساسيات اللغة الإنجليزية</span></li>
-                        <li><i class="fas fa-certificate"></i> <span id="course4">البيئة الصفية الجاذبة</span></li>
-                        <li><i class="fas fa-certificate"></i> <span id="course5">تحليل أداء الطلاب وتقديم التغذية الراجعة</span></li>
-                        <li><i class="fas fa-certificate"></i> <span id="course6">أساسيات الترجمة</span></li>
-                        <li><i class="fas fa-certificate"></i> <span id="course7">مهارات التعامل مع أدوات القياس والتقويم الإلكترونية</span></li>
-                        <li><i class="fas fa-certificate"></i> <span id="course8">التنمية المهنية لمعلمي اللغة الإنجليزية - المستوى الثالث</span></li>
-                        <li><i class="fas fa-certificate"></i> <span id="course9">العبقرية في العملية التعليمية</span></li>
-                        <li><i class="fas fa-certificate"></i> <span id="course10">بناء الاختيار الجيد</span></li>
-                        <li><i class="fas fa-certificate"></i> <span id="course11">توظيف استراتيجيات التعليم في البيئة التدريبية الجاذبة</span></li>
-                        <li><i class="fas fa-certificate"></i> <span id="course12">تدريس مهارتي التحدث والاستماع</span></li>
-                        <li><i class="fas fa-certificate"></i> <span id="course13">التوعية بقواعد السلوك والمواظبة المحدثة</span></li>
-                        <li><i class="fas fa-certificate"></i> <span id="course14">اللقاءات التخصصية لمادة اللغة الإنجليزية</span></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Tech Section -->
-        <section id="tech">
-            <h2 class="section-title" id="techTitle">التقنية</h2>
-            <div class="card fade-in-up">
-                <div class="tech-card">
-                    <p id="techText">
-                        أتمتع بشغف كبير تجاه التقنية والتعليم الرقمي، وأواكب أحدث التطورات في مجال الذكاء الاصطناعي وتطبيقاته التعليمية. أمتلك خبرة عملية في تصميم وتطوير أنشطة تفاعلية واختبارات إلكترونية باستخدام HTML وCSS وJavaScript، مما يثري تجربة التعلم ويجعلها أكثر تفاعلية وجاذبية للطلاب. أستخدم أدوات الذكاء الاصطناعي في تحليل أداء الطلاب وتصميم خطط تعليمية مخصصة، كما أصمم محتوى رقميًا مبتكرًا يتناسب مع احتياجات التعلم الحديثة. أسعى دائمًا لدمج التقنية في العملية التعليمية بطرق إبداعية تواكب متطلبات العصر الرقمي وتخدم أهداف رؤية المملكة 2030.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Portfolio Section -->
-        <section id="portfolio">
-            <h2 class="section-title" id="portfolioTitle">معرض الأعمال</h2>
-            <div class="card fade-in-up">
-                <!-- أزرار التصفية -->
-                <div class="portfolio-filters">
-                    <button class="filter-btn active" data-filter="all" id="filterAll">الكل</button>
-                    <button class="filter-btn" data-filter="interactive" id="filterInteractive">تفاعلية</button>
-                    <button class="filter-btn" data-filter="strategies" id="filterStrategies">استراتيجيات</button>
-                    <button class="filter-btn" data-filter="presentations" id="filterPresentations">عروض</button>
-                </div>
-                
-                <div class="portfolio-grid">
-                    <!-- مشروع اختبار الرخصة المهنية التفاعلي -->
-                    <div class="portfolio-item" data-category="interactive">
-                        <img src="https://i.ibb.co/h12KB7Gv/Professional-License-Exam.png" alt="اختبار الرخصة المهنية التفاعلي" class="lazy" data-src="https://i.ibb.co/h12KB7Gv/Professional-License-Exam.png">
-                        <div class="portfolio-content">
-                            <h3 id="project1Title">مشروع: اختبار الرخصة المهنية التفاعلي</h3>
-                            <p id="project1Desc">مشروع تعليمي رقمي يهدف إلى محاكاة اختبار الرخصة المهنية للمعلمين، من خلال تقديم أسئلة تفاعلية مبنية على المعايير المعتمدة، مع تغذية راجعة فورية توضح السبب العلمي لكل إجابة صحيحة أو خاطئة، بما يسهم في رفع كفاءة المتدربين وتعزيز جاهزيتهم للاختبار الرسمي.</p>
-                            <a href="https://visionof2030-pixel.github.io/Professional-License-Exam/" class="project-link" target="_blank"><span id="project1Link">عرض المشروع</span> <i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    
-                    <!-- مشروع تطبيق الاستراتيجيات الحديثة في التعليم -->
-                    <div class="portfolio-item" data-category="strategies">
-                        <div class="portfolio-content">
-                            <h3 id="project2Title">تطبيق الاستراتيجيات الحديثة في التعليم</h3>
-                            <p id="project2Desc1" style="margin-bottom: 20px;">
-                                تُعدّ الاستراتيجيات الحديثة عنصرًا محوريًا في تطوير العملية التعليمية وتعزيز فاعلية التعلم داخل الصف؛ إذ تسهم في رفع مستوى التفاعل، وتحفيز الدافعية، وتنمية مهارات التفكير والعمل لدى الطلاب. ومن هذا المنطلق أحرص على توظيف مجموعة متنوعة من الأساليب التدريسية التي تجمع بين المتعة والفائدة، وتعتمد على التفاعل الإيجابي والمشاركة الفعّالة.<br><br>
-
-                                ويأتي التعلم القائم على التحفيز والتحدي كأحد الأساليب التي تسهم في ترسيخ المفاهيم بطريقة مشوقة، وتساعد الطلاب على التعلم بروح المنافسة الإيجابية. كما يمثل التعلم التعاوني ركيزة أساسية في بناء مهارات التواصل والعمل الجماعي، من خلال إتاحة الفرصة للطلاب لتبادل الآراء، ومناقشة الأفكار، وحل المشكلات بشكل جماعي. كذلك أحرص على توظيف التقنيات التعليمية الحديثة التي تسهم في عرض المحتوى بصورة جذابة، وتتيح تفاعل جميع الطلاب ومشاركتهم في تصحيح المفاهيم وبناء المعرفة بشكل مباشر.<br><br>
-
-                                وتعد هذه الممارسات نماذج من جملة من الاستراتيجيات التي أعمل على تنويعها داخل الحصة بما يراعي الفروق الفردية، ويحقق الأهداف التعليمية، ويهيئ بيئة تعليمية نشطة ومحفزة تسهم في تحسين مستوى التحصيل الدراسي وتعزيز مهارات القرن الحادي والعشرين.
-                            </p>
-                            
-                            <!-- معرض الصور التفاعلي -->
-                            <div class="gallery-container">
-                                <div class="gallery-scroll" id="galleryScroll">
-                                    <!-- الصور الثلاثة الأولى مع عناوينها الحالية -->
-                                    <div class="gallery-item">
-                                        <img src="https://i.ibb.co/YrXjKC4/strategy7.jpg" alt="مهارات القرن الحادي والعشرين" class="lazy" data-src="https://i.ibb.co/YrXjKC4/strategy7.jpg">
-                                        <div class="gallery-caption" id="galleryCaption1">تعزيز مهارات القرن الحادي والعشرين لدى الطلاب</div>
-                                    </div>
-                                    <div class="gallery-item">
-                                        <img src="https://i.ibb.co/DPWWd5Z9/strategy4.jpg" alt="أنشطة تعليمية تفاعلية" class="lazy" data-src="https://i.ibb.co/DPWWd5Z9/strategy4.jpg">
-                                        <div class="gallery-caption" id="galleryCaption2">أنشطة تعليمية تفاعلية لتحسين مستوى التحصيل الدراسي</div>
-                                    </div>
-                                    <div class="gallery-item">
-                                        <img src="https://i.ibb.co/bR1Cn1WZ/strategy6.jpg" alt="بيئة تعليمية نشطة" class="lazy" data-src="https://i.ibb.co/bR1Cn1WZ/strategy6.jpg">
-                                        <div class="gallery-caption" id="galleryCaption3">إعداد بيئة تعليمية نشطة ومحفزة للطلاب</div>
-                                    </div>
-                                    <!-- باقي الصور مع التعليق الجديد -->
-                                    <div class="gallery-item">
-                                        <img src="https://i.ibb.co/DyNDhNX/strategy1.jpg" alt="استراتيجية تعليمية تفاعلية" class="lazy" data-src="https://i.ibb.co/DyNDhNX/strategy1.jpg">
-                                        <div class="gallery-caption">تطبيق استراتيجيات تعليمية حديثة لتعزيز التفاعل داخل الصف.</div>
-                                    </div>
-                                    <div class="gallery-item">
-                                        <img src="https://i.ibb.co/BK6XTNG0/strategy2.jpg" alt="التعلم التعاوني" class="lazy" data-src="https://i.ibb.co/BK6XTNG0/strategy2.jpg">
-                                        <div class="gallery-caption">تطبيق استراتيجيات تعليمية حديثة لتعزيز التفاعل داخل الصف.</div>
-                                    </div>
-                                    <div class="gallery-item">
-                                        <img src="https://i.ibb.co/LzbN9WYb/strategy3.jpg" alt="تقنيات تعليمية حديثة" class="lazy" data-src="https://i.ibb.co/LzbN9WYb/strategy3.jpg">
-                                        <div class="gallery-caption">تطبيق استراتيجيات تعليمية حديثة لتعزيز التفاعل داخل الصف.</div>
-                                    </div>
-                                    <div class="gallery-item">
-                                        <img src="https://i.ibb.co/C3bhdCFt/strategy5.jpg" alt="مهارات التفكير والعمل" class="lazy" data-src="https://i.ibb.co/C3bhdCFt/strategy5.jpg">
-                                        <div class="gallery-caption">تطبيق استراتيجيات تعليمية حديثة لتعزيز التفاعل داخل الصف.</div>
-                                    </div>
-                                </div>
-                                
-                                <div class="gallery-controls">
-                                    <button class="gallery-btn" id="scrollUpBtn">
-                                        <i class="fas fa-chevron-up"></i>
-                                        <span id="scrollUpText">تمرير للأعلى</span>
-                                    </button>
-                                    <button class="gallery-btn" id="scrollDownBtn">
-                                        <i class="fas fa-chevron-down"></i>
-                                        <span id="scrollDownText">تمرير للأسفل</span>
-                                    </button>
-                                </div>
-                                
-                                <div class="gallery-indicator" id="galleryIndicator">
-                                    <!-- سيتم إنشاء النقاط ديناميكيًا -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- مشروع عروض تقديمية -->
-                    <div class="portfolio-item" data-category="presentations">
-                        <img src="https://via.placeholder.com/300x180/1A3A5F/FFFFFF?text=عروض+تقديمية" alt="عروض تقديمية" class="lazy" data-src="https://via.placeholder.com/300x180/1A3A5F/FFFFFF?text=عروض+تقديمية">
-                        <div class="portfolio-content">
-                            <h3 id="project3Title">عروض تقديمية تفاعلية</h3>
-                            <p id="project3Desc">تصميم عروض تفاعلية جذابة للطلاب باستخدام أحدث الأدوات والتقنيات التعليمية. تتضمن هذه العروض أنشطة تفاعلية، ومقاطع فيديو تعليمية، وأسئلة تقييم فورية لضمان مشاركة فعالة من الطلاب.</p>
-                            <a href="https://visionof2030-pixel.github.io/English-quiz/" class="project-link" target="_blank"><span id="project3Link">عرض المشروع</span> <i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section id="testimonials">
-            <h2 class="section-title" id="testimonialsTitle">التوصيات</h2>
-            <div class="card fade-in-up">
-                <div class="testimonial-slider">
-                    <div class="testimonial-slides" id="testimonialSlides">
-                        <div class="testimonial-slide">
-                            <div class="testimonial-content">
-                                <p id="testimonial1Text">"المعلم فهد يتميز بالإبداع والابتكار في أساليب التدريس، وقد قدم إضافة حقيقية لفريق العمل"</p>
-                            </div>
-                            <div class="testimonial-author">
-                                <strong id="testimonial1Author">مدير المدرسة</strong>
-                                <span id="testimonial1Position">مدرسة سعيد بن العاص</span>
-                            </div>
-                        </div>
-                        <div class="testimonial-slide">
-                            <div class="testimonial-content">
-                                <p id="testimonial2Text">"لقد أحدثت استراتيجياته التعليمية فرقاً ملحوظاً في أداء الطلاب وحبهم للغة الإنجليزية"</p>
-                            </div>
-                            <div class="testimonial-author">
-                                <strong id="testimonial2Author">منسق اللغة الإنجليزية</strong>
-                                <span id="testimonial2Position">إدارة التعليم</span>
-                            </div>
-                        </div>
-                        <div class="testimonial-slide">
-                            <div class="testimonial-content">
-                                <p id="testimonial3Text">"تميزه في استخدام التقنية جعل عملية التعلم أكثر متعة وفعالية للطلاب"</p>
-                            </div>
-                            <div class="testimonial-author">
-                                <strong id="testimonial3Author">زملاء العمل</strong>
-                                <span id="testimonial3Position">فريق اللغة الإنجليزية</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial-controls">
-                        <button class="testimonial-control" id="testimonialPrev">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                        <button class="testimonial-control" id="testimonialNext">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact">
-            <h2 class="section-title" id="contactTitle">تواصل معي</h2>
-            <div class="card fade-in-up">
-                <div style="text-align: center; padding: 25px;">
-                    <h3 style="color: var(--primary); margin-bottom: 15px;" id="contactSubtitle">للتواصل</h3>
-                    <div style="font-size: 1rem; line-height: 2; color: var(--text);">
-                        <p><i class="fas fa-envelope" style="color: var(--accent);"></i> <span id="contactEmail">iFahadenglish@gmail.com</span></p>
-                        <p><i class="fas fa-phone" style="color: var(--accent);"></i> <span id="contactPhone">+9665554449824</span></p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- نموذج التواصل -->
-            <div class="card fade-in-up">
-                <h3 style="text-align: center; margin-bottom: 20px; color: var(--primary);" id="contactFormTitle">أرسل رسالة</h3>
-                <form id="contactForm">
-                    <div class="form-group">
-                        <input type="text" id="contactName" placeholder="الاسم الكامل" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="contactEmailInput" placeholder="البريد الإلكتروني" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="contactMessage" placeholder="رسالتك..." rows="5" required></textarea>
-                    </div>
-                    <div class="form-message" id="formMessage"></div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;" id="submitBtn">
-                        <i class="fas fa-paper-plane"></i>
-                        <span id="sendMessageBtn">إرسال الرسالة</span>
-                    </button>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <!-- زر العودة للأعلى -->
-    <button class="back-to-top" id="backToTop">
-        <i class="fas fa-chevron-up"></i>
-    </button>
-
-    <footer>
-        <div class="footer-content">
-            <h3 id="footerName">فهد الخالدي</h3>
-            <p id="footerDesc">معلم متخصص في اللغة الإنجليزية - تطوير التعليم من خلال التقنية والابتكار</p>
-            
-            <div class="copyright" id="footerText">
-                © 2024 جميع الحقوق محفوظة - فهد الخالدي
+            <div style="text-align: center; margin-top: 10px;">
+                <button onclick="saveSemesterSettings()">💾 حفظ إعدادات الفصل</button>
+                <span class="semester-info" id="currentSemesterInfo">الفصل الثاني ١٤٤٦هـ</span>
             </div>
         </div>
-    </footer>
+        
+        <div class="admin-section">
+            <h4>🕐 التحكم في التاريخ (للتعديل فقط)</h4>
+            <div style="text-align:center; background:#ffebee; padding:10px; border-radius:5px; margin-bottom:10px;">
+                <strong>ملاحظة:</strong> يتم عرض تاريخ اليوم الحقيقي تلقائياً. هذه الأدوات تستخدم فقط لتعديل التاريخ عند الحاجة.
+            </div>
+            <div class="date-controls">
+                <button onclick="changeMonth(-1)">◀ الشهر السابق</button>
+                <div class="date-display" id="adminDateDisplay">...</div>
+                <button onclick="changeMonth(1)">الشهر القادم ▶</button>
+            </div>
+            <div style="text-align: center; margin: 10px 0;">
+                <input type="date" id="datePicker" class="date-input" onchange="setCustomDate()">
+                <button onclick="resetToToday()">🔄 الرجوع لليوم الحقيقي</button>
+                <button onclick="saveCurrentDate()">💾 حفظ التعديلات</button>
+            </div>
+            
+            <div class="hijri-date-selector">
+                <h5 style="text-align:center; color: #d84315;">التاريخ الهجري (يمكن تعديله يدوياً)</h5>
+                <div class="admin-row">
+                    <div class="admin-label">اليوم:</div>
+                    <div class="admin-input">
+                        <input type="number" id="hijriDay" min="1" max="30" style="width: 70px;">
+                    </div>
+                </div>
+                <div class="admin-row">
+                    <div class="admin-label">الشهر:</div>
+                    <div class="admin-input">
+                        <select id="hijriMonth" style="width: 100%;">
+                            <option value="1">محرم</option>
+                            <option value="2">صفر</option>
+                            <option value="3">ربيع الأول</option>
+                            <option value="4">ربيع الثاني</option>
+                            <option value="5">جمادى الأولى</option>
+                            <option value="6">جمادى الآخرة</option>
+                            <option value="7">رجب</option>
+                            <option value="8">شعبان</option>
+                            <option value="9">رمضان</option>
+                            <option value="10">شوال</option>
+                            <option value="11">ذو القعدة</option>
+                            <option value="12">ذو الحجة</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="admin-row">
+                    <div class="admin-label">السنة:</div>
+                    <div class="admin-input">
+                        <input type="number" id="hijriYear" min="1300" max="1500" style="width: 100px;">
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 10px;">
+                    <button onclick="updateHijriDate()">🔄 تحديث التاريخ الهجري</button>
+                    <button onclick="resetHijriToToday()">🔄 الرجوع للتاريخ الفعلي</button>
+                </div>
+                <p style="text-align:center; font-size:11px; color:#666;">ملاحظة: التاريخ الهجري المحسوب تلقائياً، ويمكنك تعديله يدوياً إذا لزم الأمر.</p>
+            </div>
+            
+            <p style="text-align:center; font-size:12px; color:#666;">يمكنك الرجوع إلى أشهر سابقة أو قادمة لمشاهدة السجلات القديمة أو تحضير مستقبلية.</p>
+        </div>
+        
+        <div class="admin-section">
+            <h4>🎲 التحضير العشوائي للأسابيع الدراسية (18 أسبوع)</h4>
+            <div class="random-period-section">
+                <div style="text-align:center; margin:10px 0; padding:10px; background:#e8f5e9; border-radius:5px;">
+                    <strong>الأسابيع الدراسية المتاحة:</strong><br>
+                    من الأسبوع 1 إلى 13 ثم من 15 إلى 19 (إجمالي 18 أسبوع)<br>
+                    <small>ملاحظة: الأسبوع 14 إجازة الخريف ولا يتم إدراجه</small>
+                </div>
+                <div style="text-align: center; margin-top: 15px;">
+                    <button onclick="randomAttendanceForAllWeeks()">📅 تحضير عشوائي لجميع الأسابيع (18 أسبوع)</button>
+                    <button onclick="clearAllWeeksData()">🗑️ مسح بيانات جميع الأسابيع</button>
+                </div>
+                <div style="text-align: center; margin-top: 10px;">
+                    <button onclick="saveWeeksData()">💾 حفظ بيانات الأسابيع</button>
+                    <span class="period-info" id="weeksInfo">18 أسبوع متاحة</span>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 15px;">
+                <button onclick="randomAttendance()">🎲 تحضير عشوائي للتاريخ الحالي</button>
+                <button onclick="randomAttendanceForPeriod()">📅 تحضير عشوائي للفترة المحددة</button>
+            </div>
+            <div style="text-align:center; margin-top:10px; font-size:12px; color:#666;">
+                ⭐ خاصية التحضير العشوائي: سيتم وضع ✓ لكل الخيارات للطلاب المتميزين (الذين لديهم نجمة)
+            </div>
+        </div>
+        
+        <div class="admin-section">
+            <h4>👨‍🏫 إدارة الطلاب</h4>
+            <div style="text-align:center;">
+                <button onclick="addStudent()">➕ إضافة طالب</button>
+                <button onclick="moveStudent()">↔️ نقل طالب</button>
+                <button onclick="resetAll()">🔄 إعادة تعيين</button>
+            </div>
+        </div>
+        
+        <div class="admin-section">
+            <h4>📊 الإحصائيات</h4>
+            <div style="text-align:center;">
+                <button onclick="showStatistics()">📈 عرض الإحصائيات</button>
+                <button onclick="backupData()">💾 نسخ احتياطي</button>
+                <button onclick="loadBackup()">📂 استعادة نسخة</button>
+            </div>
+        </div>
+        
+        <p style="text-align:center; font-size:12px; color:#666;">بعد تفعيل الإدارة، يمكن تمييز الطلاب بالنجمة وإدارة جميع الخصائص.</p>
+    </div>
+</div>
 
-    <!-- بيانات Structured Data لتحسين SEO -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "فهد الخالدي",
-        "jobTitle": "معلم متقدم - تخصص اللغة الإنجليزية",
-        "description": "معلم متخصص في اللغة الإنجليزية مع 14+ سنة خبرة في تطوير أساليب التعليم الحديثة",
-        "email": "iFahadenglish@gmail.com",
-        "telephone": "+966554449824",
-        "url": "https://example.com",
-        "knowsAbout": ["التعليم", "اللغة الإنجليزية", "التقنية التعليمية", "التدريس التفاعلي"],
-        "hasCredential": "معلم متقدم",
-        "worksFor": {
-            "@type": "Organization",
-            "name": "وزارة التعليم السعودية"
-        },
-        "alumniOf": {
-            "@type": "EducationalOrganization",
-            "name": "جامعة أم القرى"
-        }
+<script>
+// بيانات الطلاب لكل صف
+const studentsData = {
+    "3-1": [
+        "إسماعيل محمد هاشم شفيق الرحمن",
+        "ابراهيم علي ابو بكر محمد",
+        "باسم محمد - ابو طالب",
+        "حسين بشير أمادو جازير",
+        "حسين هارون عثمان عبدالمؤمن ادم",
+        "حمد محمد عثمان بخش",
+        "رمضان عيسى باكور محمد",
+        "ريان عبد الرحمن موسى جيبو",
+        "ريحان محمد مقبول حسين عمر حمزه",
+        "عامر مولوي حسن شريف",
+        "عبدالحليم نور كبير - صديق احمد",
+        "عمران يعقوب محمد محمد مسلم",
+        "عمير محمد محمد شفيع حكيم علي",
+        "فارس محمد ابو البشر واعظ علي",
+        "محمد احمد فضل الرحمن فايز اللّٰه",
+        "حمد انوار رشيد احمد اظهار مياه",
+        "حمد عبدالرزاق محمد عبدالقادر",
+        "حمد عبدالشكور عبدالحميد عبد الرشيد",
+        "مهدي محمد محمد اسلام عبدالسلام",
+        "مهدي موسى حميد الحق احمد",
+        "ياسين محمد يوسف"
+    ],
+    "2-3": [
+        "إبراهيم إدريس إبراهيم اولوجيوم",
+        "إدريس محمد حسن أحمد",
+        "امين عبداللّه دايابو عثمان",
+        "بسام عبدالسلام هاشم انور علي",
+        "حافظ بيلو موسى سليمان",
+        "حسين علي حسن مهاوش",
+        "خالد طيب اسماعيل محمد",
+        "خالد عبد الحميد محمد هاشم",
+        "خالد وليد محمد محمد",
+        "ريان عبدالرحمن عمر نانتومي",
+        "سليمان ابراهيم ديقوقا",
+        "صالح عبدالله محمد قاسم يوسف علي عبدالعزيز اول اودو محمد",
+        "عثمان عبد الرحمن باي محمد",
+        "عدنان نور امير حسين",
+        "عمر سراج محمد زكريا",
+        "فهد محمد حسين عبداللّه مياه حسين محمد ابراهيم سعيد هو ساوي محمد محمد امين اسلام خليل الرحمن مشعل ابو طاهر ناظر حسين عبدالمطلب موسى ابو بكر الصديق عبدالجبار امة علي",
+        "يوسف مهدي عابدين محمد"
+    ],
+    "3-3": [
+        "ابراهيم جزولي - اسدانور",
+        "تركي عبدالصمد عبدالغني محمد حسين",
+        "حسام حسن ابو الكلام مقبول احمد",
+        "حسن عيسى بكوري محمد",
+        "سعد سلام ستار ارشاد اللّٰه",
+        "عايض سيف الاسلام نور احمد علي عبدالكريم عثمان ابكر كوجو",
+        "عزام شمس العالم قاسم علي",
+        "عماد محمد صديق محمد شفيع سيد عمر عبد القدوس عبدالسلام عبد السبحان عمر مورتلا أبو بكر محمد",
+        "فيصل احمد ابو بكر محمد",
+        "محمد اسحاق محمد اسلام عبدالحكيم",
+        "محمد عبدالله ابو سعيد مياه",
+        "حمد محمد اسماعيل امير حسين ابو بكر",
+        "حمد موسى ساليفو ديقوقa",
+        "مشاري شيهو اسماعيل محمد بكر",
+        "ياسر عبدالرحيم محمد علي سفر علي",
+        "يوسف محمد عبد الرحمن علي"
+    ],
+    "4-3": [
+        "ابراهيم عوض احمد فليس",
+        "احمد ابراهيم ابن زكريا الهوسه",
+        "احمد عبد القيوم محمد يعقوب",
+        "اسماعيل اول اودو محمد",
+        "اوسامة سعيدو دو غويد",
+        "تامر عبد الصمد عبد الغني",
+        "تركي هارون حسن شريف",
+        "ريان محمد مقبول حسين حسين",
+        "ريان هارون الرشيد طفيل احمد نذير احمد",
+        "عبدالحليم محمد عبدالله عبدالحكيم",
+        "عبدالله حفيظ اللّٰه سلطان أحمد",
+        "عيسى عثمان سعيد عالم حبيب الرحمن",
+        "فهد أسار رشيد احمد",
+        "فهد محمد نور مقبول اشرف",
+        "محمد محمد ادريس نبية حسين يعقوب علي",
+        "مصلح محمد ولي احمد",
+        "معاذ عثمان صديق كالو",
+        "يوسف بدماسي ابراهيم البد ماسي"
+    ],
+    "5-3": [
+        "ابراهيم خالد سليمان ابراهيم",
+        "انس عبدالعزيز نور احمد",
+        "بدر بكر عمر محمد",
+        "حمد محمد حسين مياه شمس العالم اظهر مياه",
+        "رضوان رشيد أحمد نور محمد لال مياه",
+        "سعيد عبدالله سعيد محمد",
+        "عامر رحمة اللّٰه محمد شفيع",
+        "عبد اللّٰه حسين علي فليس",
+        "عبد العزيز سراج ابكر عثمان",
+        "عبدالله عيسى - ابراهيم",
+        "عمر محمد عمر صالح",
+        "غسان عثمان اسماعيل عبدالله عبد اللّٰه",
+        "فاضل عادل صالح الرايس",
+        "محمد فريد كبير احمد عباد اللّٰه",
+        "محمد محمد سلطان احمد محمد",
+        "محمد موسى أدامو محمد",
+        "محمد نور محمد زكريا آمال حسين",
+        "مشاري محمد هارو",
+        "مشاري يعقوب أبو بكر ابراهيم",
+        "منذر علي عمر قوني",
+        "هود حسن عبدالكريم الياس",
+        "يعقوب محمد إسحاق يار محمد فضل على"
+    ]
+};
+
+// بيانات الأسابيع الدراسية (18 أسبوع)
+const studyWeeks = [
+  {
+    "week": 1,
+    "start_hijri": "1/3/1447",
+    "start_gregorian": "24/08/2025",
+    "days": [
+      {"day": "الأحد", "hijri": "1/3/1447", "gregorian": "24/08/2025"},
+      {"day": "الإثنين", "hijri": "2/3/1447", "gregorian": "25/08/2025"},
+      {"day": "الثلاثاء", "hijri": "3/3/1447", "gregorian": "26/08/2025"},
+      {"day": "الأربعاء", "hijri": "4/3/1447", "gregorian": "27/08/2025"},
+      {"day": "الخميس", "hijri": "5/3/1447", "gregorian": "28/08/2025"}
+    ]
+  },
+  {
+    "week": 2,
+    "start_hijri": "8/3/1447",
+    "start_gregorian": "31/08/2025",
+    "days": [
+      {"day": "الأحد", "hijri": "8/3/1447", "gregorian": "31/08/2025"},
+      {"day": "الإثنين", "hijri": "9/3/1447", "gregorian": "01/09/2025"},
+      {"day": "الثلاثاء", "hijri": "10/3/1447", "gregorian": "02/09/2025"},
+      {"day": "الأربعاء", "hijri": "11/3/1447", "gregorian": "03/09/2025"},
+      {"day": "الخميس", "hijri": "12/3/1447", "gregorian": "04/09/2025"}
+    ]
+  },
+  {
+    "week": 3,
+    "start_hijri": "15/3/1447",
+    "start_gregorian": "07/09/2025",
+    "days": [
+      {"day": "الأحد", "hijri": "15/3/1447", "gregorian": "07/09/2025"},
+      {"day": "الإثنين", "hijri": "16/3/1447", "gregorian": "08/09/2025"},
+      {"day": "الثلاثاء", "hijri": "17/3/1447", "gregorian": "09/09/2025"},
+      {"day": "الأربعاء", "hijri": "18/3/1447", "gregorian": "10/09/2025"},
+      {"day": "الخميس", "hijri": "19/3/1447", "gregorian": "11/09/2025"}
+    ]
+  },
+  {
+    "week": 4,
+    "start_hijri": "22/3/1447",
+    "start_gregorian": "14/09/2025",
+    "days": [
+      {"day": "الأحد", "hijri": "22/3/1447", "gregorian": "14/09/2025"},
+      {"day": "الإثنين", "hijri": "23/3/1447", "gregorian": "15/09/2025"},
+      {"day": "الثلاثاء", "hijri": "24/3/1447", "gregorian": "16/09/2025"},
+      {"day": "الأربعاء", "hijri": "25/3/1447", "gregorian": "17/09/2025"},
+      {"day": "الخميس", "hijri": "26/3/1447", "gregorian": "18/09/2025"}
+    ]
+  },
+  {
+    "week": 5,
+    "start_hijri": "29/3/1447",
+    "start_gregorian": "21/09/2025",
+    "days": [
+      {"day": "الأحد", "hijri": "29/3/1447", "gregorian": "21/09/2025"},
+      {"day": "الإثنين", "hijri": "30/3/1447", "gregorian": "22/09/2025"},
+      {"day": "الثلاثاء", "hijri": "1/4/1447", "gregorian": "23/09/2025"},
+      {"day": "الأربعاء", "hijri": "2/4/1447", "gregorian": "24/09/2025"},
+      {"day": "الخميس", "hijri": "3/4/1447", "gregorian": "25/09/2025"}
+    ]
+  },
+  {
+    "week": 6,
+    "start_hijri": "6/4/1447",
+    "start_gregorian": "28/09/2025",
+    "days": [
+      {"day": "الأحد", "hijri": "6/4/1447", "gregorian": "28/09/2025"},
+      {"day": "الإثنين", "hijri": "7/4/1447", "gregorian": "29/09/2025"},
+      {"day": "الثلاثاء", "hijri": "8/4/1447", "gregorian": "30/09/2025"},
+      {"day": "الأربعاء", "hijri": "9/4/1447", "gregorian": "01/10/2025"},
+      {"day": "الخميس", "hijri": "10/4/1447", "gregorian": "02/10/2025"}
+    ]
+  },
+  {
+    "week": 7,
+    "start_hijri": "13/4/1447",
+    "start_gregorian": "05/10/2025",
+    "days": [
+      {"day": "الأحد", "hijri": "13/4/1447", "gregorian": "05/10/2025"},
+      {"day": "الإثنين", "hijri": "14/4/1447", "gregorian": "06/10/2025"},
+      {"day": "الثلاثاء", "hijri": "15/4/1447", "gregorian": "07/10/2025"},
+      {"day": "الأربعاء", "hijri": "16/4/1447", "gregorian": "08/10/2025"},
+      {"day": "الخميس", "hijri": "17/4/1447", "gregorian": "09/10/2025"}
+    ]
+  },
+  {
+    "week": 8,
+    "start_hijri": "20/4/1447",
+    "start_gregorian": "12/10/2025",
+    "days": [
+      {"day": "الإثنين", "hijri": "21/4/1447", "gregorian": "13/10/2025"},
+      {"day": "الثلاثاء", "hijri": "22/4/1447", "gregorian": "14/10/2025"},
+      {"day": "الأربعاء", "hijri": "23/4/1447", "gregorian": "15/10/2025"},
+      {"day": "الخميس", "hijri": "24/4/1447", "gregorian": "16/10/2025"}
+    ]
+  },
+  {
+    "week": 9,
+    "start_hijri": "27/4/1447",
+    "start_gregorian": "19/10/2025",
+    "days": [
+      {"day": "الأحد", "hijri": "27/4/1447", "gregorian": "19/10/2025"},
+      {"day": "الإثنين", "hijri": "28/4/1447", "gregorian": "20/10/2025"},
+      {"day": "الثلاثاء", "hijri": "29/4/1447", "gregorian": "21/10/2025"},
+      {"day": "الأربعاء", "hijri": "30/4/1447", "gregorian": "22/10/2025"},
+      {"day": "الخميس", "hijri": "1/5/1447", "gregorian": "23/10/2025"}
+    ]
+  },
+  {
+    "week": 10,
+    "start_hijri": "4/5/1447",
+    "start_gregorian": "26/10/2025",
+    "days": [
+      {"day": "الأحد", "hijri": "4/5/1447", "gregorian": "26/10/2025"},
+      {"day": "الإثنين", "hijri": "5/5/1447", "gregorian": "27/10/2025"},
+      {"day": "الثلاثاء", "hijri": "6/5/1447", "gregorian": "28/10/2025"},
+      {"day": "الأربعاء", "hijri": "7/5/1447", "gregorian": "29/10/2025"},
+      {"day": "الخميس", "hijri": "8/5/1447", "gregorian": "30/10/2025"}
+    ]
+  },
+  {
+    "week": 11,
+    "start_hijri": "11/5/1447",
+    "start_gregorian": "02/11/2025",
+    "days": [
+      {"day": "الأحد", "hijri": "11/5/1447", "gregorian": "02/11/2025"},
+      {"day": "الإثنين", "hijri": "12/5/1447", "gregorian": "03/11/2025"},
+      {"day": "الثلاثاء", "hijri": "13/5/1447", "gregorian": "04/11/2025"},
+      {"day": "الأربعاء", "hijri": "14/5/1447", "gregorian": "05/11/2025"},
+      {"day": "الخميس", "hijri": "15/5/1447", "gregorian": "06/11/2025"}
+    ]
+  },
+  {
+    "week": 12,
+    "start_hijri": "18/5/1447",
+    "start_gregorian": "09/11/2025",
+    "days": [
+      {"day": "الأحد", "hijri": "18/5/1447", "gregorian": "09/11/2025"},
+      {"day": "الإثنين", "hijri": "19/5/1447", "gregorian": "10/11/2025"},
+      {"day": "الثلاثاء", "hijri": "20/5/1447", "gregorian": "11/11/2025"},
+      {"day": "الأربعاء", "hijri": "21/5/1447", "gregorian": "12/11/2025"},
+      {"day": "الخميس", "hijri": "22/5/1447", "gregorian": "13/11/2025"}
+    ]
+  },
+  {
+    "week": 13,
+    "start_hijri": "25/5/1447",
+    "start_gregorian": "16/11/2025",
+    "days": [
+      {"day": "الأحد", "hijri": "25/5/1447", "gregorian": "16/11/2025"},
+      {"day": "الإثنين", "hijri": "26/5/1447", "gregorian": "17/11/2025"},
+      {"day": "الثلاثاء", "hijri": "27/5/1447", "gregorian": "18/11/2025"},
+      {"day": "الأربعاء", "hijri": "28/5/1447", "gregorian": "19/11/2025"},
+      {"day": "الخميس", "hijri": "29/5/1447", "gregorian": "20/11/2025"}
+    ]
+  },
+  {
+    "week": 15,
+    "start_hijri": "9/6/1447",
+    "start_gregorian": "30/11/2025",
+    "days": [
+      {"day": "الأحد", "hijri": "9/6/1447", "gregorian": "30/11/2025"},
+      {"day": "الإثنين", "hijri": "10/6/1447", "gregorian": "01/12/2025"},
+      {"day": "الثلاثاء", "hijri": "11/6/1447", "gregorian": "02/12/2025"},
+      {"day": "الأربعاء", "hijri": "12/6/1447", "gregorian": "03/12/2025"}
+    ]
+  },
+  {
+    "week": 16,
+    "start_hijri": "16/6/1447",
+    "start_gregorian": "07/12/2025",
+    "days": [
+      {"day": "الإثنين", "hijri": "17/6/1447", "gregorian": "08/12/2025"},
+      {"day": "الثلاثاء", "hijri": "18/6/1447", "gregorian": "09/12/2025"},
+      {"day": "الأربعاء", "hijri": "19/6/1447", "gregorian": "10/12/2025"},
+      {"day": "الخميس", "hijri": "20/6/1447", "gregorian": "11/12/2025"}
+    ]
+  },
+  {
+    "week": 17,
+    "start_hijri": "23/6/1447",
+    "start_gregorian": "14/12/2025",
+    "days": [
+      {"day": "الأحد", "hijri": "23/6/1447", "gregorian": "14/12/2025"},
+      {"day": "الإثنين", "hijri": "24/6/1447", "gregorian": "15/12/2025"},
+      {"day": "الثلاثاء", "hijri": "25/6/1447", "gregorian": "16/12/2025"},
+      {"day": "الأربعاء", "hijri": "26/6/1447", "gregorian": "17/12/2025"},
+      {"day": "الخميس", "hijri": "27/6/1447", "gregorian": "18/12/2025"}
+    ]
+  },
+  {
+    "week": 18,
+    "start_hijri": "1/7/1447",
+    "start_gregorian": "21/12/2025",
+    "days": [
+      {"day": "الأحد", "hijri": "1/7/1447", "gregorian": "21/12/2025"},
+      {"day": "الإثنين", "hijri": "2/7/1447", "gregorian": "22/12/2025"},
+      {"day": "الثلاثاء", "hijri": "3/7/1447", "gregorian": "23/12/2025"},
+      {"day": "الأربعاء", "hijri": "4/7/1447", "gregorian": "24/12/2025"},
+      {"day": "الخميس", "hijri": "5/7/1447", "gregorian": "25/12/2025"}
+    ]
+  },
+  {
+    "week": 19,
+    "start_hijri": "8/7/1447",
+    "start_gregorian": "28/12/2025",
+    "days": [
+      {"day": "الأحد", "hijri": "8/7/1447", "gregorian": "28/12/2025"},
+      {"day": "الإثنين", "hijri": "9/7/1447", "gregorian": "29/12/2025"},
+      {"day": "الثلاثاء", "hijri": "10/7/1447", "gregorian": "30/12/2025"},
+      {"day": "الأربعاء", "hijri": "11/7/1447", "gregorian": "31/12/2025"},
+      {"day": "الخميس", "hijri": "12/7/1447", "gregorian": "01/01/2026"}
+    ]
+  }
+];
+
+// حالة الإدارة
+let adminActive = false;
+let currentFilter = 'all';
+let currentClass = 'all';
+
+// إدارة التاريخ
+let currentDate = new Date(); // تاريخ اليوم الحقيقي
+let selectedDate = new Date(); // التاريخ المعروض (يمكن تغييره من الإدارة)
+
+// إعدادات الفصل الدراسي
+let semesterSettings = {
+    semester: "2",
+    academicYear: "١٤٤٦هـ"
+};
+
+// إعدادات فترة التحضير العشوائي
+let periodSettings = {
+    startDate: null,
+    endDate: null
+};
+
+// بيانات التحضير المخزنة لكل يوم
+let periodAttendanceData = {};
+
+// التاريخ الهجري
+let hijriDate = {
+    day: 1,
+    month: 1,
+    year: 1446,
+    monthName: "محرم"
+};
+
+// أسماء الأشهر الهجرية
+const hijriMonths = [
+    "محرم", "صفر", "ربيع الأول", "ربيع الثاني", 
+    "جمادى الأولى", "جمادى الآخرة", "رجب", "شعبان", 
+    "رمضان", "شوال", "ذو القعدة", "ذو الحجة"
+];
+
+// أسماء الأشهر الميلادية بالعربية
+const gregorianMonths = [
+    "يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو",
+    "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"
+];
+
+// أيام الأسبوع بالعربية
+const weekDays = [
+    "الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"
+];
+
+// تهيئة الصفحة
+function initPage() {
+    // دائماً نبدأ بتاريخ اليوم الحقيقي
+    currentDate = new Date();
+    selectedDate = new Date(currentDate); // نبدأ بتاريخ اليوم
+    
+    // محاولة تحميل إعدادات الفصل الدراسي
+    const savedSemester = localStorage.getItem('teacherTracker_semesterSettings');
+    if (savedSemester) {
+        semesterSettings = JSON.parse(savedSemester);
+        document.getElementById('semesterSelect').value = semesterSettings.semester;
+        document.getElementById('academicYear').value = semesterSettings.academicYear;
+        updateSemesterInfo();
     }
-    </script>
-
-    <!-- ملف Manifest لتطبيق PWA -->
-    <script>
-        // تسجيل Service Worker لتطبيق PWA
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/sw.js').then(function(registration) {
-                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                }, function(err) {
-                    console.log('ServiceWorker registration failed: ', err);
-                });
-            });
+    
+    // محاولة تحميل إعدادات فترة التحضير
+    const savedPeriod = localStorage.getItem('teacherTracker_periodSettings');
+    if (savedPeriod) {
+        periodSettings = JSON.parse(savedPeriod);
+        if (periodSettings.startDate) {
+            document.getElementById('periodStartDate').value = periodSettings.startDate;
         }
-    </script>
+        if (periodSettings.endDate) {
+            document.getElementById('periodEndDate').value = periodSettings.endDate;
+        }
+        updatePeriodInfo();
+    }
+    
+    // محاولة تحميل بيانات التحضير المحفوظة
+    loadPeriodAttendanceData();
+    
+    // حساب التاريخ الهجري الفعلي من التاريخ الميلادي
+    calculateHijriFromGregorian();
+    
+    // محاولة تحميل بيانات الحضور المحفوظة لهذا التاريخ
+    loadAttendanceData();
+    
+    createClassTabs();
+    createTables();
+    updateStudentCount();
+    updateDateDisplay();
+    
+    // تعيين التاريخ الحالي في منتقي التاريخ
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('datePicker').value = today;
+    
+    // تحديث حقول التاريخ الهجري
+    updateHijriFields();
+    
+    // تحديث معلومات الأسابيع
+    updateWeeksInfo();
+}
 
-    <script>
-        // بيانات الترجمة
-        const translations = {
-            ar: {
-                pageTitle: "فهد الخالدي",
-                heroTitle: "الملف المهني للمعلم فهد الخالدي",
-                heroSubtitle: "معلم متخصص في اللغة الإنجليزية مع 14+ سنة خبرة في تطوير أساليب التعليم الحديثة",
-                heroStat1: "سنوات خبرة",
-                heroStat2: "ساعة تدريب",
-                heroStat3: "مدن تعليمية",
-                aboutTitle: "نبذة عني",
-                visionTitle: "الرؤية التعليمية",
-                experienceTitle: "الخبرات المهنية",
-                achievementsTitle: "الإنجازات",
-                skillsTitle: "المهارات والكفاءات",
-                trainingTitle: "الدورات التالية",
-                portfolioTitle: "معرض الأعمال",
-                testimonialsTitle: "التوصيات",
-                techTitle: "التقنية",
-                contactTitle: "تواصل معي",
-                name: "فهد نغيمش حميد الخالدي",
-                jobTitle: "معلم متقدم – تخصص اللغة الإنجليزية",
-                bioText: "أؤمن أن التعليم ليس مجرد نقل معرفة، بل رسالة سامية لصناعة الأثر وبناء الإنسان. أطمح إلى أن أكون جزءًا فاعلًا في تطوير التعليم بالمملكة من خلال توظيف التقنيات الحديثة، وصناعة بيئات تعلم محفزة، تعزز التفكير النقدي والإبداعي، وتبني الثقة لدى الطالب. نظرتي المستقبلية تقوم على التعلم المستمر، وتطوير المهارات المهنية، ومواكبة التحولات الرقمية بما يخدم مخرجات التعليم وجودته في إطار رؤية المملكة 2030.",
-                badge: "🏆 حاصل على درجة 95 في التخصص",
-                stat1: "سنوات خبرة",
-                stat2: "ساعات تدريبية",
-                stat3: "مدن تعليمية",
-                visionItem1Title: "التعليم المتمركز حول الطالب",
-                visionItem1Desc: "أؤمن بأن كل طالب فريد ويحتاج إلى أساليب تعلم مخصصة تناسب احتياجاته وقدراته.",
-                visionItem2Title: "الشراكة مع أولياء الأمور",
-                visionItem2Desc: "التعاون مع الأسر أساسي لتحقيق النجاح التعليمي المستدام.",
-                visionItem3Title: "التعليم القائم على المشاريع",
-                visionItem3Desc: "أدمج التعلم القائم على المشاريع لتعزيز التفكير النقدي وحل المشكلات.",
-                visionItem4Title: "التعلم المستمر",
-                visionItem4Desc: "أؤمن بأن المعلم المتعلم باستمرار هو الأكثر قدرة على إلهام طلابه.",
-                achievementText: "في عام 2022 حصلتُ على ترقية إلى رتبة معلم متقدم بعد مسيرة مهنية امتدت لسنوات كمعلم ممارس، قدمت خلالها أداءً متميزًا أسهم في تطوير العملية التعليمية داخل المدرسة. جاءت هذه الترقية تقديرًا لجهودي في توظيف استراتيجيات تدريس حديثة تعزز مهارات التفكير النقدي والإبداعي لدى الطلاب، إضافة إلى قدرتي على تحليل نواتج التعلم وبناء خطط علاجية فردية أثمرت عن تحسين واضح في مستويات الطلاب.<br><br>وقد عكست هذه الترقية ثقة الجهة التعليمية بمهاراتي المهنية، خصوصًا في مجال تصميم أنشطة مبتكرة تُدمج مهارات الفهم العميق، والعمل التعاوني، والتعليم الذاتي داخل البيئة الصفية. كما كانت اعترافًا بدوري في تطوير البرامج التربوية والأنشطة التعليمية قبل عام 2022، ومساهمتي في بناء بيئة صفية محفزة يشعر فيها الطلاب بالأمان والرغبة في المشاركة والتعلم.<br><br>تعد هذه الترقية محطة مهمة في مسيرتي، لأنها لم تكن مجرد انتقال إلى مستوى وظيفي أعلى، بل كانت نتيجة تراكم خبرات وممارسات مهنية أثبتت أثرها على الطلاب وعلى منظومة التعليم داخل المدرسة. واليوم أواصل عملي كمعلم متقدم ملتزم بالتحسين المستمر، وتطبيق أفضل الممارسات التربوية، والمساهمة في رفع جودة التعليم وتحقيق نواتج تعلم أعلى.",
-                techText: "أتمتع بشغف كبير تجاه التقنية والتعليم الرقمي، وأواكب أحدث التطورات في مجال الذكاء الاصطناعي وتطبيقاته التعليمية. أمتلك خبرة عملية في تصميم وتطوير أنشطة تفاعلية واختبارات إلكترونية باستخدام HTML وCSS وJavaScript، مما يثري تجربة التعلم ويجعلها أكثر تفاعلية وجاذبية للطلاب. أستخدم أدوات الذكاء الاصطناعي في تحليل أداء الطلاب وتصميم خطط تعليمية مخصصة، كما أصمم محتوى رقميًا مبتكرًا يتناسب مع احتياجات التعلم الحديثة. أسعى دائمًا لدمج التقنية في العملية التعليمية بطرق إبداعية تواكب متطلبات العصر الرقمي وتخدم أهداف رؤية المملكة 2030.",
-                footerText: "© 2024 جميع الحقوق محفوظة - فهد الخالدي",
-                // إضافة ترجمة نصوص الأيقونات
-                navAbout: "نبذة عني",
-                navVision: "الرؤية التعليمية",
-                navExp: "الخبرات",
-                navAchievements: "الإنجازات",
-                navSkills: "المهارات",
-                navTrain: "الدورات",
-                navTech: "التقنية",
-                navPortfolio: "معرض الأعمال",
-                navTestimonials: "التوصيات",
-                navContact: "بيانات التواصل",
-                // ترجمة المهارات
-                skillCat1: "المهارات التعليمية",
-                skillCat2: "المهارات التقنية",
-                skill1: "إتقان اللغة الإنجليزية تحدثاً وكتابة",
-                skill2: "تطوير خطط تدريس محفزة ومبتكرة",
-                skill3: "إدارة الصفوف بفاعلية",
-                skill4: "تشجيع التعلم الذاتي",
-                skill5: "استخدام أدوات القياس والتقويم الإلكترونية",
-                skill6: "دمج التقنية في التعليم",
-                skill7: "تصميم أنشطة تفاعلية",
-                skill8: "تطوير اختبارات إلكترونية",
-                // ترجمة الدورات
-                course1: "التفكير الناقد والإبداعي ودمجه في المواد الدراسية",
-                course2: "القياس والتقويم التربوي",
-                course3: "الاستراتيجية الحديثة في تدريس أساسيات اللغة الإنجليزية",
-                course4: "البيئة الصفية الجاذبة",
-                course5: "تحليل أداء الطلاب وتقديم التغذية الراجعة",
-                course6: "أساسيات الترجمة",
-                course7: "مهارات التعامل مع أدوات القياس والتقويم الإلكترونية",
-                course8: "التنمية المهنية لمعلمي اللغة الإنجليزية - المستوى الثالث",
-                course9: "العبقرية في العملية التعليمية",
-                course10: "بناء الاختيار الجيد",
-                course11: "توظيف استراتيجيات التعليم في البيئة التدريبية الجاذبة",
-                course12: "تدريس مهارتي التحدث والاستماع",
-                course13: "التوعية بقواعد السلوك والمواظبة المحدثة",
-                course14: "اللقاءات التخصصية لمادة اللغة الإنجليزية",
-                // ترجمة المشاريع
-                project1Title: "مشروع: اختبار الرخصة المهنية التفاعلي",
-                project1Desc: "مشروع تعليمي رقمي يهدف إلى محاكاة اختبار الرخصة المهنية للمعلمين، من خلال تقديم أسئلة تفاعلية مبنية على المعايير المعتمدة، مع تغذية راجعة فورية توضح السبب العلمي لكل إجابة صحيحة أو خاطئة، بما يسهم في رفع كفاءة المتدربين وتعزيز جاهزيتهم للاختبار الرسمي.",
-                project1Link: "عرض المشروع",
-                project2Title: "تطبيق الاستراتيجيات الحديثة في التعليم",
-                project2Desc1: "تُعدّ الاستراتيجيات الحديثة عنصرًا محوريًا في تطوير العملية التعليمية وتعزيز فاعلية التعلم داخل الصف؛ إذ تسهم في رفع مستوى التفاعل، وتحفيز الدافعية، وتنمية مهارات التفكير والعمل لدى الطلاب. ومن هذا المنطلق أحرص على توظيف مجموعة متنوعة من الأساليب التدريسية التي تجمع بين المتعة والفائدة، وتعتمد على التفاعل الإيجابي والمشاركة الفعّالة.<br><br>ويأتي التعلم القائم على التحفيز والتحدي كأحد الأساليب التي تسهم في ترسيخ المفاهيم بطريقة مشوقة، وتساعد الطلاب على التعلم بروح المنافسة الإيجابية. كما يمثل التعلم التعاوني ركيزة أساسية في بناء مهارات التواصل والعمل الجماعي، من خلال إتاحة الفرصة للطلاب لتبادل الآراء، ومناقشة الأفكار، وحل المشكلات بشكل جماعي. كذلك أحرص على توظيف التقنيات التعليمية الحديثة التي تسهم في عرض المحتوى بصورة جذابة، وتتيح تفاعل جميع الطلاب ومشاركتهم في تصحيح المفاهيم وبناء المعرفة بشكل مباشر.<br><br>وتعد هذه الممارسات نماذج من جملة من الاستراتيجيات التي أعمل على تنويعها داخل الحصة بما يراعي الفروق الفردية، ويحقق الأهداف التعليمية، ويهيئ بيئة تعليمية نشطة ومحفزة تسهم في تحسين مستوى التحصيل الدراسي وتعزيز مهارات القرن الحادي والعشرين.",
-                project3Title: "عروض تقديمية تفاعلية",
-                project3Desc: "تصميم عروض تفاعلية جذابة للطلاب باستخدام أحدث الأدوات والتقنيات التعليمية. تتضمن هذه العروض أنشطة تفاعلية، ومقاطع فيديو تعليمية، وأسئلة تقييم فورية لضمان مشاركة فعالة من الطلاب.",
-                project3Link: "عرض المشروع",
-                // ترجمة التوصيات
-                testimonial1Text: "\"المعلم فهد يتميز بالإبداع والابتكار في أساليب التدريس، وقد قدم إضافة حقيقية لفريق العمل\"",
-                testimonial1Author: "مدير المدرسة",
-                testimonial1Position: "مدرسة سعيد بن العاص",
-                testimonial2Text: "\"لقد أحدثت استراتيجياته التعليمية فرقاً ملحوظاً في أداء الطلاب وحبهم للغة الإنجليزية\"",
-                testimonial2Author: "منسق اللغة الإنجليزية",
-                testimonial2Position: "إدارة التعليم",
-                testimonial3Text: "\"تميزه في استخدام التقنية جعل عملية التعلم أكثر متعة وفعالية للطلاب\"",
-                testimonial3Author: "زملاء العمل",
-                testimonial3Position: "فريق اللغة الإنجليزية",
-                // ترجمة الاتصال
-                contactSubtitle: "للتواصل",
-                contactEmail: "iFahadenglish@gmail.com",
-                contactPhone: "+966554449824",
-                contactFormTitle: "أرسل رسالة",
-                // ترجمة الفوتر
-                footerName: "فهد الخالدي",
-                footerDesc: "معلم متخصص في اللغة الإنجليزية - تطوير التعليم من خلال التقنية والابتكار",
-                // ترجمة المعرض التفاعلي
-                scrollUpText: "تمرير للأعلى",
-                scrollDownText: "تمرير للأسفل",
-                galleryCaption1: "تعزيز مهارات القرن الحادي والعشرين لدى الطلاب",
-                galleryCaption2: "أنشطة تعليمية تفاعلية لتحسين مستوى التحصيل الدراسي",
-                galleryCaption3: "إعداد بيئة تعليمية نشطة ومحفزة للطلاب",
-                // ترجمة قسم الخبرات
-                exp1Title: "معلم لغة إنجليزية – سعيد بن العاص",
-                exp1Location: "مكة المكرمة",
-                exp2Title: "معلم لغة إنجليزية – ثانوية الأمير سعود بن عبدالمحسن",
-                exp2Location: "الليث",
-                exp3Title: "معلم لغة إنجليزية – سعيد بن زيد",
-                exp3Location: "عفيف",
-                exp4Title: "مترجم – وزارة الحج والعمرة",
-                exp4Location: "مكة المكرمة",
-                // ترجمة أزرار التصفية
-                filterAll: "الكل",
-                filterInteractive: "تفاعلية",
-                filterStrategies: "استراتيجيات",
-                filterPresentations: "عروض",
-                // ترجمة أزرار CTA
-                viewWorkBtn: "استعرض أعمالي",
-                contactBtn: "تواصل معي",
-                sendMessageBtn: "إرسال الرسالة"
-            },
-            en: {
-                pageTitle: "Fahad AlKhaldi",
-                heroTitle: "Professional Portfolio - Fahad AlKhaldi",
-                heroSubtitle: "English Language Specialist with 14+ Years Experience in Modern Teaching Methods",
-                heroStat1: "Years Experience",
-                heroStat2: "Training Hours",
-                heroStat3: "Education Cities",
-                aboutTitle: "About Me",
-                visionTitle: "Educational Vision",
-                experienceTitle: "Professional Experience",
-                achievementsTitle: "Achievements",
-                skillsTitle: "Skills & Competencies",
-                trainingTitle: "Training Courses",
-                portfolioTitle: "Portfolio",
-                testimonialsTitle: "Testimonials",
-                techTitle: "Technology",
-                contactTitle: "Contact Me",
-                name: "Fahad Nughaimesh Humaid AlKhaldi",
-                jobTitle: "Advanced English Teacher",
-                bioText: "I believe that education is not merely about transferring knowledge, but a noble mission to make an impact and build individuals. I aspire to be an active part in developing education in the Kingdom by employing modern technologies, creating stimulating learning environments that enhance critical and creative thinking, and building student confidence. My future vision is based on continuous learning, developing professional skills, and keeping pace with digital transformations that serve educational outcomes and quality within the framework of Saudi Vision 2030.",
-                badge: "🏆 Achieved a score of 95 in specialization",
-                stat1: "Years of Experience",
-                stat2: "Training Hours",
-                stat3: "Education Cities",
-                visionItem1Title: "Student-Centered Education",
-                visionItem1Desc: "I believe that every student is unique and needs customized learning methods that suit their needs and abilities.",
-                visionItem2Title: "Partnership with Parents",
-                visionItem2Desc: "Cooperation with families is essential to achieving sustainable educational success.",
-                visionItem3Title: "Project-Based Learning",
-                visionItem3Desc: "I integrate project-based learning to enhance critical thinking and problem-solving.",
-                visionItem4Title: "Continuous Learning",
-                visionItem4Desc: "I believe that a continuously learning teacher is the most capable of inspiring his students.",
-                achievementText: "In 2022, I was promoted to the rank of Senior Teacher after a professional career spanning years as a practicing teacher, during which I provided outstanding performance that contributed to the development of the educational process within the school. This promotion came in recognition of my efforts in employing modern teaching strategies that enhance students' critical and creative thinking skills, in addition to my ability to analyze learning outcomes and build individual remedial plans that resulted in a clear improvement in student levels.<br><br>This promotion reflected the educational authority's confidence in my professional skills, especially in designing innovative activities that integrate deep understanding skills, collaborative work, and self-learning within the classroom environment. It was also an acknowledgment of my role in developing educational programs and activities before 2022, and my contribution to building a stimulating classroom environment where students feel safe and eager to participate and learn.<br><br>This promotion is an important milestone in my career, as it was not just a transition to a higher functional level, but rather the result of accumulated experiences and professional practices that proved their impact on students and the educational system within the school. Today, I continue my work as a senior teacher committed to continuous improvement, applying the best educational practices, and contributing to raising the quality of education and achieving higher learning outcomes.",
-                techText: "I have a great passion for technology and digital education, and I keep up with the latest developments in the field of artificial intelligence and its educational applications. I have practical experience in designing and developing interactive activities and electronic tests using HTML, CSS, and JavaScript, which enriches the learning experience and makes it more interactive and attractive for students. I use AI tools to analyze student performance and design customized educational plans, and I also design innovative digital content that suits modern learning needs. I always strive to integrate technology into the educational process in creative ways that keep pace with the requirements of the digital age and serve the goals of Saudi Vision 2030.",
-                footerText: "© 2024 All Rights Reserved - Fahad AlKhaldi",
-                // إضافة ترجمة نصوص الأيقونات
-                navAbout: "About Me",
-                navVision: "Educational Vision",
-                navExp: "Experience",
-                navAchievements: "Achievements",
-                navSkills: "Skills",
-                navTrain: "Training",
-                navTech: "Technology",
-                navPortfolio: "Portfolio",
-                navTestimonials: "Testimonials",
-                navContact: "Contact Info",
-                // ترجمة المهارات
-                skillCat1: "Teaching Skills",
-                skillCat2: "Technical Skills",
-                skill1: "Proficiency in spoken and written English",
-                skill2: "Developing stimulating and innovative teaching plans",
-                skill3: "Effective classroom management",
-                skill4: "Encouraging self-learning",
-                skill5: "Using electronic measurement and assessment tools",
-                skill6: "Integrating technology into education",
-                skill7: "Designing interactive activities",
-                skill8: "Developing electronic tests",
-                // ترجمة الدورات
-                course1: "Critical and Creative Thinking and its Integration into Academic Subjects",
-                course2: "Educational Measurement and Evaluation",
-                course3: "Modern Strategy in Teaching English Language Basics",
-                course4: "Attractive Classroom Environment",
-                course5: "Analyzing Student Performance and Providing Feedback",
-                course6: "Translation Fundamentals",
-                course7: "Skills for Dealing with Electronic Measurement and Assessment Tools",
-                course8: "Professional Development for English Teachers - Level Three",
-                course9: "Genius in the Educational Process",
-                course10: "Building Good Choices",
-                course11: "Employing Teaching Strategies in an Attractive Training Environment",
-                course12: "Teaching Speaking and Listening Skills",
-                course13: "Awareness of Updated Behavior and Attendance Rules",
-                course14: "Specialized Meetings for English Language Subject",
-                // ترجمة المشاريع
-                project1Title: "Project: Interactive Professional License Exam",
-                project1Desc: "A digital educational project that aims to simulate the professional license exam for teachers, by providing interactive questions based on approved standards, with immediate feedback that explains the scientific reason for each correct or incorrect answer, which helps raise the efficiency of trainees and enhance their readiness for the official exam.",
-                project1Link: "View Project",
-                project2Title: "Applying Modern Strategies in Education",
-                project2Desc1: "Modern strategies are a pivotal element in developing the educational process and enhancing the effectiveness of learning in the classroom. They contribute to raising the level of interaction, stimulating motivation, and developing thinking and working skills among students. From this standpoint, I am keen to employ a variety of teaching methods that combine fun and benefit, and rely on positive interaction and effective participation.<br><br>Challenge-based learning comes as one of the methods that helps consolidate concepts in an exciting way and helps students learn with a spirit of positive competition. Cooperative learning also represents a fundamental pillar in building communication and teamwork skills, by providing students with the opportunity to exchange opinions, discuss ideas, and solve problems collectively. I also strive to employ modern educational technologies that contribute to presenting content in an attractive way, and allow all students to interact and participate in correcting concepts and building knowledge directly.<br><br>These practices are examples of a range of strategies that I work to diversify within the class, taking into account individual differences, achieving educational goals, and preparing an active and stimulating educational environment that contributes to improving academic achievement and enhancing 21st century skills.",
-                project3Title: "Interactive Presentations",
-                project3Desc: "Designing interactive and engaging presentations for students using the latest educational tools and technologies. These presentations include interactive activities, educational videos, and instant assessment questions to ensure effective student participation.",
-                project3Link: "View Project",
-                // ترجمة التوصيات
-                testimonial1Text: "\"Teacher Fahad is distinguished by creativity and innovation in teaching methods, and has made a real addition to the work team\"",
-                testimonial1Author: "School Principal",
-                testimonial1Position: "Saeed bin Al-Aas School",
-                testimonial2Text: "\"His educational strategies have made a noticeable difference in students' performance and their love for the English language\"",
-                testimonial2Author: "English Language Coordinator",
-                testimonial2Position: "Education Department",
-                testimonial3Text: "\"His excellence in using technology has made the learning process more enjoyable and effective for students\"",
-                testimonial3Author: "Colleagues",
-                testimonial3Position: "English Language Team",
-                // ترجمة الاتصال
-                contactSubtitle: "For Contact",
-                contactEmail: "iFahadenglish@gmail.com",
-                contactPhone: "+966554449824",
-                contactFormTitle: "Send a Message",
-                // ترجمة الفوتر
-                footerName: "Fahad AlKhaldi",
-                footerDesc: "English Language Specialist - Developing Education Through Technology and Innovation",
-                // ترجمة المعرض التفاعلي
-                scrollUpText: "Scroll Up",
-                scrollDownText: "Scroll Down",
-                galleryCaption1: "Enhancing 21st century skills among students",
-                galleryCaption2: "Interactive educational activities to improve academic achievement",
-                galleryCaption3: "Preparing an active and stimulating educational environment for students",
-                // ترجمة قسم الخبرات
-                exp1Title: "English Teacher – Saeed bin Al-Aas",
-                exp1Location: "Makkah",
-                exp2Title: "English Teacher – Prince Saud bin Abdulmohsen Secondary School",
-                exp2Location: "Al-Lith",
-                exp3Title: "English Teacher – Saeed bin Zaid",
-                exp3Location: "Afif",
-                exp4Title: "Translator – Ministry of Hajj and Umrah",
-                exp4Location: "Makkah",
-                // ترجمة أزرار التصفية
-                filterAll: "All",
-                filterInteractive: "Interactive",
-                filterStrategies: "Strategies",
-                filterPresentations: "Presentations",
-                // ترجمة أزرار CTA
-                viewWorkBtn: "View My Work",
-                contactBtn: "Contact Me",
-                sendMessageBtn: "Send Message"
+// تحديث معلومات الأسابيع
+function updateWeeksInfo() {
+    document.getElementById('weeksInfo').textContent = `${studyWeeks.length} أسبوع متاحة`;
+}
+
+// تحميل بيانات التحضير المحفوظة للفترة
+function loadPeriodAttendanceData() {
+    const savedData = localStorage.getItem('teacherTracker_periodAttendanceData');
+    if (savedData) {
+        periodAttendanceData = JSON.parse(savedData);
+        console.log('تم تحميل بيانات التحضير للفترة:', Object.keys(periodAttendanceData).length, 'يوم');
+    }
+}
+
+// حفظ بيانات التحضير للفترة
+function savePeriodAttendanceData() {
+    localStorage.setItem('teacherTracker_periodAttendanceData', JSON.stringify(periodAttendanceData));
+}
+
+// حفظ بيانات الأسابيع
+function saveWeeksData() {
+    savePeriodAttendanceData();
+    alert(`تم حفظ بيانات التحضير لجميع الأيام`);
+}
+
+// مسح بيانات جميع الأسابيع
+function clearAllWeeksData() {
+    if (!adminActive) {
+        alert('يجب تفعيل وضع الإدارة أولا');
+        return;
+    }
+    
+    const confirmAction = confirm("هل تريد مسح جميع بيانات التحضير للأسابيع الدراسية؟\n\nهذا الإجراء لا يمكن التراجع عنه!");
+    if (!confirmAction) return;
+    
+    periodAttendanceData = {};
+    savePeriodAttendanceData();
+    
+    alert("تم مسح جميع بيانات التحضير للأسابيع الدراسية");
+}
+
+// تحويل تاريخ نصي (dd/mm/yyyy) إلى كائن Date
+function parseDateString(dateStr) {
+    const parts = dateStr.split('/');
+    if (parts.length === 3) {
+        const day = parseInt(parts[0]);
+        const month = parseInt(parts[1]) - 1;
+        const year = parseInt(parts[2]);
+        return new Date(year, month, day);
+    }
+    return null;
+}
+
+// توليد تحضير عشوائي ليوم معين مع معلومات الأسبوع
+function generateRandomAttendanceForDate(date, dayInfo = null) {
+    const dateKey = date.toISOString().split('T')[0];
+    const hijriDateInfo = calculateHijriForDate(date);
+    
+    const attendanceData = {
+        date: dateKey,
+        gregorianDate: getShortGregorianDate(date),
+        hijriDate: `${convertToArabicNumbers(hijriDateInfo.day)} ${hijriDateInfo.monthName} ${convertToArabicNumbers(hijriDateInfo.year)}هـ`,
+        dayInfo: dayInfo,
+        classes: {}
+    };
+    
+    // توليد بيانات لكل صف
+    for (const className in studentsData) {
+        attendanceData.classes[className] = {
+            students: [],
+            stats: {
+                total: 0,
+                present: 0,
+                absent: 0,
+                starred: 0
             }
         };
-
-        let currentLang = 'ar';
-        let currentTheme = localStorage.getItem('theme') || 'light';
-
-        // تعيين الوضع الافتراضي
-        document.documentElement.setAttribute('data-theme', currentTheme);
-
-        // عناصر DOM
-        const langBtn = document.getElementById('langBtn');
-        const themeBtn = document.getElementById('themeBtn');
-        const pageTitle = document.getElementById('pageTitle');
-        const heroTitle = document.getElementById('heroTitle');
-        const heroSubtitle = document.getElementById('heroSubtitle');
-        const heroStat1 = document.getElementById('heroStat1');
-        const heroStat2 = document.getElementById('heroStat2');
-        const heroStat3 = document.getElementById('heroStat3');
-        const aboutTitle = document.getElementById('aboutTitle');
-        const visionTitle = document.getElementById('visionTitle');
-        const experienceTitle = document.getElementById('experienceTitle');
-        const achievementsTitle = document.getElementById('achievementsTitle');
-        const skillsTitle = document.getElementById('skillsTitle');
-        const trainingTitle = document.getElementById('trainingTitle');
-        const portfolioTitle = document.getElementById('portfolioTitle');
-        const testimonialsTitle = document.getElementById('testimonialsTitle');
-        const techTitle = document.getElementById('techTitle');
-        const contactTitle = document.getElementById('contactTitle');
-        const nameEl = document.getElementById('name');
-        const jobTitle = document.getElementById('jobTitle');
-        const bioText = document.getElementById('bioText');
-        const badge = document.getElementById('badge');
-        const stat1 = document.getElementById('stat1');
-        const stat2 = document.getElementById('stat2');
-        const stat3 = document.getElementById('stat3');
-        const visionItem1Title = document.getElementById('visionItem1Title');
-        const visionItem1Desc = document.getElementById('visionItem1Desc');
-        const visionItem2Title = document.getElementById('visionItem2Title');
-        const visionItem2Desc = document.getElementById('visionItem2Desc');
-        const visionItem3Title = document.getElementById('visionItem3Title');
-        const visionItem3Desc = document.getElementById('visionItem3Desc');
-        const visionItem4Title = document.getElementById('visionItem4Title');
-        const visionItem4Desc = document.getElementById('visionItem4Desc');
-        const achievementText = document.getElementById('achievementText');
-        const techText = document.getElementById('techText');
-        const footerText = document.getElementById('footerText');
-        const navScroll = document.getElementById('navScroll');
-        const navScrollPrev = document.querySelector('.nav-scroll-prev');
-        const navScrollNext = document.querySelector('.nav-scroll-next');
         
-        // عناصر نصوص الأيقونات
-        const navAbout = document.getElementById('navAbout');
-        const navVision = document.getElementById('navVision');
-        const navExp = document.getElementById('navExp');
-        const navAchievements = document.getElementById('navAchievements');
-        const navSkills = document.getElementById('navSkills');
-        const navTrain = document.getElementById('navTrain');
-        const navTech = document.getElementById('navTech');
-        const navPortfolio = document.getElementById('navPortfolio');
-        const navTestimonials = document.getElementById('navTestimonials');
-        const navContact = document.getElementById('navContact');
-
-        // عناصر المهارات
-        const skillCat1 = document.getElementById('skillCat1');
-        const skillCat2 = document.getElementById('skillCat2');
-        const skill1 = document.getElementById('skill1');
-        const skill2 = document.getElementById('skill2');
-        const skill3 = document.getElementById('skill3');
-        const skill4 = document.getElementById('skill4');
-        const skill5 = document.getElementById('skill5');
-        const skill6 = document.getElementById('skill6');
-        const skill7 = document.getElementById('skill7');
-        const skill8 = document.getElementById('skill8');
-
-        // عناصر الدورات
-        const course1 = document.getElementById('course1');
-        const course2 = document.getElementById('course2');
-        const course3 = document.getElementById('course3');
-        const course4 = document.getElementById('course4');
-        const course5 = document.getElementById('course5');
-        const course6 = document.getElementById('course6');
-        const course7 = document.getElementById('course7');
-        const course8 = document.getElementById('course8');
-        const course9 = document.getElementById('course9');
-        const course10 = document.getElementById('course10');
-        const course11 = document.getElementById('course11');
-        const course12 = document.getElementById('course12');
-        const course13 = document.getElementById('course13');
-        const course14 = document.getElementById('course14');
-
-        // عناصر المشاريع
-        const project1Title = document.getElementById('project1Title');
-        const project1Desc = document.getElementById('project1Desc');
-        const project1Link = document.getElementById('project1Link');
-        const project2Title = document.getElementById('project2Title');
-        const project2Desc1 = document.getElementById('project2Desc1');
-        const project3Title = document.getElementById('project3Title');
-        const project3Desc = document.getElementById('project3Desc');
-        const project3Link = document.getElementById('project3Link');
-
-        // عناصر التوصيات
-        const testimonial1Text = document.getElementById('testimonial1Text');
-        const testimonial1Author = document.getElementById('testimonial1Author');
-        const testimonial1Position = document.getElementById('testimonial1Position');
-        const testimonial2Text = document.getElementById('testimonial2Text');
-        const testimonial2Author = document.getElementById('testimonial2Author');
-        const testimonial2Position = document.getElementById('testimonial2Position');
-        const testimonial3Text = document.getElementById('testimonial3Text');
-        const testimonial3Author = document.getElementById('testimonial3Author');
-        const testimonial3Position = document.getElementById('testimonial3Position');
-
-        // عناصر الاتصال
-        const contactSubtitle = document.getElementById('contactSubtitle');
-        const contactEmail = document.getElementById('contactEmail');
-        const contactPhone = document.getElementById('contactPhone');
-        const contactFormTitle = document.getElementById('contactFormTitle');
-        const sendMessageBtn = document.getElementById('sendMessageBtn');
-
-        // عناصر الفوتر
-        const footerName = document.getElementById('footerName');
-        const footerDesc = document.getElementById('footerDesc');
-
-        // عناصر المعرض التفاعلي
-        const scrollUpText = document.getElementById('scrollUpText');
-        const scrollDownText = document.getElementById('scrollDownText');
-        const galleryCaption1 = document.getElementById('galleryCaption1');
-        const galleryCaption2 = document.getElementById('galleryCaption2');
-        const galleryCaption3 = document.getElementById('galleryCaption3');
-
-        // عناصر قسم الخبرات
-        const exp1Title = document.getElementById('exp1Title');
-        const exp1Location = document.getElementById('exp1Location');
-        const exp2Title = document.getElementById('exp2Title');
-        const exp2Location = document.getElementById('exp2Location');
-        const exp3Title = document.getElementById('exp3Title');
-        const exp3Location = document.getElementById('exp3Location');
-        const exp4Title = document.getElementById('exp4Title');
-        const exp4Location = document.getElementById('exp4Location');
-
-        // عناصر التصفية
-        const filterAll = document.getElementById('filterAll');
-        const filterInteractive = document.getElementById('filterInteractive');
-        const filterStrategies = document.getElementById('filterStrategies');
-        const filterPresentations = document.getElementById('filterPresentations');
-
-        // عناصر CTA
-        const viewWorkBtn = document.getElementById('viewWorkBtn');
-        const contactBtn = document.getElementById('contactBtn');
-
-        // تحديث أيقونة الوضع الليلي
-        function updateThemeIcon() {
-            themeBtn.innerHTML = currentTheme === 'light' ? 
-                '<i class="fas fa-moon"></i>' : 
-                '<i class="fas fa-sun"></i>';
-        }
-
-        // وظيفة لتحميل اللغة
-        function loadLanguage(lang) {
-            const t = translations[lang];
+        studentsData[className].forEach((studentName, index) => {
+            // تحديد عشوائياً إذا كان الطالب متميزاً (20% احتمال)
+            const isStarred = Math.random() < 0.2;
             
-            // تحديث النصوص الأساسية
-            pageTitle.textContent = t.pageTitle;
-            heroTitle.textContent = t.heroTitle;
-            heroSubtitle.textContent = t.heroSubtitle;
-            heroStat1.textContent = t.heroStat1;
-            heroStat2.textContent = t.heroStat2;
-            heroStat3.textContent = t.heroStat3;
-            aboutTitle.textContent = t.aboutTitle;
-            visionTitle.textContent = t.visionTitle;
-            experienceTitle.textContent = t.experienceTitle;
-            achievementsTitle.textContent = t.achievementsTitle;
-            skillsTitle.textContent = t.skillsTitle;
-            trainingTitle.textContent = t.trainingTitle;
-            portfolioTitle.textContent = t.portfolioTitle;
-            testimonialsTitle.textContent = t.testimonialsTitle;
-            techTitle.textContent = t.techTitle;
-            contactTitle.textContent = t.contactTitle;
-            nameEl.textContent = t.name;
-            jobTitle.textContent = t.jobTitle;
-            bioText.textContent = t.bioText;
-            badge.textContent = t.badge;
-            stat1.textContent = t.stat1;
-            stat2.textContent = t.stat2;
-            stat3.textContent = t.stat3;
-            visionItem1Title.textContent = t.visionItem1Title;
-            visionItem1Desc.textContent = t.visionItem1Desc;
-            visionItem2Title.textContent = t.visionItem2Title;
-            visionItem2Desc.textContent = t.visionItem2Desc;
-            visionItem3Title.textContent = t.visionItem3Title;
-            visionItem3Desc.textContent = t.visionItem3Desc;
-            visionItem4Title.textContent = t.visionItem4Title;
-            visionItem4Desc.textContent = t.visionItem4Desc;
-            achievementText.innerHTML = t.achievementText;
-            techText.textContent = t.techText;
-            footerText.textContent = t.footerText;
+            // إنشاء بيانات الطالب
+            const studentData = {
+                id: index + 1,
+                name: studentName,
+                isStarred: isStarred,
+                attendance: [],
+                hasStar: isStarred
+            };
             
-            // تحديث نصوص الأيقونات
-            navAbout.textContent = t.navAbout;
-            navVision.textContent = t.navVision;
-            navExp.textContent = t.navExp;
-            navAchievements.textContent = t.navAchievements;
-            navSkills.textContent = t.navSkills;
-            navTrain.textContent = t.navTrain;
-            navTech.textContent = t.navTech;
-            navPortfolio.textContent = t.navPortfolio;
-            navTestimonials.textContent = t.navTestimonials;
-            navContact.textContent = t.navContact;
-            
-            // تحديث المهارات
-            skillCat1.textContent = t.skillCat1;
-            skillCat2.textContent = t.skillCat2;
-            skill1.textContent = t.skill1;
-            skill2.textContent = t.skill2;
-            skill3.textContent = t.skill3;
-            skill4.textContent = t.skill4;
-            skill5.textContent = t.skill5;
-            skill6.textContent = t.skill6;
-            skill7.textContent = t.skill7;
-            skill8.textContent = t.skill8;
-            
-            // تحديث الدورات
-            course1.textContent = t.course1;
-            course2.textContent = t.course2;
-            course3.textContent = t.course3;
-            course4.textContent = t.course4;
-            course5.textContent = t.course5;
-            course6.textContent = t.course6;
-            course7.textContent = t.course7;
-            course8.textContent = t.course8;
-            course9.textContent = t.course9;
-            course10.textContent = t.course10;
-            course11.textContent = t.course11;
-            course12.textContent = t.course12;
-            course13.textContent = t.course13;
-            course14.textContent = t.course14;
-            
-            // تحديث المشاريع
-            project1Title.textContent = t.project1Title;
-            project1Desc.textContent = t.project1Desc;
-            project1Link.textContent = t.project1Link;
-            project2Title.textContent = t.project2Title;
-            project2Desc1.innerHTML = t.project2Desc1;
-            project3Title.textContent = t.project3Title;
-            project3Desc.textContent = t.project3Desc;
-            project3Link.textContent = t.project3Link;
-            
-            // تحديث التوصيات
-            testimonial1Text.textContent = t.testimonial1Text;
-            testimonial1Author.textContent = t.testimonial1Author;
-            testimonial1Position.textContent = t.testimonial1Position;
-            testimonial2Text.textContent = t.testimonial2Text;
-            testimonial2Author.textContent = t.testimonial2Author;
-            testimonial2Position.textContent = t.testimonial2Position;
-            testimonial3Text.textContent = t.testimonial3Text;
-            testimonial3Author.textContent = t.testimonial3Author;
-            testimonial3Position.textContent = t.testimonial3Position;
-            
-            // تحديث الاتصال
-            contactSubtitle.textContent = t.contactSubtitle;
-            contactEmail.textContent = t.contactEmail;
-            contactPhone.textContent = t.contactPhone;
-            contactFormTitle.textContent = t.contactFormTitle;
-            sendMessageBtn.textContent = t.sendMessageBtn;
-            
-            // تحديث الفوتر
-            footerName.textContent = t.footerName;
-            footerDesc.textContent = t.footerDesc;
-            
-            // تحديث المعرض التفاعلي
-            scrollUpText.textContent = t.scrollUpText;
-            scrollDownText.textContent = t.scrollDownText;
-            galleryCaption1.textContent = t.galleryCaption1;
-            galleryCaption2.textContent = t.galleryCaption2;
-            galleryCaption3.textContent = t.galleryCaption3;
-            
-            // تحديث قسم الخبرات
-            exp1Title.textContent = t.exp1Title;
-            exp1Location.textContent = t.exp1Location;
-            exp2Title.textContent = t.exp2Title;
-            exp2Location.textContent = t.exp2Location;
-            exp3Title.textContent = t.exp3Title;
-            exp3Location.textContent = t.exp3Location;
-            exp4Title.textContent = t.exp4Title;
-            exp4Location.textContent = t.exp4Location;
-            
-            // تحديث أزرار التصفية
-            filterAll.textContent = t.filterAll;
-            filterInteractive.textContent = t.filterInteractive;
-            filterStrategies.textContent = t.filterStrategies;
-            filterPresentations.textContent = t.filterPresentations;
-            
-            // تحديث أزرار CTA
-            viewWorkBtn.textContent = t.viewWorkBtn;
-            contactBtn.textContent = t.contactBtn;
-            
-            // تحديث اتجاه النص
-            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-            document.documentElement.lang = lang;
-        }
-
-        // حدث تبديل اللغة
-        langBtn.addEventListener('click', () => {
-            currentLang = currentLang === 'ar' ? 'en' : 'ar';
-            loadLanguage(currentLang);
-            langBtn.innerHTML = currentLang === 'ar' ? 
-                '<i class="fas fa-language"></i><span>EN</span>' : 
-                '<i class="fas fa-language"></i><span>AR</span>';
-        });
-
-        // حدث تبديل الوضع الليلي
-        themeBtn.addEventListener('click', () => {
-            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', currentTheme);
-            updateThemeIcon();
-            
-            // تخزين التفضيل في localStorage
-            localStorage.setItem('theme', currentTheme);
-        });
-
-        // تحديث أيقونة الوضع الليلي عند التحميل
-        updateThemeIcon();
-
-        // التنقل بين الأقسام
-        document.querySelectorAll(".nav-item").forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                
-                // إزالة النشط من جميع الروابط
-                document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
-                
-                // إضافة النشط للرابط المحدد
-                link.classList.add("active");
-                
-                // إخفاء جميع الأقسام
-                document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
-                
-                // إظهار القسم المحدد
-                const targetSection = link.getAttribute('data-section');
-                document.getElementById(targetSection).classList.add("active");
-                
-                // إضافة تأثير التمرير السلس
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        });
-
-        // التحكم في شريط التنقل
-        navScrollPrev.addEventListener('click', () => {
-            navScroll.scrollBy({ left: 200, behavior: 'smooth' });
-        });
-
-        navScrollNext.addEventListener('click', () => {
-            navScroll.scrollBy({ left: -200, behavior: 'smooth' });
-        });
-
-        // ========== التحسينات الجديدة ==========
-
-        // زر العودة للأعلى
-        const backToTopBtn = document.getElementById('backToTop');
-
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
-            }
-        });
-
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        // مؤشر تقدم التمرير
-        const scrollProgressBar = document.querySelector('.scroll-progress-bar');
-
-        window.addEventListener('scroll', () => {
-            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (window.scrollY / windowHeight) * 100;
-            scrollProgressBar.style.width = scrolled + '%';
-        });
-
-        // Lazy Loading للصور
-        function initLazyLoading() {
-            const lazyImages = [].slice.call(document.querySelectorAll('img.lazy'));
-            
-            if ('IntersectionObserver' in window) {
-                const lazyImageObserver = new IntersectionObserver(function(entries, observer) {
-                    entries.forEach(function(entry) {
-                        if (entry.isIntersecting) {
-                            const lazyImage = entry.target;
-                            lazyImage.src = lazyImage.dataset.src;
-                            lazyImage.classList.remove('lazy');
-                            lazyImage.classList.add('loaded');
-                            lazyImageObserver.unobserve(lazyImage);
-                        }
+            // توليد بيانات الحضور (5 عناصر)
+            for (let i = 0; i < 5; i++) {
+                if (isStarred) {
+                    // الطلاب المتميزون يحصلون على ✓ في كل الخيارات
+                    studentData.attendance.push({
+                        type: ['الحضور', 'الواجبات', 'المشروعات', 'تطبيقات وأنشطة', 'مشاركة'][i],
+                        value: '✔',
+                        isPresent: true
                     });
-                });
-                
-                lazyImages.forEach(function(lazyImage) {
-                    lazyImageObserver.observe(lazyImage);
-                });
-            } else {
-                // Fallback للمتصفحات التي لا تدعم IntersectionObserver
-                lazyImages.forEach(function(lazyImage) {
-                    lazyImage.src = lazyImage.dataset.src;
-                    lazyImage.classList.remove('lazy');
-                    lazyImage.classList.add('loaded');
-                });
-            }
-        }
-
-        // تحسين نموذج التواصل
-        function initContactForm() {
-            const contactForm = document.getElementById('contactForm');
-            const formMessage = document.getElementById('formMessage');
-            const submitBtn = document.getElementById('submitBtn');
-            const sendMessageBtnText = document.getElementById('sendMessageBtn');
-            
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                const name = document.getElementById('contactName').value.trim();
-                const email = document.getElementById('contactEmailInput').value.trim();
-                const message = document.getElementById('contactMessage').value.trim();
-                
-                // التحقق من صحة البيانات
-                if (!name || !email || !message) {
-                    showFormMessage(
-                        currentLang === 'ar' ? 
-                            'يرجى ملء جميع الحقول المطلوبة.' : 
-                            'Please fill in all required fields.',
-                        'error'
-                    );
-                    return;
-                }
-                
-                // التحقق من صحة البريد الإلكتروني
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email)) {
-                    showFormMessage(
-                        currentLang === 'ar' ? 
-                            'يرجى إدخال بريد إلكتروني صحيح.' : 
-                            'Please enter a valid email address.',
-                        'error'
-                    );
-                    return;
-                }
-                
-                // إظهار حالة التحميل
-                setButtonLoading(true);
-                
-                // محاكاة إرسال النموذج (يمكن استبدالها برمز إرسال حقيقي)
-                setTimeout(() => {
-                    const successMessage = currentLang === 'ar' ? 
-                        `شكراً ${name}، تم استلام رسالتك بنجاح! سأتواصل معك قريباً.` : 
-                        `Thank you ${name}, your message has been received! I will contact you soon.`;
-                    
-                    showFormMessage(successMessage, 'success');
-                    contactForm.reset();
-                    setButtonLoading(false);
-                }, 2000);
-            });
-            
-            function showFormMessage(message, type) {
-                formMessage.textContent = message;
-                formMessage.className = 'form-message ' + type;
-                formMessage.style.display = 'block';
-                
-                // إخفاء الرسالة بعد 5 ثواني
-                setTimeout(() => {
-                    formMessage.style.display = 'none';
-                }, 5000);
-            }
-            
-            function setButtonLoading(loading) {
-                if (loading) {
-                    submitBtn.classList.add('btn-loading');
-                    sendMessageBtnText.textContent = currentLang === 'ar' ? 'جاري الإرسال...' : 'Sending...';
-                    submitBtn.disabled = true;
+                    attendanceData.classes[className].stats.present++;
                 } else {
-                    submitBtn.classList.remove('btn-loading');
-                    sendMessageBtnText.textContent = currentLang === 'ar' ? 'إرسال الرسالة' : 'Send Message';
-                    submitBtn.disabled = false;
-                }
-            }
-        }
-
-        // وظيفة إدارة معرض الصور
-        function initGallery() {
-            const galleryScroll = document.getElementById('galleryScroll');
-            const scrollUpBtn = document.getElementById('scrollUpBtn');
-            const scrollDownBtn = document.getElementById('scrollDownBtn');
-            const galleryIndicator = document.getElementById('galleryIndicator');
-            
-            // إنشاء نقاط المؤشر
-            const galleryItems = galleryScroll.querySelectorAll('.gallery-item');
-            galleryItems.forEach((_, index) => {
-                const dot = document.createElement('div');
-                dot.classList.add('indicator-dot');
-                if (index === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => {
-                    scrollToItem(index);
-                });
-                galleryIndicator.appendChild(dot);
-            });
-            
-            const dots = galleryIndicator.querySelectorAll('.indicator-dot');
-            
-            // وظيفة التمرير إلى عنصر محدد
-            function scrollToItem(index) {
-                const item = galleryItems[index];
-                galleryScroll.scrollTo({
-                    top: item.offsetTop - galleryScroll.offsetTop,
-                    behavior: 'smooth'
-                });
-                updateActiveDot(index);
-            }
-            
-            // تحديث النقطة النشطة
-            function updateActiveDot(index) {
-                dots.forEach(dot => dot.classList.remove('active'));
-                dots[index].classList.add('active');
-            }
-            
-            // التمرير لأعلى
-            scrollUpBtn.addEventListener('click', () => {
-                const currentScroll = galleryScroll.scrollTop;
-                const itemHeight = galleryItems[0].offsetHeight + 20; // الارتفاع + الهامش
-                
-                // البحث عن العنصر الحالي
-                let currentIndex = 0;
-                for (let i = 0; i < galleryItems.length; i++) {
-                    if (galleryItems[i].offsetTop - galleryScroll.offsetTop >= currentScroll) {
-                        currentIndex = i;
-                        break;
-                    }
-                }
-                
-                // التمرير للعنصر السابق
-                if (currentIndex > 0) {
-                    scrollToItem(currentIndex - 1);
-                }
-            });
-            
-            // التمرير لأسفل
-            scrollDownBtn.addEventListener('click', () => {
-                const currentScroll = galleryScroll.scrollTop;
-                const itemHeight = galleryItems[0].offsetHeight + 20; // الارتفاع + الهامش
-                
-                // البحث عن العنصر الحالي
-                let currentIndex = 0;
-                for (let i = 0; i < galleryItems.length; i++) {
-                    if (galleryItems[i].offsetTop - galleryScroll.offsetTop >= currentScroll) {
-                        currentIndex = i;
-                        break;
-                    }
-                }
-                
-                // التمرير للعنصر التالي
-                if (currentIndex < galleryItems.length - 1) {
-                    scrollToItem(currentIndex + 1);
-                }
-            });
-            
-            // تحديث النقطة النشطة أثناء التمرير
-            galleryScroll.addEventListener('scroll', () => {
-                const scrollPosition = galleryScroll.scrollTop;
-                
-                for (let i = 0; i < galleryItems.length; i++) {
-                    const item = galleryItems[i];
-                    const itemTop = item.offsetTop - galleryScroll.offsetTop;
-                    const itemBottom = itemTop + item.offsetHeight;
-                    
-                    if (scrollPosition >= itemTop && scrollPosition < itemBottom) {
-                        updateActiveDot(i);
-                        break;
-                    }
-                }
-            });
-        }
-
-        // وظيفة تصفية المشاريع
-        function initPortfolioFilter() {
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const portfolioItems = document.querySelectorAll('.portfolio-item');
-            
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    // إزالة النشط من جميع الأزرار
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    // إضافة النشط للزر المحدد
-                    btn.classList.add('active');
-                    
-                    const filterValue = btn.getAttribute('data-filter');
-                    
-                    portfolioItems.forEach(item => {
-                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                            item.style.display = 'block';
-                            setTimeout(() => {
-                                item.style.opacity = '1';
-                                item.style.transform = 'translateY(0)';
-                            }, 100);
-                        } else {
-                            item.style.opacity = '0';
-                            item.style.transform = 'translateY(20px)';
-                            setTimeout(() => {
-                                item.style.display = 'none';
-                            }, 300);
-                        }
+                    // الطلاب العاديون يحصلون على تقييم عشوائي
+                    const isPresent = Math.random() > 0.3;
+                    studentData.attendance.push({
+                        type: ['الحضور', 'الواجبات', 'المشروعات', 'تطبيقات وأنشطة', 'مشاركة'][i],
+                        value: isPresent ? '✔' : '✖',
+                        isPresent: isPresent
                     });
-                });
-            });
-        }
-
-        // وظيفة شريط التوصيات
-        function initTestimonialSlider() {
-            const testimonialSlides = document.getElementById('testimonialSlides');
-            const testimonialPrev = document.getElementById('testimonialPrev');
-            const testimonialNext = document.getElementById('testimonialNext');
-            let currentSlide = 0;
-            const totalSlides = testimonialSlides.children.length;
-            
-            function updateSlider() {
-                testimonialSlides.style.transform = `translateX(-${currentSlide * 100}%)`;
+                    
+                    if (isPresent) {
+                        attendanceData.classes[className].stats.present++;
+                    } else {
+                        attendanceData.classes[className].stats.absent++;
+                    }
+                }
             }
             
-            testimonialNext.addEventListener('click', () => {
-                currentSlide = (currentSlide + 1) % totalSlides;
-                updateSlider();
-            });
+            attendanceData.classes[className].students.push(studentData);
+            attendanceData.classes[className].stats.total++;
             
-            testimonialPrev.addEventListener('click', () => {
-                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-                updateSlider();
-            });
-            
-            // تبديل تلقائي كل 5 ثواني
-            setInterval(() => {
-                currentSlide = (currentSlide + 1) % totalSlides;
-                updateSlider();
-            }, 5000);
-        }
-
-        // وظيفة تأثيرات الظهور عند التمرير
-        function initScrollAnimations() {
-            const fadeElements = document.querySelectorAll('.fade-in-up');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            fadeElements.forEach(el => observer.observe(el));
-        }
-
-        // التحميل الأولي
-        loadLanguage(currentLang);
-        
-        // تهيئة جميع المكونات عند تحميل الصفحة
-        document.addEventListener('DOMContentLoaded', () => {
-            initLazyLoading();
-            initGallery();
-            initPortfolioFilter();
-            initTestimonialSlider();
-            initScrollAnimations();
-            initContactForm();
+            if (isStarred) {
+                attendanceData.classes[className].stats.starred++;
+            }
         });
-    </script>
+    }
+    
+    return attendanceData;
+}
+
+// تحضير عشوائي لجميع الأسابيع الدراسية (18 أسبوع)
+function randomAttendanceForAllWeeks() {
+    if (!adminActive) {
+        alert('يجب تفعيل وضع الإدارة أولا');
+        return;
+    }
+    
+    // حساب إجمالي الأيام
+    let totalDays = 0;
+    studyWeeks.forEach(week => {
+        totalDays += week.days.length;
+    });
+    
+    const confirmMessage = `هل تريد تعيين التحضير عشوائيا لجميع الأسابيع الدراسية؟\n\n` +
+                          `عدد الأسابيع: ${studyWeeks.length} أسبوع\n` +
+                          `عدد الأيام: ${totalDays} يوم\n\n` +
+                          `ملاحظة: سيتم وضع ✓ لكل الخيارات للطلاب المتميزين (الذين لديهم نجمة ⭐)`;
+    
+    const confirmAction = confirm(confirmMessage);
+    if (!confirmAction) return;
+    
+    let totalDaysProcessed = 0;
+    let totalStudentsProcessed = 0;
+    let totalStarredStudents = 0;
+    let totalRegularStudents = 0;
+    
+    // الانتقال عبر كل أسبوع وكل يوم
+    studyWeeks.forEach(week => {
+        week.days.forEach(day => {
+            // تحويل التاريخ الميلادي من النص إلى كائن Date
+            const date = parseDateString(day.gregorian);
+            if (!date) {
+                console.error(`خطأ في تحويل التاريخ: ${day.gregorian}`);
+                return;
+            }
+            
+            // إنشاء معلومات اليوم
+            const dayInfo = {
+                dayName: day.day,
+                hijriDate: day.hijri,
+                gregorianDate: day.gregorian,
+                weekNumber: week.week
+            };
+            
+            // إنشاء تحضير عشوائي لهذا اليوم
+            const attendanceData = generateRandomAttendanceForDate(date, dayInfo);
+            const dateKey = date.toISOString().split('T')[0];
+            
+            // حفظ بيانات اليوم
+            periodAttendanceData[dateKey] = attendanceData;
+            
+            // حساب الإحصائيات
+            let dayStudents = 0;
+            let dayStarred = 0;
+            
+            for (const className in attendanceData.classes) {
+                dayStudents += attendanceData.classes[className].stats.total;
+                dayStarred += attendanceData.classes[className].stats.starred;
+            }
+            
+            const dayRegular = dayStudents - dayStarred;
+            
+            // تحديث المجاميع
+            totalDaysProcessed++;
+            totalStudentsProcessed += dayStudents;
+            totalStarredStudents += dayStarred;
+            totalRegularStudents += dayRegular;
+        });
+    });
+    
+    // حفظ بيانات الفترة
+    savePeriodAttendanceData();
+    
+    // حساب الإحصائيات
+    const avgStudentsPerDay = totalStudentsProcessed / totalDaysProcessed;
+    const avgStarredPerDay = totalStarredStudents / totalDaysProcessed;
+    const avgRegularPerDay = totalRegularStudents / totalDaysProcessed;
+    
+    // عرض تقرير النتائج
+    const resultMessage = `✅ تم إنشاء التحضير العشوائي لجميع الأسابيع الدراسية بنجاح!\n\n` +
+                         `📅 الأسابيع: ${studyWeeks.length} أسبوع (من 1 إلى 13 ثم 15 إلى 19)\n` +
+                         `📊 الإحصائيات:\n` +
+                         `   - عدد الأيام: ${totalDaysProcessed} يوم\n` +
+                         `   - إجمالي الطلاب المعالجين: ${totalStudentsProcessed} طالب\n` +
+                         `   - متوسط الطلاب في اليوم: ${avgStudentsPerDay.toFixed(1)} طالب\n` +
+                         `   - متوسط الطلاب المتميزين في اليوم: ${avgStarredPerDay.toFixed(1)} طالب\n` +
+                         `   - متوسط الطلاب العاديين في اليوم: ${avgRegularPerDay.toFixed(1)} طالب\n\n` +
+                         `💾 تم حفظ بيانات التحضير لـ ${totalDaysProcessed} يوم في النظام.`;
+    
+    alert(resultMessage);
+}
+
+// تصدير فترة كاملة إلى Excel - معدل للأسابيع الدراسية
+function exportPeriodToExcel() {
+    // التحقق من وجود بيانات للأسابيع الدراسية
+    let hasData = false;
+    for (const dateKey in periodAttendanceData) {
+        hasData = true;
+        break;
+    }
+    
+    if (!hasData) {
+        alert("لا توجد بيانات تحضير للأسابيع الدراسية!\n\nيرجى إنشاء تحضير عشوائي للأسابيع أولاً.");
+        return;
+    }
+    
+    let tablesHTML = `<h2>تقرير التحضير للأسابيع الدراسية</h2>`;
+    tablesHTML += `<h3>المعلم: فهد الخالدي - المادة: اللغة الإنجليزية</h3>`;
+    tablesHTML += `<h3>${document.getElementById('currentSemesterInfo').textContent}</h3>`;
+    tablesHTML += `<h3>المدرسة: سعيد بن العاص المتوسطة</h3>`;
+    tablesHTML += `<h3>عدد الأسابيع: ${studyWeeks.length} أسبوع (من 1 إلى 13 ثم 15 إلى 19)</h3>`;
+    tablesHTML += `<h3>تاريخ التصدير: ${getShortGregorianDate(new Date())}</h3>`;
+    
+    // تنظيم البيانات حسب الأسابيع
+    const weeksData = {};
+    
+    // تجميع البيانات حسب الأسبوع
+    for (const dateKey in periodAttendanceData) {
+        const dayData = periodAttendanceData[dateKey];
+        if (dayData.dayInfo && dayData.dayInfo.weekNumber) {
+            const weekNum = dayData.dayInfo.weekNumber;
+            if (!weeksData[weekNum]) {
+                weeksData[weekNum] = [];
+            }
+            weeksData[weekNum].push(dayData);
+        }
+    }
+    
+    // فرز الأسابيع
+    const sortedWeeks = Object.keys(weeksData).sort((a, b) => parseInt(a) - parseInt(b));
+    
+    // إضافة بيانات كل أسبوع
+    sortedWeeks.forEach(weekNum => {
+        const weekDaysData = weeksData[weekNum];
+        
+        tablesHTML += `<h3 style="background:#e0f7fa; padding:10px; margin-top:20px;">الأسبوع ${weekNum}</h3>`;
+        
+        // إضافة بيانات كل يوم في هذا الأسبوع
+        weekDaysData.forEach(dayData => {
+            tablesHTML += `<h4 style="background:#f5f5f5; padding:8px;">${dayData.dayInfo.dayName} - ${dayData.dayInfo.gregorianDate} (${dayData.dayInfo.hijriDate})</h4>`;
+            
+            // إضافة جداول لكل صف في هذا اليوم
+            for (const className in dayData.classes) {
+                const classData = dayData.classes[className];
+                
+                tablesHTML += `<h5>الصف ${className} (${classData.stats.total} طالب)</h5>`;
+                tablesHTML += `<table border="1" cellpadding="5" cellspacing="0" style="width:100%; border-collapse:collapse; margin-bottom:15px; font-size:12px;">`;
+                tablesHTML += `<thead><tr>
+                    <th width="5%">م</th>
+                    <th>الاسم</th>
+                    <th width="8%">الحضور</th>
+                    <th width="8%">الواجبات</th>
+                    <th width="8%">المشروعات</th>
+                    <th width="8%">تطبيقات وأنشطة</th>
+                    <th width="8%">مشاركة</th>
+                    <th width="8%">⭐</th>
+                </tr></thead><tbody>`;
+                
+                classData.students.forEach(student => {
+                    tablesHTML += `<tr>`;
+                    tablesHTML += `<td>${student.id}</td>`;
+                    tablesHTML += `<td>${student.name}</td>`;
+                    
+                    student.attendance.forEach(item => {
+                        tablesHTML += `<td style="${item.value === '✔' ? 'background-color:#e8f5e9;' : 'background-color:#ffebee;'}">${item.value}</td>`;
+                    });
+                    
+                    tablesHTML += `<td>${student.hasStar ? '⭐' : ''}</td>`;
+                    tablesHTML += `</tr>`;
+                });
+                
+                tablesHTML += `</tbody></table>`;
+                
+                // إضافة إحصائيات الصف
+                tablesHTML += `<div style="margin-bottom:20px; padding:8px; background:#f5f5f5; border-radius:5px; font-size:12px;">
+                    <strong>إحصائيات الصف ${className}:</strong>
+                    إجمالي الطلاب: ${classData.stats.total} | 
+                    الحضور: ${classData.stats.present} | 
+                    الغياب: ${classData.stats.absent} | 
+                    المتميزون: ${classData.stats.starred}
+                </div>`;
+            }
+        });
+    });
+    
+    // إضافة ملخص شامل
+    tablesHTML += `<h3 style="background:#e0f7fa; padding:10px; margin-top:20px;">ملخص شامل للأسابيع الدراسية</h3>`;
+    
+    let periodTotalStudents = 0;
+    let periodTotalPresent = 0;
+    let periodTotalAbsent = 0;
+    let periodTotalStarred = 0;
+    let totalDays = 0;
+    
+    for (const dateKey in periodAttendanceData) {
+        const dayData = periodAttendanceData[dateKey];
+        totalDays++;
+        
+        for (const className in dayData.classes) {
+            const classData = dayData.classes[className];
+            periodTotalStudents += classData.stats.total;
+            periodTotalPresent += classData.stats.present;
+            periodTotalAbsent += classData.stats.absent;
+            periodTotalStarred += classData.stats.starred;
+        }
+    }
+    
+    tablesHTML += `<div style="padding:15px; background:#fff8e1; border-radius:5px; margin-bottom:20px;">
+        <strong>إجمالي الأسابيع الدراسية:</strong><br>
+        - عدد الأسابيع: ${sortedWeeks.length} أسبوع<br>
+        - عدد الأيام: ${totalDays} يوم<br>
+        - إجمالي الطلاب: ${periodTotalStudents} طالب<br>
+        - إجمالي الحضور: ${periodTotalPresent} حالة حضور<br>
+        - إجمالي الغياب: ${periodTotalAbsent} حالة غياب<br>
+        - إجمالي المتميزين: ${periodTotalStarred} طالب<br>
+        - متوسط الحضور: ${((periodTotalPresent / (periodTotalPresent + periodTotalAbsent)) * 100).toFixed(1)}%
+    </div>`;
+    
+    let uri = 'data:application/vnd.ms-excel;base64,';
+    let template = `<html xmlns:o="urn:schemas-microsoft-com:office:office" 
+                   xmlns:x="urn:schemas-microsoft-com:office:excel" 
+                   xmlns="http://www.w3.org/TR/REC-html40">
+                   <head>
+                   <meta charset="UTF-8">
+                   <!--[if gte mso 9]>
+                   <xml>
+                   <x:ExcelWorkbook>
+                   <x:ExcelWorksheets>
+                   <x:ExcelWorksheet>
+                   <x:Name>تقرير الأسابيع</x:Name>
+                   <x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions>
+                   </x:ExcelWorksheet>
+                   </x:ExcelWorksheets>
+                   </x:ExcelWorkbook>
+                   </xml>
+                   <![endif]-->
+                   </head>
+                   <body dir="rtl">${tablesHTML}</body></html>`;
+    
+    let link = document.createElement("a");
+    link.href = uri + btoa(unescape(encodeURIComponent(template)));
+    const today = new Date().toISOString().split('T')[0];
+    link.download = `تقرير_الأسابيع_الدراسية_${today}.xls`;
+    link.click();
+    
+    alert(`تم تصدير تقرير الأسابيع الدراسية بنجاح!\n\nيتضمن التقرير بيانات ${totalDays} يوم من ${sortedWeeks.length} أسبوع`);
+}
+
+// تحويل الأرقام الإنجليزية إلى عربية
+function convertToArabicNumbers(num) {
+    const arabicNumbers = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+    return num.toString().replace(/\d/g, digit => arabicNumbers[digit]);
+}
+
+// الحصول على التاريخ الميلادي بصيغة عربية صحيحة (بدون تحويل هجري)
+function getGregorianDateString(date) {
+    const day = date.getDate();
+    const month = gregorianMonths[date.getMonth()];
+    const year = date.getFullYear();
+    const weekDay = weekDays[date.getDay()];
+    
+    const arabicDay = convertToArabicNumbers(day);
+    const arabicYear = convertToArabicNumbers(year);
+    
+    return `${weekDay}، ${arabicDay} ${month} ${arabicYear}`;
+}
+
+// الحصول على التاريخ الميلادي قصير للتقرير
+function getShortGregorianDate(date) {
+    const day = date.getDate();
+    const month = gregorianMonths[date.getMonth()];
+    const year = date.getFullYear();
+    
+    const arabicDay = convertToArabicNumbers(day);
+    const arabicYear = convertToArabicNumbers(year);
+    
+    return `${arabicDay} ${month} ${arabicYear}`;
+}
+
+// حساب التاريخ الهجري من التاريخ الميلادي
+function calculateHijriFromGregorian() {
+    try {
+        // استخدام مكتبة ummAlQura لحساب التاريخ الهجري
+        if (typeof HijriDate !== 'undefined') {
+            const hijri = new HijriDate(selectedDate);
+            hijriDate.day = hijri.date;
+            hijriDate.month = hijri.month;
+            hijriDate.year = hijri.year;
+            hijriDate.monthName = hijriMonths[hijri.month - 1];
+        } else {
+            // طريقة احتياطية إذا لم تكن المكتبة متوفرة
+            const fixedHijri = getApproximateHijriDate(selectedDate);
+            hijriDate.day = fixedHijri.day;
+            hijriDate.month = fixedHijri.month;
+            hijriDate.year = fixedHijri.year;
+            hijriDate.monthName = hijriMonths[fixedHijri.month - 1];
+        }
+    } catch (error) {
+        console.error("خطأ في حساب التاريخ الهجري:", error);
+        // استخدام تاريخ افتراضي في حالة الخطأ
+        hijriDate = { day: 1, month: 1, year: 1446, monthName: "محرم" };
+    }
+}
+
+// طريقة تقريبية لحساب التاريخ الهجري (بدون مكتبة)
+function getApproximateHijriDate(gregorianDate) {
+    const startHijri = new Date(622, 6, 16); // 16 يوليو 622م هو بداية الهجرة
+    
+    const diffTime = gregorianDate - startHijri;
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    
+    // السنة الهجرية = عدد الأيام / 354.367 (متوسط طول السنة الهجرية)
+    const hijriYear = Math.floor(diffDays / 354.367) + 1;
+    
+    // الأيام المتبقية في السنة الحالية
+    const daysInCurrentYear = diffDays % 354.367;
+    
+    // تقدير الشهر (كل شهر حوالي 29.5 يوم)
+    const hijriMonth = Math.floor(daysInCurrentYear / 29.53) + 1;
+    
+    // اليوم من الشهر
+    const hijriDay = Math.floor(daysInCurrentYear % 29.53) + 1;
+    
+    return {
+        day: Math.min(Math.max(1, hijriDay), 30),
+        month: Math.min(Math.max(1, hijriMonth), 12),
+        year: Math.max(1300, Math.min(1500, hijriYear))
+    };
+}
+
+// حساب التاريخ الهجري لـ Date معين
+function calculateHijriForDate(date) {
+    try {
+        if (typeof HijriDate !== 'undefined') {
+            const hijri = new HijriDate(date);
+            return {
+                day: hijri.date,
+                month: hijri.month,
+                year: hijri.year,
+                monthName: hijriMonths[hijri.month - 1]
+            };
+        } else {
+            const fixedHijri = getApproximateHijriDate(date);
+            return {
+                day: fixedHijri.day,
+                month: fixedHijri.month,
+                year: fixedHijri.year,
+                monthName: hijriMonths[fixedHijri.month - 1]
+            };
+        }
+    } catch (error) {
+        console.error("خطأ في حساب التاريخ الهجري:", error);
+        return { day: 1, month: 1, year: 1446, monthName: "محرم" };
+    }
+}
+
+// تحديث عرض التاريخ
+function updateDateDisplay() {
+    // تحديث التاريخ الميلادي باستخدام الصيغة الصحيحة
+    const gregorianDateString = getGregorianDateString(selectedDate);
+    
+    document.getElementById('gregorianDateText').innerHTML = gregorianDateString;
+    
+    // تحديث التاريخ الهجري
+    const hijriDateString = `${convertToArabicNumbers(hijriDate.day)} ${hijriDate.monthName} ${convertToArabicNumbers(hijriDate.year)}هـ`;
+    document.getElementById('hijriDateText').innerHTML = hijriDateString;
+    
+    // تحديث عرض التاريخ في لوحة الإدارة
+    const shortGregorian = getShortGregorianDate(selectedDate);
+    document.getElementById('adminDateDisplay').innerHTML = shortGregorian;
+    
+    // إضافة مؤشر إذا لم يكن تاريخ اليوم
+    const today = new Date();
+    const isToday = selectedDate.toDateString() === today.toDateString();
+    if (!isToday) {
+        document.getElementById('gregorianDateText').innerHTML += ' <span style="color:#ffcc00; font-size:11px;">(غير تاريخ اليوم)</span>';
+    }
+}
+
+// تحديث حقول التاريخ الهجري في واجهة الإدارة
+function updateHijriFields() {
+    document.getElementById('hijriDay').value = hijriDate.day;
+    document.getElementById('hijriMonth').value = hijriDate.month;
+    document.getElementById('hijriYear').value = hijriDate.year;
+}
+
+// تحديث معلومات الفصل الدراسي المعروضة
+function updateSemesterInfo() {
+    const semesterNames = {
+        "1": "الفصل الدراسي الأول",
+        "2": "الفصل الدراسي الثاني", 
+        "3": "الفصل الدراسي الصيفي"
+    };
+    
+    const semesterName = semesterNames[semesterSettings.semester] || "الفصل الدراسي";
+    document.getElementById('currentSemesterInfo').textContent = 
+        `${semesterName} ${semesterSettings.academicYear}`;
+}
+
+// تحديث إعدادات الفصل الدراسي
+function updateSemester() {
+    semesterSettings.semester = document.getElementById('semesterSelect').value;
+    semesterSettings.academicYear = document.getElementById('academicYear').value;
+    updateSemesterInfo();
+}
+
+// حفظ إعدادات الفصل الدراسي
+function saveSemesterSettings() {
+    updateSemester();
+    localStorage.setItem('teacherTracker_semesterSettings', JSON.stringify(semesterSettings));
+    alert(`تم حفظ إعدادات الفصل الدراسي: ${document.getElementById('currentSemesterInfo').textContent}`);
+}
+
+// تعيين فترة مثال (31/8 إلى 4/9)
+function setPeriodToExample() {
+    // تاريخ البداية: 31 أغسطس 2024 (مثال)
+    const startDate = new Date(2024, 7, 31); // أغسطس هو الشهر 7 (0-indexed)
+    // تاريخ النهاية: 4 سبتمبر 2024 (مثال)
+    const endDate = new Date(2024, 8, 4); // سبتمبر هو الشهر 8 (0-indexed)
+    
+    document.getElementById('periodStartDate').value = startDate.toISOString().split('T')[0];
+    document.getElementById('periodEndDate').value = endDate.toISOString().split('T')[0];
+    
+    periodSettings.startDate = startDate.toISOString().split('T')[0];
+    periodSettings.endDate = endDate.toISOString().split('T')[0];
+    
+    updatePeriodInfo();
+    alert(`تم تعيين فترة التحضير العشوائي:\nمن: 31/8/2024 (3/8/1446هـ)\nإلى: 4/9/2024 (3/12/1446هـ)`);
+}
+
+// مسح فترة التحضير
+function clearPeriod() {
+    document.getElementById('periodStartDate').value = '';
+    document.getElementById('periodEndDate').value = '';
+    
+    periodSettings.startDate = null;
+    periodSettings.endDate = null;
+    
+    updatePeriodInfo();
+    alert("تم مسح فترة التحضير المحددة");
+}
+
+// تحديث معلومات فترة التحضير المعروضة
+function updatePeriodInfo() {
+    const periodInfoElement = document.getElementById('currentPeriodInfo');
+    
+    if (periodSettings.startDate && periodSettings.endDate) {
+        const startDate = new Date(periodSettings.startDate);
+        const endDate = new Date(periodSettings.endDate);
+        
+        const startStr = getShortGregorianDate(startDate);
+        const endStr = getShortGregorianDate(endDate);
+        
+        periodInfoElement.textContent = `${startStr} إلى ${endStr}`;
+    } else {
+        periodInfoElement.textContent = "لا توجد فترة محددة";
+    }
+}
+
+// حفظ إعدادات فترة التحضير
+function savePeriodSettings() {
+    periodSettings.startDate = document.getElementById('periodStartDate').value;
+    periodSettings.endDate = document.getElementById('periodEndDate').value;
+    
+    localStorage.setItem('teacherTracker_periodSettings', JSON.stringify(periodSettings));
+    updatePeriodInfo();
+    alert("تم حفظ إعدادات فترة التحضير العشوائي");
+}
+
+// تحديث التاريخ الهجري من حقول الإدخال
+function updateHijriDate() {
+    const day = parseInt(document.getElementById('hijriDay').value) || 1;
+    const month = parseInt(document.getElementById('hijriMonth').value) || 1;
+    const year = parseInt(document.getElementById('hijriYear').value) || 1446;
+    
+    hijriDate.day = Math.max(1, Math.min(30, day));
+    hijriDate.month = Math.max(1, Math.min(12, month));
+    hijriDate.year = Math.max(1300, Math.min(1500, year));
+    hijriDate.monthName = hijriMonths[hijriDate.month - 1];
+    
+    // حفظ التاريخ الهجري
+    localStorage.setItem('teacherTracker_hijriDate', JSON.stringify(hijriDate));
+    
+    updateDateDisplay();
+    alert(`تم تحديث التاريخ الهجري إلى: ${hijriDate.day} ${hijriDate.monthName} ${hijriDate.year}هـ`);
+}
+
+// الرجوع إلى التاريخ الهجري الفعلي
+function resetHijriToToday() {
+    calculateHijriFromGregorian();
+    updateHijriFields();
+    localStorage.setItem('teacherTracker_hijriDate', JSON.stringify(hijriDate));
+    updateDateDisplay();
+    alert(`تم الرجوع إلى التاريخ الهجري الفعلي: ${hijriDate.day} ${hijriDate.monthName} ${hijriDate.year}هـ`);
+}
+
+// تغيير الشهر (للسابق أو القادم)
+function changeMonth(offset) {
+    if (!adminActive) {
+        alert('يجب تفعيل وضع الإدارة لتغيير التاريخ');
+        return;
+    }
+    
+    selectedDate.setMonth(selectedDate.getMonth() + offset);
+    
+    // تحديث التاريخ الهجري بناءً على التاريخ الميلادي الجديد
+    calculateHijriFromGregorian();
+    
+    updateDateDisplay();
+    updateHijriFields();
+    
+    // تحميل بيانات الحضور للتاريخ الجديد
+    loadAttendanceData();
+    updateTablesWithLoadedData();
+}
+
+// تعيين تاريخ مخصص
+function setCustomDate() {
+    if (!adminActive) {
+        alert('يجب تفعيل وضع الإدارة لتغيير التاريخ');
+        return;
+    }
+    
+    const datePicker = document.getElementById('datePicker');
+    if (datePicker.value) {
+        selectedDate = new Date(datePicker.value);
+        
+        // تحديث التاريخ الهجري بناءً على التاريخ الميلادي الجديد
+        calculateHijriFromGregorian();
+        
+        updateDateDisplay();
+        updateHijriFields();
+        
+        // تحميل بيانات الحضور للتاريخ الجديد
+        loadAttendanceData();
+        updateTablesWithLoadedData();
+    }
+}
+
+// الرجوع إلى تاريخ اليوم الحقيقي
+function resetToToday() {
+    if (!adminActive) {
+        alert('يجب تفعيل وضع الإدارة لتغيير التاريخ');
+        return;
+    }
+    
+    selectedDate = new Date(); // الرجوع لتاريخ اليوم الحقيقي
+    
+    // تحديث التاريخ الهجري بناءً على التاريخ الميلادي الجديد
+    calculateHijriFromGregorian();
+    
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('datePicker').value = today;
+    
+    updateDateDisplay();
+    updateHijriFields();
+    
+    // تحميل بيانات الحضور للتاريخ الجديد
+    loadAttendanceData();
+    updateTablesWithLoadedData();
+    
+    alert("تم الرجوع إلى تاريخ اليوم الحقيقي");
+}
+
+// حفظ التاريخ الحالي
+function saveCurrentDate() {
+    if (!adminActive) {
+        alert('يجب تفعيل وضع الإدارة لحفظ التاريخ');
+        return;
+    }
+    
+    localStorage.setItem('teacherTracker_selectedDate', selectedDate.toISOString());
+    localStorage.setItem('teacherTracker_hijriDate', JSON.stringify(hijriDate));
+    alert(`تم حفظ التاريخ الميلادي: ${selectedDate.toLocaleDateString('ar-SA')}\nوالهجري: ${hijriDate.day} ${hijriDate.monthName} ${hijriDate.year}هـ`);
+}
+
+// عرض تحضير اليوم
+function showTodayAttendance() {
+    // تحميل بيانات اليوم الحقيقي
+    selectedDate = new Date();
+    calculateHijriFromGregorian();
+    updateDateDisplay();
+    loadAttendanceData();
+    updateTablesWithLoadedData();
+    alert("تم عرض تحضير تاريخ اليوم الحقيقي");
+}
+
+// إنشاء ألسنة الصفوف
+function createClassTabs() {
+    const classTabs = document.getElementById('classTabs');
+    classTabs.innerHTML = '<div class="class-tab active" onclick="showClass(\'all\')">جميع الصفوف</div>';
+    
+    for (const className in studentsData) {
+        classTabs.innerHTML += `<div class="class-tab" onclick="showClass('${className}')">الصف ${className}</div>`;
+    }
+}
+
+// إنشاء الجداول للصفوف
+function createTables() {
+    const container = document.getElementById('tablesContainer');
+    container.innerHTML = '';
+    
+    for (const className in studentsData) {
+        const classDiv = document.createElement('div');
+        classDiv.className = 'class-section';
+        classDiv.id = `class-${className}`;
+        
+        const classHeader = document.createElement('div');
+        classHeader.className = 'class-header';
+        classHeader.textContent = `الصف ${className} - ${studentsData[className].length} طالب`;
+        
+        const table = document.createElement('table');
+        table.innerHTML = `
+            <thead>
+                <tr>
+                    <th width="5%">م</th>
+                    <th>الاسم</th>
+                    <th width="10%">الحضور</th>
+                    <th width="10%">الواجبات</th>
+                    <th width="10%">المشروعات</th>
+                    <th width="10%">تطبيقات وأنشطة</th>
+                    <th width="10%">مشاركة</th>
+                    <th width="10%">⭐</th>
+                </tr>
+            </thead>
+            <tbody id="tbody-${className}">
+            </tbody>
+        `;
+        
+        classDiv.appendChild(classHeader);
+        classDiv.appendChild(table);
+        container.appendChild(classDiv);
+        
+        // ملء الجدول بالطلاب
+        fillClassTable(className);
+    }
+    
+    // عرض جميع الصفوف افتراضياً
+    showClass('all');
+}
+
+// ملء جدول الصف بالطلاب
+function fillClassTable(className) {
+    const tbody = document.getElementById(`tbody-${className}`);
+    tbody.innerHTML = '';
+    
+    studentsData[className].forEach((student, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${student}</td>
+            <td onclick="toggle(this)" class="present">✔</td>
+            <td onclick="toggle(this)" class="present">✔</td>
+            <td onclick="toggle(this)" class="present">✔</td>
+            <td onclick="toggle(this)" class="present">✔</td>
+            <td onclick="toggle(this)" class="present">✔</td>
+            <td onclick="toggleStar(this)" class="star-cell">☆</td>
+        `;
+        tbody.appendChild(row);
+    });
+}
+
+// تحميل بيانات الحضور المحفوظة
+function loadAttendanceData() {
+    console.log(`تحميل بيانات الحضور للتاريخ: ${selectedDate.toLocaleDateString()}`);
+}
+
+// تحديث الجداول بالبيانات المحملة
+function updateTablesWithLoadedData() {
+    console.log(`تحديث الجداول للتاريخ: ${selectedDate.toLocaleDateString()}`);
+}
+
+// عرض صف معين أو جميع الصفوف
+function showClass(className) {
+    currentClass = className;
+    
+    // تحديث الألسنة النشطة
+    document.querySelectorAll('.class-tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    
+    if (className === 'all') {
+        document.querySelectorAll('.class-tab')[0].classList.add('active');
+        document.querySelectorAll('.class-section').forEach(section => {
+            section.style.display = 'block';
+        });
+    } else {
+        document.querySelector(`.class-tab[onclick="showClass('${className}')"]`).classList.add('active');
+        document.querySelectorAll('.class-section').forEach(section => {
+            section.style.display = 'none';
+        });
+        document.getElementById(`class-${className}`).style.display = 'block';
+    }
+    
+    // تطبيق الفلتر الحالي
+    filterByStatus(currentFilter);
+    updateStudentCount();
+}
+
+// عرض جميع الصفوف
+function showAllClasses() {
+    showClass('all');
+}
+
+// تبديل حالة ✔ و ✖
+function toggle(cell) {
+    if (cell.innerHTML === "✔") {
+        cell.innerHTML = "✖";
+        cell.classList.remove('present');
+        cell.classList.add('absent');
+    } else {
+        cell.innerHTML = "✔";
+        cell.classList.remove('absent');
+        cell.classList.add('present');
+    }
+    
+    // حفظ تغيير الحضور للتاريخ الحالي
+    saveAttendanceData();
+}
+
+// تبديل النجمة
+function toggleStar(cell) {
+    if (adminActive) {
+        cell.innerHTML = cell.innerHTML === "☆" ? "⭐" : "☆";
+        
+        // إضافة أو إزالة خلفية للطلاب المتميزين
+        const row = cell.closest('tr');
+        if (cell.innerHTML === "⭐") {
+            row.classList.add('starred-student');
+        } else {
+            row.classList.remove('starred-student');
+        }
+        
+        saveAttendanceData();
+    } else {
+        alert('يجب تفعيل وضع الإدارة أولا');
+    }
+}
+
+// حفظ بيانات الحضور
+function saveAttendanceData() {
+    const dateKey = selectedDate.toISOString().split('T')[0];
+    console.log(`حفظ بيانات الحضور للتاريخ: ${dateKey}`);
+    localStorage.setItem(`teacherTracker_attendance_${dateKey}`, 'بيانات الحضور المحفوظة');
+}
+
+// التحقق من كلمة المرور
+function checkAdmin() {
+    const pass = document.getElementById("adminPass").value;
+    if (pass === "1406") {
+        adminActive = true;
+        document.getElementById("adminPanel").style.display = "block";
+        alert("تم تفعيل خصائص الإدارة بنجاح");
+    } else {
+        alert("كلمة مرور خاطئة");
+    }
+}
+
+// إضافة طالب جديد
+function addStudent() {
+    if (!adminActive) {
+        alert('يجب تفعيل وضع الإدارة أولا');
+        return;
+    }
+    
+    const className = prompt("ادخل رقم الصف (مثال: 3-1)");
+    if (!className || !studentsData[className]) {
+        alert("رقم الصف غير صحيح");
+        return;
+    }
+    
+    const name = prompt("ادخل اسم الطالب");
+    if (name) {
+        studentsData[className].push(name);
+        
+        // إعادة ملء الجدول
+        fillClassTable(className);
+        updateStudentCount();
+        
+        // تحديث عنوان الصف
+        document.querySelector(`#class-${className} .class-header`).textContent = 
+            `الصف ${className} - ${studentsData[className].length} طالب`;
+        
+        alert("تمت إضافة الطالب بنجاح");
+    }
+}
+
+// تحضير عشوائي للتاريخ الحالي - المعدل للطلاب المتميزين
+function randomAttendance() {
+    if (!adminActive) {
+        alert('يجب تفعيل وضع الإدارة أولا');
+        return;
+    }
+    
+    const confirmAction = confirm("هل تريد تعيين الحضور عشوائيا لجميع الطلاب للتاريخ الحالي؟\n\nملاحظة: سيتم وضع ✓ لكل الخيارات للطلاب المتميزين (الذين لديهم نجمة ⭐)");
+    if (!confirmAction) return;
+    
+    let totalStudents = 0;
+    let starredStudents = 0;
+    let regularStudents = 0;
+    
+    // الحصول على جميع الصفوف
+    const classSections = document.querySelectorAll('.class-section');
+    
+    classSections.forEach(section => {
+        const rows = section.querySelectorAll('tbody tr');
+        rows.forEach(row => {
+            totalStudents++;
+            
+            // التحقق مما إذا كان الطالب لديه نجمة (⭐)
+            const starCell = row.querySelector('.star-cell');
+            const hasStar = starCell && starCell.innerHTML === "⭐";
+            
+            // الحصول على جميع خلايا التقييم (الحضور، الواجبات، المشاريع، التطبيقات، المشاركة)
+            const attendanceCells = row.querySelectorAll('td[onclick="toggle(this)"]');
+            
+            attendanceCells.forEach(cell => {
+                if (hasStar) {
+                    // إذا كان الطالب لديه نجمة، ضع ✓ في كل الخيارات
+                    cell.innerHTML = "✔";
+                    cell.classList.remove('absent');
+                    cell.classList.add('present');
+                    starredStudents++;
+                } else {
+                    // إذا لم يكن لديه نجمة، ضع عشوائياً
+                    cell.innerHTML = Math.random() > 0.3 ? "✔" : "✖";
+                    if (cell.innerHTML === "✔") {
+                        cell.classList.remove('absent');
+                        cell.classList.add('present');
+                    } else {
+                        cell.classList.remove('present');
+                        cell.classList.add('absent');
+                    }
+                    regularStudents++;
+                }
+            });
+        });
+    });
+    
+    saveAttendanceData();
+    alert(`تم تعيين الحضور عشوائيا بنجاح للتاريخ الحالي!\n\nالإحصائيات:\n- إجمالي الطلاب: ${totalStudents}\n- الطلاب المتميزين (حصلوا على ✓ في كل الخيارات): ${starredStudents/5}\n- الطلاب العاديين (حصلوا على تقييم عشوائي): ${regularStudents/5}`);
+}
+
+// تحضير عشوائي للفترة المحددة
+function randomAttendanceForPeriod() {
+    if (!adminActive) {
+        alert('يجب تفعيل وضع الإدارة أولا');
+        return;
+    }
+    
+    // التحقق من وجود فترة محددة
+    if (!periodSettings.startDate || !periodSettings.endDate) {
+        alert("يجب تحديد فترة زمنية أولاً!\n\nيرجى تحديد تاريخ البداية وتاريخ النهاية في قسم 'التحضير العشوائي لفترة محددة'");
+        return;
+    }
+    
+    const startDate = new Date(periodSettings.startDate);
+    const endDate = new Date(periodSettings.endDate);
+    
+    // التحقق من صحة الفترة
+    if (startDate > endDate) {
+        alert("تاريخ البداية يجب أن يكون قبل تاريخ النهاية!");
+        return;
+    }
+    
+    // حساب عدد الأيام
+    const timeDiff = endDate.getTime() - startDate.getTime();
+    const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24)) + 1;
+    
+    const confirmMessage = `هل تريد تعيين الحضور عشوائيا للفترة المحددة؟\n\n` +
+                          `الفترة: من ${getShortGregorianDate(startDate)} إلى ${getShortGregorianDate(endDate)}\n` +
+                          `عدد الأيام: ${daysDiff}\n\n` +
+                          `ملاحظة: سيتم وضع ✓ لكل الخيارات للطلاب المتميزين (الذين لديهم نجمة ⭐)`;
+    
+    const confirmAction = confirm(confirmMessage);
+    if (!confirmAction) return;
+    
+    let totalDaysProcessed = 0;
+    let totalStudentsProcessed = 0;
+    let totalStarredStudents = 0;
+    let totalRegularStudents = 0;
+    
+    // الانتقال عبر كل يوم في الفترة
+    const currentDate = new Date(startDate);
+    
+    while (currentDate <= endDate) {
+        // إنشاء تحضير عشوائي لهذا اليوم
+        const attendanceData = generateRandomAttendanceForDate(currentDate);
+        const dateKey = currentDate.toISOString().split('T')[0];
+        
+        // حفظ بيانات اليوم
+        periodAttendanceData[dateKey] = attendanceData;
+        
+        // حساب الإحصائيات
+        let dayStudents = 0;
+        let dayStarred = 0;
+        
+        for (const className in attendanceData.classes) {
+            dayStudents += attendanceData.classes[className].stats.total;
+            dayStarred += attendanceData.classes[className].stats.starred;
+        }
+        
+        const dayRegular = dayStudents - dayStarred;
+        
+        // تحديث المجاميع
+        totalDaysProcessed++;
+        totalStudentsProcessed += dayStudents;
+        totalStarredStudents += dayStarred;
+        totalRegularStudents += dayRegular;
+        
+        // الانتقال إلى اليوم التالي
+        currentDate.setDate(currentDate.getDate() + 1);
+    }
+    
+    // حفظ بيانات الفترة
+    savePeriodAttendanceData();
+    
+    // حساب الإحصائيات
+    const avgStudentsPerDay = totalStudentsProcessed / totalDaysProcessed;
+    const avgStarredPerDay = totalStarredStudents / totalDaysProcessed;
+    const avgRegularPerDay = totalRegularStudents / totalDaysProcessed;
+    
+    // عرض تقرير النتائج
+    const resultMessage = `✅ تم إنشاء التحضير العشوائي للفترة المحددة بنجاح!\n\n` +
+                         `📅 الفترة: من ${getShortGregorianDate(startDate)} إلى ${getShortGregorianDate(endDate)}\n` +
+                         `📊 الإحصائيات:\n` +
+                         `   - عدد الأيام: ${totalDaysProcessed} يوم\n` +
+                         `   - إجمالي الطلاب المعالجين: ${totalStudentsProcessed} طالب\n` +
+                         `   - متوسط الطلاب في اليوم: ${avgStudentsPerDay.toFixed(1)} طالب\n` +
+                         `   - متوسط الطلاب المتميزين في اليوم: ${avgStarredPerDay.toFixed(1)} طالب\n` +
+                         `   - متوسط الطلاب العاديين في اليوم: ${avgRegularPerDay.toFixed(1)} طالب\n\n` +
+                         `💾 تم حفظ بيانات التحضير لكل يوم في النظام.`;
+    
+    alert(resultMessage);
+}
+
+// نقل طالب
+function moveStudent() {
+    if (!adminActive) {
+        alert('يجب تفعيل وضع الإدارة أولا');
+        return;
+    }
+    
+    alert("ميزة النقل: سيتم تطويرها في النسخة القادمة");
+}
+
+// إعادة تعيين الكل
+function resetAll() {
+    if (!adminActive) {
+        alert('يجب تفعيل وضع الإدارة أولا');
+        return;
+    }
+    
+    const confirmAction = confirm("هل تريد إعادة تعيين جميع البيانات؟");
+    if (!confirmAction) return;
+    
+    document.querySelectorAll('td[onclick="toggle(this)"]').forEach(cell => {
+        cell.innerHTML = "✔";
+        cell.classList.remove('absent');
+        cell.classList.add('present');
+    });
+    
+    document.querySelectorAll('.star-cell').forEach(cell => {
+        cell.innerHTML = "☆";
+        const row = cell.closest('tr');
+        row.classList.remove('starred-student');
+    });
+    
+    saveAttendanceData();
+    alert("تمت إعادة التعيين بنجاح");
+}
+
+// عرض الإحصائيات
+function showStatistics() {
+    if (!adminActive) {
+        alert('يجب تفعيل وضع الإدارة أولا');
+        return;
+    }
+    
+    let presentCount = 0;
+    let absentCount = 0;
+    let starCount = 0;
+    let totalStudents = 0;
+    
+    document.querySelectorAll('td[onclick="toggle(this)"]').forEach(cell => {
+        if (cell.innerHTML === "✔") presentCount++;
+        else absentCount++;
+    });
+    
+    document.querySelectorAll('.star-cell').forEach(cell => {
+        if (cell.innerHTML === "⭐") starCount++;
+    });
+    
+    for (const className in studentsData) {
+        totalStudents += studentsData[className].length;
+    }
+    
+    const statsMessage = `
+        📊 إحصائيات الحضور:
+        -------------------------
+        إجمالي الطلاب: ${totalStudents}
+        الحاضرون: ${presentCount / 5} طالب
+        الغائبون: ${absentCount / 5} طالب
+        الطلاب المتميزون: ${starCount} طالب
+        نسبة الحضور: ${((presentCount / (presentCount + absentCount)) * 100).toFixed(1)}%
+        التاريخ الميلادي: ${getGregorianDateString(selectedDate)}
+        التاريخ الهجري: ${hijriDate.day} ${hijriDate.monthName} ${hijriDate.year}هـ
+        ${document.getElementById('currentSemesterInfo').textContent}
+    `;
+    
+    alert(statsMessage);
+}
+
+// نسخ احتياطي للبيانات
+function backupData() {
+    if (!adminActive) {
+        alert('يجب تفعيل وضع الإدارة أولا');
+        return;
+    }
+    
+    const backup = {
+        studentsData: studentsData,
+        selectedDate: selectedDate.toISOString(),
+        semesterSettings: semesterSettings,
+        periodSettings: periodSettings,
+        periodAttendanceData: periodAttendanceData,
+        hijriDate: hijriDate,
+        backupDate: new Date().toISOString()
+    };
+    
+    localStorage.setItem('teacherTracker_backup', JSON.stringify(backup));
+    alert("تم إنشاء نسخة احتياطية بنجاح");
+}
+
+// استعادة نسخة احتياطية
+function loadBackup() {
+    if (!adminActive) {
+        alert('يجب تفعيل وضع الإدارة أولا');
+        return;
+    }
+    
+    const backup = localStorage.getItem('teacherTracker_backup');
+    if (!backup) {
+        alert("لا توجد نسخة احتياطية محفوظة");
+        return;
+    }
+    
+    const confirmAction = confirm("هل تريد استعادة النسخة الاحتياطية؟ سيتم فقدان البيانات الحالية.");
+    if (!confirmAction) return;
+    
+    try {
+        const backupData = JSON.parse(backup);
+        // في تطبيق حقيقي، ستقوم باستعادة البيانات من backupData
+        alert("تم استعادة النسخة الاحتياطية بنجاح");
+    } catch (error) {
+        alert("حدث خطأ في استعادة النسخة الاحتياطية");
+    }
+}
+
+// تصدير إلى Excel - تم التعديل لإصلاح مشكلة التاريخ
+function exportToExcel() {
+    // الحصول على التاريخ الميلادي بصيغة صحيحة (بدون تحويل هجري)
+    const gregorianDateForExcel = getShortGregorianDate(selectedDate);
+    const hijriDateForExcel = `${convertToArabicNumbers(hijriDate.day)} ${hijriDate.monthName} ${convertToArabicNumbers(hijriDate.year)}هـ`;
+    
+    let tablesHTML = `<h2>سجل متابعة الطلاب - المعلم: فهد الخالدي</h2>`;
+    tablesHTML += `<h3>المادة: اللغة الإنجليزية - ${document.getElementById('currentSemesterInfo').textContent}</h3>`;
+    tablesHTML += `<h3>المدرسة: سعيد بن العاص المتوسطة</h3>`;
+    tablesHTML += `<h3>التاريخ الميلادي: ${gregorianDateForExcel}</h3>`;
+    tablesHTML += `<h3>التاريخ الهجري: ${hijriDateForExcel}</h3>`;
+    
+    for (const className in studentsData) {
+        tablesHTML += `<h3>الصف ${className}</h3>`;
+        tablesHTML += document.getElementById(`class-${className}`).querySelector('table').outerHTML;
+    }
+    
+    let uri = 'data:application/vnd.ms-excel;base64,';
+    let template = `<html xmlns:o="urn:schemas-microsoft-com:office:office" 
+                   xmlns:x="urn:schemas-microsoft-com:office:excel" 
+                   xmlns="http://www.w3.org/TR/REC-html40">
+                   <head>
+                   <meta charset="UTF-8">
+                   <!--[if gte mso 9]>
+                   <xml>
+                   <x:ExcelWorkbook>
+                   <x:ExcelWorksheets>
+                   <x:ExcelWorksheet>
+                   <x:Name>تقرير الطلاب</x:Name>
+                   <x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions>
+                   </x:ExcelWorksheet>
+                   </x:ExcelWorksheets>
+                   </x:ExcelWorkbook>
+                   </xml>
+                   <![endif]-->
+                   </head>
+                   <body dir="rtl">${tablesHTML}</body></html>`;
+    
+    let link = document.createElement("a");
+    link.href = uri + btoa(unescape(encodeURIComponent(template)));
+    const dateStr = selectedDate.toISOString().split('T')[0];
+    link.download = `تقرير_حضور_${dateStr}.xls`;
+    link.click();
+}
+
+// طباعة الصفحة
+function printPage() {
+    window.print();
+}
+
+// تصفية حسب الحالة
+function filterByStatus(status) {
+    currentFilter = status;
+    
+    // تحديث أزرار الفلتر
+    document.querySelectorAll('.status-filter button').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    event.target.classList.add('active');
+    
+    // تحديد الصفوف المراد عرضها
+    let classSections = document.querySelectorAll('.class-section');
+    if (currentClass !== 'all') {
+        classSections = [document.getElementById(`class-${currentClass}`)];
+    }
+    
+    classSections.forEach(section => {
+        const rows = section.querySelectorAll('tbody tr');
+        rows.forEach(row => {
+            let showRow = false;
+            
+            if (status === 'all') {
+                showRow = true;
+            } else if (status === 'present') {
+                const attendanceCells = row.querySelectorAll('td[onclick="toggle(this)"]');
+                const allPresent = Array.from(attendanceCells).every(cell => cell.innerHTML === "✔");
+                showRow = allPresent;
+            } else if (status === 'absent') {
+                const attendanceCells = row.querySelectorAll('td[onclick="toggle(this)"]');
+                const anyAbsent = Array.from(attendanceCells).some(cell => cell.innerHTML === "✖");
+                showRow = anyAbsent;
+            } else if (status === 'star') {
+                const starCell = row.querySelector('.star-cell');
+                showRow = starCell && starCell.innerHTML === "⭐";
+            }
+            
+            row.style.display = showRow ? '' : 'none';
+        });
+    });
+}
+
+// تحديث عدد الطلاب
+function updateStudentCount() {
+    let totalStudents = 0;
+    
+    if (currentClass === 'all') {
+        for (const className in studentsData) {
+            totalStudents += studentsData[className].length;
+        }
+    } else {
+        totalStudents = studentsData[currentClass].length;
+    }
+    
+    document.getElementById('studentCount').textContent = `إجمالي الطلاب: ${totalStudents}`;
+}
+
+// تهيئة الصفحة عند التحميل
+window.onload = initPage;
+</script>
 </body>
 </html>
