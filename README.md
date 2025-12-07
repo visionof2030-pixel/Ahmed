@@ -4,325 +4,626 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>سجل متابعة الطلاب - فهد الخالدي</title>
 <style>
-body {
-    font-family: "Tajawal", sans-serif;
+/* الأنماط الأساسية */
+* {
     margin: 0;
     padding: 0;
-    background: #f7f7f7;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    padding: 15px;
+    color: #333;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 0;
+}
+
+/* الهيدر */
 header {
-    background: linear-gradient(135deg, #1a5276, #2a9d8f);
-    color: #fff;
+    background: linear-gradient(90deg, #2c3e50, #4a6491);
+    color: white;
+    padding: 25px 30px;
     text-align: center;
-    padding: 12px 0;
-    box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+    border-bottom: 5px solid #3498db;
 }
 
 .header-main {
-    font-size: 22px;
+    font-size: 28px;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .header-sub {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     flex-wrap: wrap;
-    gap: 20px;
-    font-size: 14px;
-    margin-top: 5px;
-}
-
-.header-sub div {
-    padding: 4px 10px;
-    background: rgba(255,255,255,0.15);
-    border-radius: 4px;
+    gap: 15px;
+    font-size: 18px;
+    margin-top: 15px;
 }
 
 .current-date {
-    background: rgba(38, 70, 83, 0.8) !important;
-    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 12px 20px;
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+}
+
+.current-date > div:first-child {
+    font-size: 16px;
+    opacity: 0.9;
+    margin-bottom: 5px;
+}
+
+#gregorianDateText {
+    font-size: 20px;
+    font-weight: bold;
+    color: #f1c40f;
 }
 
 .date-info {
-    font-size: 12px;
-    color: #e0f7fa;
-    margin-top: 2px;
+    font-size: 18px;
+    color: #a3e4d7;
+    margin-top: 5px;
+}
+
+/* عناصر التحكم */
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    justify-content: center;
+}
+
+.controls button {
+    padding: 12px 20px;
+    background: linear-gradient(145deg, #3498db, #2980b9);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 6px rgba(50, 100, 150, 0.2);
+}
+
+.controls button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(50, 100, 150, 0.3);
+    background: linear-gradient(145deg, #2980b9, #1f639b);
+}
+
+.controls button:active {
+    transform: translateY(0);
+}
+
+/* ألسنة الصفوف */
+.class-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 15px 20px;
+    background: #f1f8ff;
+    border-bottom: 1px solid #d1e3ff;
+    justify-content: center;
+}
+
+.class-tab {
+    padding: 12px 25px;
+    background: white;
+    border: 2px solid #3498db;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #3498db;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 5px rgba(52, 152, 219, 0.2);
+}
+
+.class-tab:hover {
+    background: #e3f2fd;
+    transform: translateY(-2px);
+}
+
+.class-tab.active {
+    background: #3498db;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(52, 152, 219, 0.4);
+}
+
+/* فلتر الحالة */
+.status-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 15px 20px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    justify-content: center;
+}
+
+.status-filter button {
+    padding: 10px 20px;
+    background: white;
+    border: 2px solid #7f8c8d;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #555;
+    transition: all 0.3s ease;
+}
+
+.status-filter button:hover {
+    background: #f1f1f1;
+}
+
+.status-filter button.active {
+    background: #7f8c8d;
+    color: white;
+    border-color: #7f8c8d;
+}
+
+.status-filter button:nth-child(2).active {
+    background: #27ae60;
+    border-color: #27ae60;
+}
+
+.status-filter button:nth-child(3).active {
+    background: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.status-filter button:nth-child(4).active {
+    background: #f39c12;
+    border-color: #f39c12;
+}
+
+/* عرض الجداول */
+#tablesContainer {
+    padding: 20px;
+}
+
+.class-section {
+    margin-bottom: 40px;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.class-section:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .class-header {
-    background: #2a9d8f;
+    background: linear-gradient(90deg, #1a5276, #2e86c1);
     color: white;
-    padding: 8px;
-    margin: 15px 0 5px 0;
-    border-radius: 5px;
+    padding: 20px;
+    font-size: 22px;
+    font-weight: bold;
     text-align: center;
-    font-size: 16px;
-}
-
-.container {
-    width: 95%;
-    margin: 10px auto;
-    background: white;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    border-bottom: 3px solid #f1c40f;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 12px;
-    margin-bottom: 15px;
+    font-size: 16px;
 }
 
-th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
+thead {
+    background-color: #f8f9fa;
 }
 
 th {
-    background: #e9f5f4;
-    color: #264653;
-    font-size: 11px;
-    font-weight: bold;
+    padding: 18px 12px;
+    text-align: center;
+    border-bottom: 2px solid #dee2e6;
+    color: #2c3e50;
+    font-weight: 700;
+    font-size: 17px;
 }
 
 td {
-    cursor: pointer;
-    user-select: none;
+    padding: 16px 12px;
+    text-align: center;
+    border-bottom: 1px solid #eaeaea;
+    transition: background-color 0.2s;
 }
 
-button {
-    margin: 5px;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 5px;
-    background: #1a5276;
-    color: white;
+tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #fcfcfc;
+}
+
+tbody tr:nth-child(even):hover {
+    background-color: #f5f5f5;
+}
+
+/* خلايا الحضور */
+td[onclick="toggle(this)"] {
+    cursor: pointer;
     font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s;
+    font-size: 18px;
+    border-radius: 6px;
+    transition: all 0.2s;
+    min-width: 60px;
 }
 
-button:hover {
-    background: #2a9d8f;
-    transform: translateY(-2px);
-}
-
-.controls {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 15px;
-    gap: 10px;
-}
-
-.admin-panel {
-    display: none;
-    margin-top: 15px;
-    padding: 15px;
-    border: 1px solid #1a5276;
-    border-radius: 10px;
-    background: #f0f8ff;
-}
-
-.star-cell {
-    color: #ffd700;
-    font-size: 16px;
+td[onclick="toggle(this)"]:hover {
+    transform: scale(1.1);
 }
 
 .present {
-    background-color: #e8f5e9;
+    background-color: #d5f4e6;
+    color: #27ae60;
 }
 
 .absent {
-    background-color: #ffebee;
+    background-color: #ffeaea;
+    color: #e74c3c;
 }
 
-.status-filter {
-    margin: 10px 0;
-    text-align: center;
-}
-
-.status-filter button {
-    background: #ddd;
-    color: #333;
-}
-
-.status-filter button.active {
-    background: #2a9d8f;
-    color: white;
-}
-
-input[type="password"], input[type="text"], select {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-family: "Tajawal", sans-serif;
-}
-
-.class-tabs {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 15px;
-    gap: 5px;
-}
-
-.class-tab {
-    padding: 8px 15px;
-    background: #e0e0e0;
-    border-radius: 5px;
+/* خلايا النجمة */
+.star-cell {
     cursor: pointer;
+    font-size: 24px;
     transition: all 0.3s;
+    border-radius: 6px;
+    background-color: #fff9e6;
 }
 
-.class-tab.active {
-    background: #2a9d8f;
-    color: white;
+.star-cell:hover {
+    background-color: #fff3cc;
+    transform: scale(1.1);
 }
 
-.class-tab:hover {
-    background: #c0c0c0;
+/* صفوف الطلاب المتميزين */
+.starred-student {
+    background-color: #fffde7 !important;
+    border-left: 4px solid #f1c40f;
 }
 
+.starred-student td:first-child {
+    font-weight: bold;
+    color: #d35400;
+}
+
+/* إجمالي الطلاب */
 .student-count {
     text-align: center;
-    margin: 10px 0;
-    color: #264653;
+    padding: 20px;
+    font-size: 20px;
     font-weight: bold;
+    color: #2c3e50;
+    background: #f8f9fa;
+    border-top: 1px solid #dee2e6;
 }
 
-.date-controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin: 10px 0;
-    flex-wrap: wrap;
-}
-
-.date-controls button {
-    padding: 6px 12px;
-    font-size: 14px;
-}
-
-.date-display {
-    font-size: 16px;
-    font-weight: bold;
-    color: #264653;
-    padding: 5px 15px;
-    background: #f0f8ff;
-    border-radius: 5px;
-    border: 1px solid #1a5276;
-}
-
-.date-input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-family: "Tajawal", sans-serif;
+/* لوحة الإدارة */
+#adminPanel {
+    display: none;
+    background: #f8f9fa;
+    border-radius: 15px;
+    margin: 25px;
+    padding: 25px;
+    border: 2px solid #3498db;
 }
 
 .admin-section {
-    margin: 15px 0;
-    padding: 10px;
-    background: #f9f9f9;
-    border-radius: 8px;
-    border: 1px solid #ddd;
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 .admin-section h4 {
-    margin-top: 0;
-    color: #1a5276;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 8px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ecf0f1;
+    font-size: 20px;
 }
 
 .admin-row {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin: 10px 0;
-    flex-wrap: wrap;
+    margin-bottom: 15px;
 }
 
 .admin-label {
-    font-weight: bold;
-    color: #264653;
-    min-width: 150px;
+    width: 150px;
+    font-weight: 600;
+    color: #34495e;
 }
 
 .admin-input {
     flex: 1;
-    min-width: 200px;
 }
 
-.semester-info {
-    display: inline-block;
-    padding: 4px 10px;
-    background: #e8f5e9;
-    border-radius: 4px;
-    color: #2a9d8f;
+.admin-input input, .admin-input select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border 0.3s;
+}
+
+.admin-input input:focus, .admin-input select:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+/* أدوات التاريخ */
+.date-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.date-controls button {
+    padding: 10px 15px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.date-display {
+    font-size: 20px;
     font-weight: bold;
-    margin-left: 10px;
+    color: #2c3e50;
+    padding: 10px 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    min-width: 200px;
+    text-align: center;
+}
+
+.date-input {
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
 }
 
 .hijri-date-selector {
-    background: #fff8e1;
-    border: 1px solid #ffd54f;
-    border-radius: 5px;
-    padding: 10px;
-    margin-top: 10px;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
 }
 
-.starred-student {
-    background-color: #fffde7 !important;
+.hijri-date-selector h5 {
+    color: #d84315;
+    margin-bottom: 15px;
 }
 
+/* الأقسام الإضافية */
 .random-period-section {
-    background: #e8f5e9;
-    border: 1px solid #2a9d8f;
-    border-radius: 5px;
-    padding: 10px;
-    margin-top: 10px;
+    background: #f1f8e9;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
 }
 
-.period-info {
+.semester-info, .period-info {
     display: inline-block;
-    padding: 4px 10px;
-    background: #2a9d8f;
-    color: white;
-    border-radius: 4px;
-    font-weight: bold;
-    margin-left: 10px;
-    font-size: 12px;
+    margin-left: 15px;
+    padding: 8px 15px;
+    background: #e3f2fd;
+    border-radius: 6px;
+    font-weight: 600;
+    color: #1565c0;
 }
 
-@media print {
-    button, .admin-panel, .status-filter, .class-tabs, .date-controls {
-        display: none !important;
-    }
-    
-    table {
-        font-size: 10px;
+/* مدخل كلمة المرور */
+input[type="password"] {
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 250px;
+    margin-right: 10px;
+}
+
+/* تصميم متجاوب للجوال */
+@media (max-width: 768px) {
+    .header-main {
+        font-size: 22px;
     }
     
     .header-sub {
-        background: white;
-        color: black;
-        border: 1px solid #ccc;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
     
     .current-date {
-        background: white !important;
-        color: black;
-        border: 1px solid #ccc;
+        align-items: center;
+        width: 100%;
     }
+    
+    .controls, .status-filter {
+        padding: 15px 10px;
+    }
+    
+    .controls button, .status-filter button {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+    
+    .class-tabs {
+        padding: 10px;
+        overflow-x: auto;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+    }
+    
+    .class-tab {
+        padding: 10px 15px;
+        white-space: nowrap;
+    }
+    
+    .class-header {
+        font-size: 18px;
+        padding: 15px;
+    }
+    
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    th, td {
+        padding: 12px 8px;
+        font-size: 14px;
+    }
+    
+    td[onclick="toggle(this)"] {
+        min-width: 50px;
+        font-size: 16px;
+    }
+    
+    .star-cell {
+        font-size: 20px;
+    }
+    
+    .admin-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .admin-label {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    
+    .date-controls {
+        flex-direction: column;
+    }
+    
+    input[type="password"] {
+        width: 100%;
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        border-radius: 15px;
+    }
+    
+    header {
+        padding: 20px 15px;
+    }
+    
+    .header-main {
+        font-size: 20px;
+    }
+    
+    #gregorianDateText {
+        font-size: 18px;
+    }
+    
+    .date-info {
+        font-size: 16px;
+    }
+    
+    .controls button {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .class-header {
+        font-size: 16px;
+        padding: 12px;
+    }
+    
+    th, td {
+        padding: 10px 5px;
+        font-size: 13px;
+    }
+    
+    .admin-section {
+        padding: 15px;
+    }
+    
+    .admin-section h4 {
+        font-size: 18px;
+    }
+}
+
+/* تأثيرات إضافية */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.class-section {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* تخصيص شريط التمرير */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3498db;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #2980b9;
 }
 </style>
 <!-- مكتبة ummAlQura لحساب التاريخ الهجري -->
@@ -368,13 +669,13 @@ input[type="password"], input[type="text"], select {
     
     <div class="student-count" id="studentCount">إجمالي الطلاب: 0</div>
     
-    <div style="text-align: center; margin-top: 20px;">
-        <input type="password" id="adminPass" placeholder="ادخل كلمة المرور للإدارة" style="width: 200px;">
-        <button onclick="checkAdmin()">🔓 فتح الإدارة</button>
+    <div style="text-align: center; margin-top: 20px; padding: 20px; background: #f8f9fa;">
+        <input type="password" id="adminPass" placeholder="ادخل كلمة المرور للإدارة" style="width: 250px; padding: 12px; border-radius: 8px; border: 2px solid #ddd; font-size: 16px;">
+        <button onclick="checkAdmin()" style="padding: 12px 25px; background: linear-gradient(145deg, #2c3e50, #4a6491); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 16px;">🔓 فتح الإدارة</button>
     </div>
 
     <div class="admin-panel" id="adminPanel">
-        <h3 style="text-align:center; margin-top:0; color: #1a5276;">لوحة الإدارة - الخصائص الإدارية</h3>
+        <h3 style="text-align:center; margin-top:0; color: #1a5276; padding-bottom: 15px; border-bottom: 2px solid #3498db;">لوحة الإدارة - الخصائص الإدارية</h3>
         
         <div class="admin-section">
             <h4>🎓 إعدادات الفصل الدراسي</h4>
@@ -395,7 +696,7 @@ input[type="password"], input[type="text"], select {
                 </div>
             </div>
             <div style="text-align: center; margin-top: 10px;">
-                <button onclick="saveSemesterSettings()">💾 حفظ إعدادات الفصل</button>
+                <button onclick="saveSemesterSettings()" style="padding: 10px 20px; background: #27ae60; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">💾 حفظ إعدادات الفصل</button>
                 <span class="semester-info" id="currentSemesterInfo">الفصل الثاني ١٤٤٦هـ</span>
             </div>
         </div>
@@ -406,14 +707,14 @@ input[type="password"], input[type="text"], select {
                 <strong>ملاحظة:</strong> يتم عرض تاريخ اليوم الحقيقي تلقائياً. هذه الأدوات تستخدم فقط لتعديل التاريخ عند الحاجة.
             </div>
             <div class="date-controls">
-                <button onclick="changeMonth(-1)">◀ الشهر السابق</button>
+                <button onclick="changeMonth(-1)" style="padding: 10px 15px; background: #3498db; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">◀ الشهر السابق</button>
                 <div class="date-display" id="adminDateDisplay">...</div>
-                <button onclick="changeMonth(1)">الشهر القادم ▶</button>
+                <button onclick="changeMonth(1)" style="padding: 10px 15px; background: #3498db; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">الشهر القادم ▶</button>
             </div>
             <div style="text-align: center; margin: 10px 0;">
-                <input type="date" id="datePicker" class="date-input" onchange="setCustomDate()">
-                <button onclick="resetToToday()">🔄 الرجوع لليوم الحقيقي</button>
-                <button onclick="saveCurrentDate()">💾 حفظ التعديلات</button>
+                <input type="date" id="datePicker" class="date-input" onchange="setCustomDate()" style="padding: 10px; border-radius: 8px; border: 2px solid #ddd; font-size: 16px; margin: 5px;">
+                <button onclick="resetToToday()" style="padding: 10px 15px; background: #7f8c8d; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; margin: 5px;">🔄 الرجوع لليوم الحقيقي</button>
+                <button onclick="saveCurrentDate()" style="padding: 10px 15px; background: #27ae60; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; margin: 5px;">💾 حفظ التعديلات</button>
             </div>
             
             <div class="hijri-date-selector">
@@ -421,13 +722,13 @@ input[type="password"], input[type="text"], select {
                 <div class="admin-row">
                     <div class="admin-label">اليوم:</div>
                     <div class="admin-input">
-                        <input type="number" id="hijriDay" min="1" max="30" style="width: 70px;">
+                        <input type="number" id="hijriDay" min="1" max="30" style="width: 100%; padding: 10px; border-radius: 8px; border: 2px solid #ddd;">
                     </div>
                 </div>
                 <div class="admin-row">
                     <div class="admin-label">الشهر:</div>
                     <div class="admin-input">
-                        <select id="hijriMonth" style="width: 100%;">
+                        <select id="hijriMonth" style="width: 100%; padding: 10px; border-radius: 8px; border: 2px solid #ddd;">
                             <option value="1">محرم</option>
                             <option value="2">صفر</option>
                             <option value="3">ربيع الأول</option>
@@ -446,12 +747,12 @@ input[type="password"], input[type="text"], select {
                 <div class="admin-row">
                     <div class="admin-label">السنة:</div>
                     <div class="admin-input">
-                        <input type="number" id="hijriYear" min="1300" max="1500" style="width: 100px;">
+                        <input type="number" id="hijriYear" min="1300" max="1500" style="width: 100%; padding: 10px; border-radius: 8px; border: 2px solid #ddd;">
                     </div>
                 </div>
                 <div style="text-align: center; margin-top: 10px;">
-                    <button onclick="updateHijriDate()">🔄 تحديث التاريخ الهجري</button>
-                    <button onclick="resetHijriToToday()">🔄 الرجوع للتاريخ الفعلي</button>
+                    <button onclick="updateHijriDate()" style="padding: 10px 15px; background: #3498db; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; margin: 5px;">🔄 تحديث التاريخ الهجري</button>
+                    <button onclick="resetHijriToToday()" style="padding: 10px 15px; background: #7f8c8d; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; margin: 5px;">🔄 الرجوع للتاريخ الفعلي</button>
                 </div>
                 <p style="text-align:center; font-size:11px; color:#666;">ملاحظة: التاريخ الهجري المحسوب تلقائياً، ويمكنك تعديله يدوياً إذا لزم الأمر.</p>
             </div>
@@ -468,17 +769,17 @@ input[type="password"], input[type="text"], select {
                     <small>ملاحظة: الأسبوع 14 إجازة الخريف ولا يتم إدراجه</small>
                 </div>
                 <div style="text-align: center; margin-top: 15px;">
-                    <button onclick="randomAttendanceForAllWeeks()">📅 تحضير عشوائي لجميع الأسابيع (18 أسبوع)</button>
-                    <button onclick="clearAllWeeksData()">🗑️ مسح بيانات جميع الأسابيع</button>
+                    <button onclick="randomAttendanceForAllWeeks()" style="padding: 12px 20px; background: #f39c12; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; margin: 5px;">📅 تحضير عشوائي لجميع الأسابيع (18 أسبوع)</button>
+                    <button onclick="clearAllWeeksData()" style="padding: 12px 20px; background: #e74c3c; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; margin: 5px;">🗑️ مسح بيانات جميع الأسابيع</button>
                 </div>
                 <div style="text-align: center; margin-top: 10px;">
-                    <button onclick="saveWeeksData()">💾 حفظ بيانات الأسابيع</button>
+                    <button onclick="saveWeeksData()" style="padding: 10px 15px; background: #27ae60; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; margin: 5px;">💾 حفظ بيانات الأسابيع</button>
                     <span class="period-info" id="weeksInfo">18 أسبوع متاحة</span>
                 </div>
             </div>
             <div style="text-align: center; margin-top: 15px;">
-                <button onclick="randomAttendance()">🎲 تحضير عشوائي للتاريخ الحالي</button>
-                <button onclick="randomAttendanceForPeriod()">📅 تحضير عشوائي للفترة المحددة</button>
+                <button onclick="randomAttendance()" style="padding: 10px 20px; background: #9b59b6; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; margin: 5px;">🎲 تحضير عشوائي للتاريخ الحالي</button>
+                <button onclick="randomAttendanceForPeriod()" style="padding: 10px 20px; background: #1abc9c; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; margin: 5px;">📅 تحضير عشوائي للفترة المحددة</button>
             </div>
             <div style="text-align:center; margin-top:10px; font-size:12px; color:#666;">
                 ⭐ خاصية التحضير العشوائي: سيتم وضع ✓ لكل الخيارات للطلاب المتميزين (الذين لديهم نجمة)
@@ -488,18 +789,18 @@ input[type="password"], input[type="text"], select {
         <div class="admin-section">
             <h4>👨‍🏫 إدارة الطلاب</h4>
             <div style="text-align:center;">
-                <button onclick="addStudent()">➕ إضافة طالب</button>
-                <button onclick="moveStudent()">↔️ نقل طالب</button>
-                <button onclick="resetAll()">🔄 إعادة تعيين</button>
+                <button onclick="addStudent()" style="padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; margin: 5px;">➕ إضافة طالب</button>
+                <button onclick="moveStudent()" style="padding: 10px 20px; background: #9b59b6; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; margin: 5px;">↔️ نقل طالب</button>
+                <button onclick="resetAll()" style="padding: 10px 20px; background: #e74c3c; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; margin: 5px;">🔄 إعادة تعيين</button>
             </div>
         </div>
         
         <div class="admin-section">
             <h4>📊 الإحصائيات</h4>
             <div style="text-align:center;">
-                <button onclick="showStatistics()">📈 عرض الإحصائيات</button>
-                <button onclick="backupData()">💾 نسخ احتياطي</button>
-                <button onclick="loadBackup()">📂 استعادة نسخة</button>
+                <button onclick="showStatistics()" style="padding: 10px 20px; background: #2c3e50; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; margin: 5px;">📈 عرض الإحصائيات</button>
+                <button onclick="backupData()" style="padding: 10px 20px; background: #27ae60; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; margin: 5px;">💾 نسخ احتياطي</button>
+                <button onclick="loadBackup()" style="padding: 10px 20px; background: #f39c12; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; margin: 5px;">📂 استعادة نسخة</button>
             </div>
         </div>
         
@@ -508,7 +809,7 @@ input[type="password"], input[type="text"], select {
 </div>
 
 <script>
-// بيانات الطلاب لكل صف
+// بيانات الطلاب لكل صف (محدثة)
 const studentsData = {
     "3-1": [
         "إسماعيل محمد هاشم شفيق الرحمن",
@@ -565,7 +866,7 @@ const studentsData = {
         "محمد اسحاق محمد اسلام عبدالحكيم",
         "محمد عبدالله ابو سعيد مياه",
         "حمد محمد اسماعيل امير حسين ابو بكر",
-        "حمد موسى ساليفو ديقوقa",
+        "حمد موسى ساليفو ديقوقا",
         "مشاري شيهو اسماعيل محمد بكر",
         "ياسر عبدالرحيم محمد علي سفر علي",
         "يوسف محمد عبد الرحمن علي"
@@ -902,12 +1203,6 @@ function initPage() {
     const savedPeriod = localStorage.getItem('teacherTracker_periodSettings');
     if (savedPeriod) {
         periodSettings = JSON.parse(savedPeriod);
-        if (periodSettings.startDate) {
-            document.getElementById('periodStartDate').value = periodSettings.startDate;
-        }
-        if (periodSettings.endDate) {
-            document.getElementById('periodEndDate').value = periodSettings.endDate;
-        }
         updatePeriodInfo();
     }
     
@@ -977,16 +1272,29 @@ function clearAllWeeksData() {
     alert("تم مسح جميع بيانات التحضير للأسابيع الدراسية");
 }
 
-// تحويل تاريخ نصي (dd/mm/yyyy) إلى كائن Date
+// تحويل تاريخ نصي (dd/mm/yyyy) إلى كائن Date - تم التصحيح
 function parseDateString(dateStr) {
-    const parts = dateStr.split('/');
-    if (parts.length === 3) {
-        const day = parseInt(parts[0]);
-        const month = parseInt(parts[1]) - 1;
-        const year = parseInt(parts[2]);
-        return new Date(year, month, day);
+    try {
+        const parts = dateStr.split('/');
+        if (parts.length === 3) {
+            // يوم/شهر/سنة
+            const day = parseInt(parts[0], 10);
+            const month = parseInt(parts[1], 10) - 1; // الأشهر من 0-11
+            const year = parseInt(parts[2], 10);
+            
+            // التحقق من صحة التاريخ
+            if (isNaN(day) || isNaN(month) || isNaN(year)) {
+                console.error('تاريخ غير صالح:', dateStr);
+                return null;
+            }
+            
+            return new Date(year, month, day);
+        }
+        return null;
+    } catch (error) {
+        console.error('خطأ في تحويل التاريخ:', dateStr, error);
+        return null;
     }
-    return null;
 }
 
 // توليد تحضير عشوائي ليوم معين مع معلومات الأسبوع
@@ -1066,7 +1374,7 @@ function generateRandomAttendanceForDate(date, dayInfo = null) {
     return attendanceData;
 }
 
-// تحضير عشوائي لجميع الأسابيع الدراسية (18 أسبوع)
+// تحضير عشوائي لجميع الأسابيع الدراسية (18 أسبوع) - تم التصحيح
 function randomAttendanceForAllWeeks() {
     if (!adminActive) {
         alert('يجب تفعيل وضع الإدارة أولا');
@@ -1117,7 +1425,7 @@ function randomAttendanceForAllWeeks() {
             // حفظ بيانات اليوم
             periodAttendanceData[dateKey] = attendanceData;
             
-            // حساب الإحصائيات
+            // حساب الإحصائيات لهذا اليوم
             let dayStudents = 0;
             let dayStarred = 0;
             
@@ -1158,7 +1466,7 @@ function randomAttendanceForAllWeeks() {
     alert(resultMessage);
 }
 
-// تصدير فترة كاملة إلى Excel - معدل للأسابيع الدراسية
+// تصدير فترة كاملة إلى Excel - تم التصحيح
 function exportPeriodToExcel() {
     // التحقق من وجود بيانات للأسابيع الدراسية
     let hasData = false;
@@ -1191,21 +1499,53 @@ function exportPeriodToExcel() {
                 weeksData[weekNum] = [];
             }
             weeksData[weekNum].push(dayData);
+        } else {
+            // إذا لم يكن هناك weekNumber، نضعها في أسبوع "غير محدد"
+            if (!weeksData['غير محدد']) {
+                weeksData['غير محدد'] = [];
+            }
+            weeksData['غير محدد'].push(dayData);
         }
     }
     
-    // فرز الأسابيع
-    const sortedWeeks = Object.keys(weeksData).sort((a, b) => parseInt(a) - parseInt(b));
+    // فرز الأسابيع: الأسابيع العددية أولاً، ثم "غير محدد"
+    const sortedWeeks = Object.keys(weeksData).sort((a, b) => {
+        if (a === 'غير محدد') return 1;
+        if (b === 'غير محدد') return -1;
+        const numA = parseInt(a);
+        const numB = parseInt(b);
+        if (isNaN(numA) || isNaN(numB)) return 0;
+        return numA - numB;
+    });
     
     // إضافة بيانات كل أسبوع
     sortedWeeks.forEach(weekNum => {
         const weekDaysData = weeksData[weekNum];
         
-        tablesHTML += `<h3 style="background:#e0f7fa; padding:10px; margin-top:20px;">الأسبوع ${weekNum}</h3>`;
+        tablesHTML += `<h3 style="background:#e0f7fa; padding:10px; margin-top:20px;">`;
+        if (weekNum === 'غير محدد') {
+            tablesHTML += `أيام أخرى`;
+        } else {
+            tablesHTML += `الأسبوع ${weekNum}`;
+        }
+        tablesHTML += `</h3>`;
+        
+        // فرز أيام الأسبوع حسب التاريخ
+        weekDaysData.sort((a, b) => {
+            const dateA = new Date(a.date);
+            const dateB = new Date(b.date);
+            return dateA - dateB;
+        });
         
         // إضافة بيانات كل يوم في هذا الأسبوع
         weekDaysData.forEach(dayData => {
-            tablesHTML += `<h4 style="background:#f5f5f5; padding:8px;">${dayData.dayInfo.dayName} - ${dayData.dayInfo.gregorianDate} (${dayData.dayInfo.hijriDate})</h4>`;
+            let dayTitle = '';
+            if (dayData.dayInfo) {
+                dayTitle = `${dayData.dayInfo.dayName} - ${dayData.dayInfo.gregorianDate} (${dayData.dayInfo.hijriDate})`;
+            } else {
+                dayTitle = `${dayData.gregorianDate} (${dayData.hijriDate})`;
+            }
+            tablesHTML += `<h4 style="background:#f5f5f5; padding:8px;">${dayTitle}</h4>`;
             
             // إضافة جداول لكل صف في هذا اليوم
             for (const className in dayData.classes) {
@@ -1275,7 +1615,6 @@ function exportPeriodToExcel() {
     
     tablesHTML += `<div style="padding:15px; background:#fff8e1; border-radius:5px; margin-bottom:20px;">
         <strong>إجمالي الأسابيع الدراسية:</strong><br>
-        - عدد الأسابيع: ${sortedWeeks.length} أسبوع<br>
         - عدد الأيام: ${totalDays} يوم<br>
         - إجمالي الطلاب: ${periodTotalStudents} طالب<br>
         - إجمالي الحضور: ${periodTotalPresent} حالة حضور<br>
@@ -1311,7 +1650,7 @@ function exportPeriodToExcel() {
     link.download = `تقرير_الأسابيع_الدراسية_${today}.xls`;
     link.click();
     
-    alert(`تم تصدير تقرير الأسابيع الدراسية بنجاح!\n\nيتضمن التقرير بيانات ${totalDays} يوم من ${sortedWeeks.length} أسبوع`);
+    alert(`تم تصدير تقرير الأسابيع الدراسية بنجاح!\n\nيتضمن التقرير بيانات ${totalDays} يوم`);
 }
 
 // تحويل الأرقام الإنجليزية إلى عربية
@@ -1320,7 +1659,7 @@ function convertToArabicNumbers(num) {
     return num.toString().replace(/\d/g, digit => arabicNumbers[digit]);
 }
 
-// الحصول على التاريخ الميلادي بصيغة عربية صحيحة (بدون تحويل هجري)
+// الحصول على التاريخ الميلادي بصيغة عربية صحيحة
 function getGregorianDateString(date) {
     const day = date.getDate();
     const month = gregorianMonths[date.getMonth()];
@@ -1479,35 +1818,6 @@ function saveSemesterSettings() {
     alert(`تم حفظ إعدادات الفصل الدراسي: ${document.getElementById('currentSemesterInfo').textContent}`);
 }
 
-// تعيين فترة مثال (31/8 إلى 4/9)
-function setPeriodToExample() {
-    // تاريخ البداية: 31 أغسطس 2024 (مثال)
-    const startDate = new Date(2024, 7, 31); // أغسطس هو الشهر 7 (0-indexed)
-    // تاريخ النهاية: 4 سبتمبر 2024 (مثال)
-    const endDate = new Date(2024, 8, 4); // سبتمبر هو الشهر 8 (0-indexed)
-    
-    document.getElementById('periodStartDate').value = startDate.toISOString().split('T')[0];
-    document.getElementById('periodEndDate').value = endDate.toISOString().split('T')[0];
-    
-    periodSettings.startDate = startDate.toISOString().split('T')[0];
-    periodSettings.endDate = endDate.toISOString().split('T')[0];
-    
-    updatePeriodInfo();
-    alert(`تم تعيين فترة التحضير العشوائي:\nمن: 31/8/2024 (3/8/1446هـ)\nإلى: 4/9/2024 (3/12/1446هـ)`);
-}
-
-// مسح فترة التحضير
-function clearPeriod() {
-    document.getElementById('periodStartDate').value = '';
-    document.getElementById('periodEndDate').value = '';
-    
-    periodSettings.startDate = null;
-    periodSettings.endDate = null;
-    
-    updatePeriodInfo();
-    alert("تم مسح فترة التحضير المحددة");
-}
-
 // تحديث معلومات فترة التحضير المعروضة
 function updatePeriodInfo() {
     const periodInfoElement = document.getElementById('currentPeriodInfo');
@@ -1523,16 +1833,6 @@ function updatePeriodInfo() {
     } else {
         periodInfoElement.textContent = "لا توجد فترة محددة";
     }
-}
-
-// حفظ إعدادات فترة التحضير
-function savePeriodSettings() {
-    periodSettings.startDate = document.getElementById('periodStartDate').value;
-    periodSettings.endDate = document.getElementById('periodEndDate').value;
-    
-    localStorage.setItem('teacherTracker_periodSettings', JSON.stringify(periodSettings));
-    updatePeriodInfo();
-    alert("تم حفظ إعدادات فترة التحضير العشوائي");
 }
 
 // تحديث التاريخ الهجري من حقول الإدخال
@@ -2125,9 +2425,9 @@ function loadBackup() {
     }
 }
 
-// تصدير إلى Excel - تم التعديل لإصلاح مشكلة التاريخ
+// تصدير إلى Excel
 function exportToExcel() {
-    // الحصول على التاريخ الميلادي بصيغة صحيحة (بدون تحويل هجري)
+    // الحصول على التاريخ الميلادي بصيغة صحيحة
     const gregorianDateForExcel = getShortGregorianDate(selectedDate);
     const hijriDateForExcel = `${convertToArabicNumbers(hijriDate.day)} ${hijriDate.monthName} ${convertToArabicNumbers(hijriDate.year)}هـ`;
     
@@ -2232,7 +2532,25 @@ function updateStudentCount() {
 }
 
 // تهيئة الصفحة عند التحميل
-window.onload = initPage;
+window.onload = function() {
+    initPage();
+    
+    // تعيين تنسيق ألوان إضافي لعرض الصفوف
+    setTimeout(() => {
+        const colors = [
+            {header: '#1a5276', accent: '#2e86c1'},
+            {header: '#1b5e20', accent: '#4caf50'},
+            {header: '#4a148c', accent: '#7b1fa2'},
+            {header: '#bf360c', accent: '#f4511e'},
+            {header: '#006064', accent: '#00acc1'}
+        ];
+        
+        document.querySelectorAll('.class-section').forEach((section, index) => {
+            const colorSet = colors[index % colors.length];
+            section.querySelector('.class-header').style.background = `linear-gradient(90deg, ${colorSet.header}, ${colorSet.accent})`;
+        });
+    }, 100);
+};
 </script>
 </body>
 </html>
